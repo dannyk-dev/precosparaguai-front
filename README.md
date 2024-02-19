@@ -1,1 +1,1 @@
-## Preços em paragaui frontend
+## Preços em paraguai front-end
