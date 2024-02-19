@@ -4,10 +4,10 @@ import { v4 as uuidv4 } from 'uuid';
 
 const categoryFixture = createFixture<ICategories>({
     _id: uuidv4(),
-    title: 'Sample Category',
+    title: 'Cars',
     subcategories: {
-        subcategory1: ['Subcategory1Item1', 'Subcategory1Item2'],
-        subcategory2: ['Subcategory2Item1', 'Subcategory2Item2'],
+        subaru: ['Subaru', 'Subaru Chad'],
+        nissan: ['Nissan GTR', 'Nissan GTR Chad'],
     },
 });
 
