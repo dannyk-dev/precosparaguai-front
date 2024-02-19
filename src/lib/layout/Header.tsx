@@ -1,5 +1,4 @@
 import { BellIcon, Menu, SearchIcon } from 'lucide-react';
-import SideBarContainer from '../components/Sidebar/SideBarContainer';
 import SideBar from '../components/Sidebar/SideBar';
 
 const Header = () => {
