@@ -53,7 +53,7 @@ export const CategoryFactory = categoryFixture.createCollection([
         subcategories: {
             Headphones: ['Sony WH-1000XM4', 'Bose QuietComfort 35 II'],
             Keyboards: ['Logitech G Pro', 'Razer Huntsman'],
-            Mice: ['Logitech MX Master 3', 'Razer DeathAdder V2'],
+            Mouse: ['Logitech MX Master 3', 'Razer DeathAdder V2'],
         },
     },
 ]);

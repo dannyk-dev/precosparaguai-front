@@ -17,7 +17,7 @@ const SideBar = ({}: IProps) => {
     >();
 
     const handleSelectSubCategory = (
-        e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+        e: React.MouseEvent<HTMLLabelElement, MouseEvent>
     ) => {
         setOpenSubDrawer((prevState) => !prevState);
 
@@ -41,7 +41,7 @@ const SideBar = ({}: IProps) => {
                     <Menu />
                 </label>
             </div>
-            <div className="drawer-side">
+            <div className={`drawer-side ${currentCategory ? 'hidden' : ''}`}>
                 <label
                     htmlFor="my-drawer"
                     aria-label="close sidebar"
@@ -57,13 +57,19 @@ const SideBar = ({}: IProps) => {
                     <div className="divider"></div>
                     {categories.map((item) => (
                         <li>
-                            <a
-                                href="#"
+                            <input
+                                type="checkbox"
+                                className="drawer-toggle"
+                                id="sub-drawer"
+                            />{' '}
+                            <label
+                                htmlFor="sub-drawer"
                                 onClick={(e) => handleSelectSubCategory(e)}
                                 data-id={item._id}
+                                key={item._id}
                             >
                                 {item.title}
-                            </a>
+                            </label>
                         </li>
                     ))}
                 </ul>
