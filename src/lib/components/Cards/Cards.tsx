@@ -12,39 +12,6 @@ interface IProps {
 }
 
 export const Cards = ({ productsData }: IProps) => {
-    // const SwiperElRef = useRef<Swiper | null>(null);
-
-    // useEffect(() => {
-    //     if (!SwiperElRef.current) {
-    //         SwiperElRef.current = new Swiper('.swiper-container', {
-    //             direction: 'horizontal',
-    //             loop: true,
-    //             slidesPerView: 4,
-    //             centeredSlides: true,
-    //             pagination: true,
-    //             draggable: true,
-    //         } as SwiperOptions);
-    //     }
-
-    //     return () => {
-    //         if (SwiperElRef.current) {
-    //             SwiperElRef.current.destroy();
-    //         }
-    //     };
-    // }, []);
-
-    // return (
-    //     <div className="swiper-container">
-    //         <div className="swiper-wrapper">
-    //             {productsData.map((item, index) => (
-    //                 <div className="swiper-slide" key={index}>
-    //                     <Card item={item} />
-    //                 </div>
-    //             ))}
-    //         </div>
-    //     </div>
-    // );
-
     return (
         <Swiper
             direction="horizontal"

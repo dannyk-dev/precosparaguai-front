@@ -1,18 +1,39 @@
 'use client';
 
 import React from 'react';
-import { Cards } from '../Cards';
 import { useGetProducts } from '@/lib/hooks/products';
-import { Spinner } from '@/lib/components/shared/loaders/Spinner';
+import { Spinner } from '@/lib/components/shared/loaders';
 
 interface IProps {}
 
 const Hero = ({}: IProps) => {
     const { products, isLoading } = useGetProducts();
 
+    if (isLoading) {
+        return <Spinner />;
+    }
+
     return (
         <div className="container flex items-center justify-center">
-            {isLoading ? <Spinner /> : <Cards productsData={products} />}
+            <div className="hero h-4/6 rounded-xl bg-base-300 text-base-content shadow-lg">
+                <div className="hero-content flex-col lg:flex-row-reverse">
+                    <img
+                        src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
+                        className="max-w-sm shadow-2xl"
+                    />
+                    <div className="">
+                        <h1 className="text-5xl font-bold">Box Office News!</h1>
+                        <p className="py-6">
+                            Provident cupiditate voluptatem et in. Quaerat
+                            fugiat ut assumenda excepturi exercitationem quasi.
+                            In deleniti eaque aut repudiandae et a id nisi.
+                        </p>
+                        <button className="btn btn-primary">Get Started</button>
+                    </div>
+                </div>
+            </div>
+
+            {/* {isLoading ? <Spinner /> : <Cards productsData={products} />} */}
         </div>
     );
 };
