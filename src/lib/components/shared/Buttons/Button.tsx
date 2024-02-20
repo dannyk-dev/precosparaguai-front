@@ -3,11 +3,11 @@ import { getThemeVariant, IButtonComponentProps } from './button.types';
 import { VariantProps, cva } from 'class-variance-authority';
 import { cn } from '@/lib/styles/utils';
 
-const buttonStyles = cva('font-sm w-40 rounded-xl py-2', {
+const buttonStyles = cva('btn-base rounded-xl py-2 text-base-content', {
     variants: {
         variant: {
             primary: getThemeVariant('primary'),
-            cta: getThemeVariant('cta'),
+            link: getThemeVariant('link'),
             secondary: getThemeVariant('secondary'),
         },
         defaultVariants: {
@@ -23,11 +23,19 @@ const Button = ({
     children,
     variant,
     size,
+    Icon,
     ...props
 }: IButtonComponentProps & VariantProps<typeof buttonStyles>) => {
     return (
         <button {...props} className={cn(buttonStyles({ variant }))}>
-            {children}
+            {Icon ? (
+                <div className="indicator">
+                    <Icon />
+                    {children}
+                </div>
+            ) : (
+                <>{children}</>
+            )}
         </button>
     );
 };

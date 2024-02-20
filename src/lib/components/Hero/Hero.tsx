@@ -3,6 +3,8 @@
 import React from 'react';
 import { useGetProducts } from '@/lib/hooks/products';
 import { Spinner } from '@/lib/components/shared/loaders';
+import Image from 'next/image';
+import banner from '@/../public/assets/banner_dior.jpg';
 
 interface IProps {}
 
@@ -14,23 +16,13 @@ const Hero = ({}: IProps) => {
     }
 
     return (
-        <div className="container flex items-center justify-center">
-            <div className="hero h-4/6 rounded-xl bg-base-300 text-base-content shadow-lg">
-                <div className="hero-content flex-col lg:flex-row-reverse">
-                    <img
-                        src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
-                        className="max-w-sm shadow-2xl"
-                    />
-                    <div className="">
-                        <h1 className="text-5xl font-bold">Box Office News!</h1>
-                        <p className="py-6">
-                            Provident cupiditate voluptatem et in. Quaerat
-                            fugiat ut assumenda excepturi exercitationem quasi.
-                            In deleniti eaque aut repudiandae et a id nisi.
-                        </p>
-                        <button className="btn btn-primary">Get Started</button>
-                    </div>
-                </div>
+        <div className="container mt-10 flex items-center justify-center">
+            <div className="hero h-5/6 rounded-xl bg-base-300 p-0 text-base-content shadow-lg">
+                <Image
+                    src={banner}
+                    alt="banner"
+                    className="h-full w-full rounded-xl object-cover shadow-lg"
+                />
             </div>
 
             {/* {isLoading ? <Spinner /> : <Cards productsData={products} />} */}

@@ -7,7 +7,7 @@ interface IProps {}
 
 export const SideBar = ({}: IProps) => {
     return (
-        <div className="drawer">
+        <div className="drawer mr-auto">
             <input id="main-drawer" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
                 <label
