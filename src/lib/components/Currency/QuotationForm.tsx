@@ -7,6 +7,7 @@ interface IProps {
 }
 
 // TODO format the value the user types on the dollar input
+// TODO fix the limiting on the dollar input
 
 export const QuotationForm = ({ selectedCurrency }: IProps) => {
     const [dollarAmount, setDollarAmount] = useState<string | undefined>();
@@ -34,7 +35,7 @@ export const QuotationForm = ({ selectedCurrency }: IProps) => {
                         type="number"
                         placeholder="Enter your dollar amount"
                         value={dollarAmount}
-                        maxLength={10}
+                        maxLength={8}
                         onChange={(e) =>
                             setDollarAmount(e.target.value || undefined)
                         }

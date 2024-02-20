@@ -5,7 +5,6 @@ import { useGetProducts } from '@/lib/hooks/products';
 import { Spinner } from '@/lib/components/shared/loaders';
 import Image from 'next/image';
 import banner from '@/../public/assets/banner_dior.jpg';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import { Cards } from '../Cards';
 
 interface IProps {}
@@ -27,9 +26,7 @@ const Hero = ({}: IProps) => {
                 />
             </div>
 
-            <Swiper>
-                <Cards productsData={products} />
-            </Swiper>
+            <Cards productsData={products} />
 
             {/* {isLoading ? <Spinner /> : <Cards productsData={products} />} */}
         </div>
