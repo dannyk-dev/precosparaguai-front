@@ -1,7 +1,7 @@
 import { ICategories } from '@/lib/interfaces';
 import { SidebarCloseIcon } from 'lucide-react';
 import React from 'react';
-import { SubCategoryItem } from './SubCategoryItem';
+import { SubCategoryItem } from '@/lib/components/Sidebar';
 
 interface IProps {
     currentCategory: ICategories | undefined;

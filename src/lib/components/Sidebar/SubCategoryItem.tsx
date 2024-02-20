@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
@@ -33,7 +35,7 @@ export const SubCategoryItem = ({ items }: IProps) => {
                         transition={{ duration: 0.5, ease: 'easeInOut' }}
                     >
                         {value.map((item, index) => (
-                            <li key={item}>
+                            <li key={index}>
                                 <a href="#">{item}</a>
                             </li>
                         ))}

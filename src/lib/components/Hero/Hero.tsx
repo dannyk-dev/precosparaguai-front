@@ -1,9 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Cards } from '../Cards';
 import { useGetProducts } from '@/lib/hooks/products';
-import { Spinner } from '@/lib/components/shared/loaders/Spinner';
+import { Spinner } from '@/lib/components/shared/loaders';
 
 interface IProps {}
 

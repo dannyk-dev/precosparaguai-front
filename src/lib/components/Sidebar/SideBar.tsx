@@ -1,17 +1,17 @@
 import React from 'react';
 
 import { Menu } from 'lucide-react';
-import Drawer from './Drawer';
+import { Drawer } from '@/lib/components/Sidebar';
 
 interface IProps {}
 
-const SideBar = ({}: IProps) => {
+export const SideBar = ({}: IProps) => {
     return (
         <div className="drawer">
-            <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+            <input id="main-drawer" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
                 <label
-                    htmlFor="my-drawer"
+                    htmlFor="main-drawer"
                     className="btn btn-ghost drawer-button btn-sm"
                 >
                     <Menu />
@@ -21,5 +21,3 @@ const SideBar = ({}: IProps) => {
         </div>
     );
 };
-
-export default SideBar;

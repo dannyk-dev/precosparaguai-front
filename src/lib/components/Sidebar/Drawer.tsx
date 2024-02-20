@@ -4,11 +4,9 @@ import React, { useState } from 'react';
 
 import { ICategories } from '@/lib/interfaces';
 import { useGetProductCategories } from '@/lib/hooks/products';
-import { Subdrawer } from './Subdrawer';
+import { Subdrawer } from '@/lib/components/Sidebar';
 
-interface IProps {}
-
-const Drawer = ({}: IProps) => {
+export const Drawer = () => {
     const { categories, isLoading } = useGetProductCategories();
     const [currentCategory, setCurrentCategory] = useState<
         ICategories | undefined
@@ -26,11 +24,10 @@ const Drawer = ({}: IProps) => {
         <>
             <div className={`drawer-side ${currentCategory ? 'hidden' : ''}`}>
                 <label
-                    htmlFor="my-drawer"
+                    htmlFor="main-drawer"
                     aria-label="close sidebar"
                     className="drawer-overlay"
                 ></label>
-
                 <ul className="menu min-h-full w-80 bg-base-200 p-4 text-base-content">
                     <li>
                         <h4 className="block cursor-default bg-transparent hover:bg-transparent focus:bg-transparent">
@@ -64,5 +61,3 @@ const Drawer = ({}: IProps) => {
         </>
     );
 };
-
-export default Drawer;
