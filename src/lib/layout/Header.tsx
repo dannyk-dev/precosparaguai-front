@@ -1,6 +1,7 @@
 import { BellIcon, HeartIcon, UserCircleIcon } from 'lucide-react';
 import { SideBar } from '@/lib/components/Sidebar';
 import { Button } from '../components/shared';
+import Quotation from '../components/ExchangeRate/Quotation';
 
 const Header = () => {
     return (
@@ -23,6 +24,7 @@ const Header = () => {
                         </div>
                     </div>
                     <div className="navbar-end">
+                        <Quotation />
                         <Button variant="link" Icon={UserCircleIcon} />
                         <Button variant="link" Icon={HeartIcon} />
                         <Button variant="link" Icon={BellIcon}>

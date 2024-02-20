@@ -22,6 +22,7 @@
     },
     "dependencies": {
         "@gsap/react": "^2.1.0",
+        "@headlessui/react": "^1.7.18",
         "@next/env": "^14.1.0",
         "@tanstack/react-query": "^5.18.1",
         "class-variance-authority": "^0.7.0",
