@@ -5,14 +5,14 @@ import { ICurrency } from '@/lib/interfaces';
 import Image from 'next/image';
 
 interface IProps {
-    rate: ICurrency;
+    curr: ICurrency;
 }
 
-export const QuotationOption = ({ rate }: IProps) => {
+export const QuotationOption = ({ curr }: IProps) => {
     return (
         <RadioGroup.Option
-            key={rate.id}
-            value={rate}
+            key={curr.id}
+            value={curr}
             className={({ active, checked }) =>
                 `
                     ${active ? 'badge bg-neutral text-neutral-content shadow-sm' : ''} 
@@ -22,13 +22,13 @@ export const QuotationOption = ({ rate }: IProps) => {
             }
         >
             <Image
-                src={rate.flag}
+                src={curr.flag}
                 alt="Brazilian flag"
                 width={24}
                 height={24}
                 className="mr-2"
             />
-            <RadioGroup.Label as="p">{rate.rateString}</RadioGroup.Label>
+            <RadioGroup.Label as="p">{curr.rateString}</RadioGroup.Label>
         </RadioGroup.Option>
     );
 };

@@ -1,22 +1,24 @@
 import { ICurrency } from '@/lib/interfaces';
-import { moneyVO } from '@/lib/utils/format/Money';
+import { moneyVO, numberVO } from '@/lib/utils/format';
 import React, { useMemo, useState } from 'react';
 
 interface IProps {
-    selected: ICurrency;
+    selectedCurrency: ICurrency;
 }
 
-export const QuotationForm = ({ selected }: IProps) => {
-    const [dollarAmount, setDollarAmount] = useState<number | undefined>();
+// TODO format the value the user types on the dollar input
+
+export const QuotationForm = ({ selectedCurrency }: IProps) => {
+    const [dollarAmount, setDollarAmount] = useState<string | undefined>();
 
     const convertedAmount = useMemo(() => {
-        if (!dollarAmount) return moneyVO.format(0, selected.id);
+        if (!dollarAmount) return moneyVO.format(0, selectedCurrency.id);
 
         return moneyVO.format(
-            Number(dollarAmount) * selected.rate,
-            selected.id
+            Number(dollarAmount) * selectedCurrency.rate,
+            selectedCurrency.id
         );
-    }, [dollarAmount, setDollarAmount, selected]);
+    }, [dollarAmount, setDollarAmount, selectedCurrency]);
 
     return (
         <>
@@ -32,8 +34,9 @@ export const QuotationForm = ({ selected }: IProps) => {
                         type="number"
                         placeholder="Enter your dollar amount"
                         value={dollarAmount}
+                        maxLength={10}
                         onChange={(e) =>
-                            setDollarAmount(+e.target.value || undefined)
+                            setDollarAmount(e.target.value || undefined)
                         }
                         id="dollar-input"
                         className=" block w-52 rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900  focus:border-gray-400 focus:ring-0 focus:ring-offset-0"

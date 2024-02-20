@@ -1,7 +1,7 @@
 import { BellIcon, HeartIcon, UserCircleIcon } from 'lucide-react';
 import { SideBar } from '@/lib/components/Sidebar';
 import { Button } from '../components/shared';
-import Quotation from '../components/ExchangeRate/Quotation';
+import Quotation from '../components/Currency/Quotation';
 
 const Header = () => {
     return (
@@ -9,8 +9,8 @@ const Header = () => {
             <div className="container">
                 <div className="navbar bg-base-100">
                     <div className="navbar-start flex h-full items-center">
-                        <a className="mr-6 block text-2xl ">PrecosNoParaguai</a>
                         <SideBar />
+                        <a className="mr-6 block text-2xl ">PrecosNoParaguai</a>
                     </div>
                     <div className="navbar-center flex flex-1">
                         <div className="form-control">

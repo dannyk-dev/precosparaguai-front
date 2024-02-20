@@ -2,46 +2,20 @@
 
 import React, { Fragment, useState } from 'react';
 import { Popover, RadioGroup, Transition } from '@headlessui/react';
-import brFlag from '@/../public/assets/flag.png';
-import pyFlag from '@/../public/assets/flag_py.png';
-import argFlag from '@/../public/assets/flag_arg.png';
 import { QuotationOption } from './QuotationOption';
-import { ICurrency } from '@/lib/interfaces';
 import { QuotationForm } from './QuotationForm';
-import { moneyVO } from '@/lib/utils/format/Money';
-
-const exchangeRates: ICurrency[] = [
-    {
-        name: 'Brazilian Real',
-        id: 'BRL',
-        rate: 5.03,
-        rateString: moneyVO.format(5.03, 'BRL'),
-        flag: brFlag,
-    },
-    {
-        name: 'Paraguaian Guarani',
-        id: 'PYG',
-        rate: 7250,
-        rateString: moneyVO.format(7250, 'PYG'),
-        flag: pyFlag,
-    },
-    {
-        name: 'Argentine Pesos',
-        id: 'ARS',
-        rate: 1120,
-        rateString: moneyVO.format(1120, 'ARS'),
-        flag: argFlag,
-    },
-];
+import CurrencyData from './rates';
+import { MdCurrencyExchange } from 'react-icons/md';
 
 const Quotation = () => {
-    const [selected, setSelected] = useState(exchangeRates[0]);
+    const [selectedCurrency, setSelectedCurrency] = useState(CurrencyData[0]);
 
     return (
         <div className="w-fit max-w-sm px-4">
             <Popover className="relative">
-                <Popover.Button className="btn btn-outline btn-neutral btn-sm text-base-content outline-none hover:text-neutral-content">
-                    Quotation
+                <Popover.Button className="btn btn-sm bg-base-300 text-base-content outline-none hover:text-base-content">
+                    <MdCurrencyExchange className="text-base" />
+                    Currency
                 </Popover.Button>
                 <Transition
                     as={Fragment}
@@ -57,8 +31,8 @@ const Quotation = () => {
                             <div className="relative grid gap-8 bg-white p-7 lg:grid-cols-2">
                                 <div className="flex flex-col">
                                     <RadioGroup
-                                        value={selected}
-                                        onChange={setSelected}
+                                        value={selectedCurrency}
+                                        onChange={setSelectedCurrency}
                                     >
                                         <RadioGroup.Label className="sr-only">
                                             Test
@@ -68,13 +42,18 @@ const Quotation = () => {
                                                 Select the currency you want to
                                                 switch to:{' '}
                                             </p>
-                                            {exchangeRates.map((rate) => (
-                                                <QuotationOption rate={rate} />
+                                            {CurrencyData.map((curr, index) => (
+                                                <QuotationOption
+                                                    curr={curr}
+                                                    key={index}
+                                                />
                                             ))}
                                         </div>
                                     </RadioGroup>
                                 </div>
-                                <QuotationForm selected={selected} />
+                                <QuotationForm
+                                    selectedCurrency={selectedCurrency}
+                                />
                             </div>
                         </div>
                     </Popover.Panel>
