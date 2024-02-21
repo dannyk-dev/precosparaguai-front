@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 import { ICategories } from '@/lib/interfaces';
 import { useGetProductCategories } from '@/lib/hooks/products';
-import { Subdrawer } from '@/lib/components/Sidebar';
+import { Subdrawer } from './Subdrawer';
 
 export const Drawer = () => {
     const { categories, isLoading } = useGetProductCategories();
@@ -36,7 +36,7 @@ export const Drawer = () => {
                     </li>
                     <div className="divider"></div>
                     {categories.map((item) => (
-                        <li>
+                        <li key={item._id}>
                             <input
                                 type="checkbox"
                                 className="drawer-toggle"

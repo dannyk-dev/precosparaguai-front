@@ -1,5 +1,6 @@
 import React from 'react';
-import { getThemeVariant, IButtonComponentProps } from './button.types';
+import { getThemeVariant  } from './styles';
+import { IButtonComponentProps } from './types';
 import { VariantProps, cva } from 'class-variance-authority';
 import { cn } from '@/lib/styles/utils';
 
@@ -19,7 +20,7 @@ const buttonStyles = cva('btn-base rounded-xl py-2 text-base-content', {
     },
 });
 
-const Button = ({
+export const Button = ({
     children,
     variant,
     size,
@@ -28,16 +29,10 @@ const Button = ({
 }: IButtonComponentProps & VariantProps<typeof buttonStyles>) => {
     return (
         <button {...props} className={cn(buttonStyles({ variant }))}>
-            {Icon ? (
-                <div className="indicator">
-                    <Icon />
-                    {children}
-                </div>
-            ) : (
-                <>{children}</>
-            )}
+            <div className="indicator">
+                {Icon && <Icon />}
+                {children}
+            </div>
         </button>
     );
 };
-
-export default Button;

@@ -1,15 +1,4 @@
-import { LucideIcon } from 'lucide-react';
-import { ReactNode } from 'react';
-
-type ButtonStyleType = 'primary' | 'secondary' | 'link';
-type TextSizeType = 'text-sm' | 'text-base' | 'text-lg';
-
-export interface IButtonComponentProps
-    extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    variant: ButtonStyleType;
-    children?: ReactNode;
-    Icon?: LucideIcon;
-}
+import { ButtonStyleType } from './types';
 
 const variantClasses: Record<ButtonStyleType, string> = {
     primary:

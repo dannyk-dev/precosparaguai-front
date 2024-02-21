@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Menu } from 'lucide-react';
-import { Drawer } from '@/lib/components/Sidebar';
+import { Drawer } from './Drawer';
 
 interface IProps {}
 

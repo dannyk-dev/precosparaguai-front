@@ -3,9 +3,12 @@
 import React from 'react';
 import { useGetProducts } from '@/lib/hooks/products';
 import { Spinner } from '@/lib/components/shared/loaders';
-import Image from 'next/image';
-import banner from '@/../public/assets/banner_dior.jpg';
 import { Cards } from '../Cards';
+import { Banner } from '../shared/Banner';
+
+import banner from '@/../public/assets/banner_dior.jpg';
+import banner2 from '@/../public/assets/bannersearch.png';
+import BannerGroup from '../shared/Banner/BannerGroup';
 
 interface IProps {}
 
@@ -17,19 +20,12 @@ const Hero = ({}: IProps) => {
     }
 
     return (
-        <div className="container mt-10 flex flex-col items-center justify-center">
-            <div className="hero h-5/6 rounded-xl bg-base-300 p-0 text-base-content shadow-lg">
-                <Image
-                    src={banner}
-                    alt="banner"
-                    className="h-full w-full rounded-xl object-cover shadow-lg"
-                />
+        <>
+            <div className="relative mt-8 flex h-1/2 w-full flex-col items-center ">
+                <Banner image={banner} />
             </div>
-
-            <Cards productsData={products} />
-
-            {/* {isLoading ? <Spinner /> : <Cards productsData={products} />} */}
-        </div>
+            <BannerGroup images={[banner, banner2]} />
+        </>
     );
 };
 

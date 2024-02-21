@@ -15,9 +15,9 @@ export const QuotationOption = ({ curr }: IProps) => {
             value={curr}
             className={({ active, checked }) =>
                 `
-                    ${active ? 'badge bg-neutral text-neutral-content shadow-sm' : ''} 
-                    ${checked ? 'badge bg-neutral text-neutral-content shadow-sm' : 'badge shadow-sm'}
-                        cursor-pointer p-4
+                    ${active ? 'badge bg-base-300 text-base-content shadow-sm' : ''} 
+                    ${checked ? 'badge bg-base-300 text-base-content shadow-sm' : 'badge shadow-sm'}
+                        cursor-pointer p-4 
                 `
             }
         >
