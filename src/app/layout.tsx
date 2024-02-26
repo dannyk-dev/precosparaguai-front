@@ -43,7 +43,7 @@ interface RootLayoutProps {
 
 const RootLayout = ({ children }: RootLayoutProps) => {
     return (
-        <html lang="en" suppressHydrationWarning={true} data-theme="autumn">
+        <html lang="en" suppressHydrationWarning={true} data-theme="cmyk">
             <Head>
                 <link
                     rel="stylesheet"

@@ -1,10 +1,9 @@
+'use client';
+
 import RegisterForm from '@/lib/components/Forms/Register/RegisterForm';
 import AuthLayout from '@/lib/layout/AuthLayout';
-import React from 'react';
 
-interface IProps {}
-
-export const Register = ({}: IProps) => {
+export const Register = () => {
     return (
         <AuthLayout>
             <div className="drawer drawer-end drawer-open relative w-full ">
