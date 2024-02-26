@@ -1,21 +1,25 @@
 import React from 'react';
-import { getThemeVariant  } from './styles';
-import { IButtonComponentProps } from './types';
+import { getThemeVariant } from '@/lib/styles/utils';
+import { ButtonStyleType, IButtonComponentProps } from './types';
 import { VariantProps, cva } from 'class-variance-authority';
 import { cn } from '@/lib/styles/utils';
+import Link from 'next/link';
+import { variantClasses } from './styles';
 
 const buttonStyles = cva('btn-base rounded-xl py-2 text-base-content', {
     variants: {
         variant: {
-            primary: getThemeVariant('primary'),
-            link: getThemeVariant('link'),
-            secondary: getThemeVariant('secondary'),
+            primary: getThemeVariant<ButtonStyleType>(variantClasses, 'primary'),
+            link: getThemeVariant<ButtonStyleType>(variantClasses, 'link'),
+            secondary: getThemeVariant<ButtonStyleType>(variantClasses, 'secondary'),
         },
         defaultVariants: {
             variant: 'primary',
         },
-        size: {
-            small: ['text-sm', 'py-1', 'px-2'],
+        variantSize: {
+            small: 'btn-sm',
+            xsmall: 'btn-xs',
+            large: 'btn-lg',
         },
     },
 });
@@ -23,15 +27,29 @@ const buttonStyles = cva('btn-base rounded-xl py-2 text-base-content', {
 export const Button = ({
     children,
     variant,
-    size,
+    variantSize,
     Icon,
+    to,
+    className,
     ...props
 }: IButtonComponentProps & VariantProps<typeof buttonStyles>) => {
     return (
-        <button {...props} className={cn(buttonStyles({ variant }))}>
-            <div className="indicator">
-                {Icon && <Icon />}
-                {children}
+        <button
+            {...props}
+            className={cn(buttonStyles({ variant, variantSize }), className)}
+        >
+            <div className="indicator flex items-center">
+                {variant === 'link' ? (
+                    <Link href={to || '#'}>
+                        {Icon && <Icon />}
+                        {children}
+                    </Link>
+                ) : (
+                    <>
+                        {Icon && <Icon />}
+                        {children}
+                    </>
+                )}
             </div>
         </button>
     );

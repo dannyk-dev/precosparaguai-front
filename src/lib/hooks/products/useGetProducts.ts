@@ -1,3 +1,5 @@
+'use client';
+
 import { IProduct } from '@/lib/interfaces';
 import { QueryCacheKey } from '@/lib/types';
 import { useQuery } from '@/lib/hooks/query/';

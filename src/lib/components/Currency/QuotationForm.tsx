@@ -1,6 +1,7 @@
 import { ICurrency } from '@/lib/interfaces';
 import { moneyVO } from '@/lib/utils/format';
 import React, { useMemo, useState } from 'react';
+import { Input } from '@/lib/components/shared/Inputs';
 
 interface IProps {
     selectedCurrency: ICurrency;
@@ -31,8 +32,9 @@ export const QuotationForm = ({ selectedCurrency }: IProps) => {
                     >
                         Value in Dollar
                     </label>
-                    <input
+                    <Input
                         type="number"
+                        variant="simple"
                         placeholder="Enter your dollar amount"
                         value={dollarAmount}
                         min={0}
@@ -41,7 +43,7 @@ export const QuotationForm = ({ selectedCurrency }: IProps) => {
                             setDollarAmount(e.target.value || undefined)
                         }
                         id="dollar-input"
-                        className="min-w-xs input input-bordered w-52 text-sm text-base-content shadow-md focus:ring-0 focus:ring-offset-0"
+                        className="min-w-xs w-52"
                     />
                 </div>
                 <div>
@@ -51,12 +53,14 @@ export const QuotationForm = ({ selectedCurrency }: IProps) => {
                     >
                         Currency
                     </label>
-                    <input
+                    <Input
                         id="convertedAmount"
                         type="text"
+                        variant="simple"
                         value={convertedAmount}
-                        readOnly
-                        className="input input-bordered w-52 max-w-xs text-sm text-base-content shadow-md focus:ring-0 focus:ring-offset-0"
+                        readOnly={true}
+                        aria-rea
+                        className="w-52 max-w-xs "
                     />
                 </div>
             </div>

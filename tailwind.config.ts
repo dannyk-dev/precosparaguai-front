@@ -3,7 +3,6 @@ import tailwindTypography from '@tailwindcss/typography';
 import tailwindForm from '@tailwindcss/forms';
 import type { Config } from 'tailwindcss';
 import { fontFamily } from 'tailwindcss/defaultTheme';
-import colors from 'tailwindcss/colors';
 
 export default {
     darkMode: ['class'],
@@ -26,5 +25,10 @@ export default {
             center: true,
         },
     },
-    plugins: [tailwindTypography, tailwindForm, require('daisyui')],
+    plugins: [
+        tailwindTypography,
+        tailwindForm,
+        require('daisyui'),
+        require('flowbite/plugin'),
+    ],
 } satisfies Config;

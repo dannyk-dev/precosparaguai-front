@@ -1,7 +1,8 @@
-import { BellIcon, HeartIcon, UserCircleIcon } from 'lucide-react';
+import { BellIcon, HeartIcon, SearchIcon, UserCircleIcon } from 'lucide-react';
 import { SideBar } from '@/lib/components/Sidebar';
 import Button from '../components/shared';
 import Quotation from '../components/Currency/Quotation';
+import { Input } from '../components/shared/Inputs';
 
 const Header = () => {
     return (
@@ -10,23 +11,31 @@ const Header = () => {
                 <div className="navbar bg-base-100">
                     <div className="navbar-start flex h-full items-center">
                         <SideBar />
-                        <a className="mr-6 block text-2xl ">PrecosNoParaguai</a>
+                        <Button variant="link" to="/" variantSize="small">
+                            PrecosNoParaguai
+                        </Button>
+                        <a className="mr-6 block text-2xl "></a>
                     </div>
                     <div className="navbar-center flex flex-1">
                         <div className="form-control">
-                            <input
+                            <Input
+                                variant="simple"
+                                variantSize="small"
                                 type="text"
+                                className="w-24 py-5 md:w-96"
                                 placeholder="Search Products"
-                                name="productSearch"
-                                id="productSearch"
-                                className=" input input-bordered w-24 focus:outline-none md:w-96 "
+                                Icon={SearchIcon}
                             />
                         </div>
                     </div>
                     <div className="navbar-end">
                         <Quotation />
                         <div className="flex items-center justify-center">
-                            <Button variant="link" Icon={UserCircleIcon} />
+                            <Button
+                                variant="link"
+                                to="/register"
+                                Icon={UserCircleIcon}
+                            />
                             <Button variant="link" Icon={HeartIcon} />
                             <Button variant="link" Icon={BellIcon}>
                                 <span className="badge indicator-item badge-primary badge-xs"></span>

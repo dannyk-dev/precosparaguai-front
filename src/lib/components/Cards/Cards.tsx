@@ -13,19 +13,12 @@ interface IProps {
 
 export const Cards = ({ productsData }: IProps) => {
     return (
-        <Swiper
-            direction="horizontal"
-            slidesPerView={4}
-            centeredSlides={true}
-            draggable={true}
-        >
-            <SwiperSlide>
-                {productsData.map((item, index) => (
-                    <div className="swiper-slide" key={index}>
-                        <Card item={item} />
-                    </div>
-                ))}
-            </SwiperSlide>
-        </Swiper>
+        <div className="flex gap-4">
+            {productsData.map((item, index) => (
+                <div className="swiper-slide" key={index}>
+                    <Card item={item} />
+                </div>
+            ))}
+        </div>
     );
 };
