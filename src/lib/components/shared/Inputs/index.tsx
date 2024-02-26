@@ -40,7 +40,7 @@ export const Input = ({
                 >
                     <input
                         {...props}
-                        className="input grow focus:border-none"
+                        className="input grow bg-transparent focus:border-none"
                     />
                     {<Icon />}
                 </label>

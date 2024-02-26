@@ -9,7 +9,7 @@ export default {
     content: ['src/**/*.{js,jsx,ts,tsx}'],
     purge: ['./src/**/*.{js,jsx,ts,tsx}', './pages/**/*.{js,jsx,ts,tsx}'],
     daisyui: {
-        themes: ['cmyk', 'dracula', 'light'],
+        themes: ['cmyk', 'dracula', 'light', 'bumblebee', 'autumn'],
     },
     theme: {
         variants: {

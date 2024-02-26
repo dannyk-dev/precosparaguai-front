@@ -6,6 +6,7 @@ import { cn } from '@/lib/styles/utils';
 
 import '@/lib/styles/globals.css';
 import Head from 'next/head';
+import AuthLayout from '@/lib/layout/AuthLayout';
 
 const APP_NAME = 'Preços no Paraguai';
 
@@ -42,7 +43,7 @@ interface RootLayoutProps {
 
 const RootLayout = ({ children }: RootLayoutProps) => {
     return (
-        <html lang="en" suppressHydrationWarning={true} data-theme="light">
+        <html lang="en" suppressHydrationWarning={true} data-theme="autumn">
             <Head>
                 <link
                     rel="stylesheet"
@@ -55,9 +56,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
                     fontSans.variable
                 )}
             >
-                <Layout>
-                    <div className="flex-1">{children}</div>
-                </Layout>
+                {children}
             </body>
         </html>
     );
