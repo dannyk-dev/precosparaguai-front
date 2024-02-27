@@ -34,8 +34,7 @@ const useRegister = (
         } catch (error) {
             mutation.reset();
             console.log(error);
-            console.warn('validation errror');
-            throw error;
+            throw error; 
         }
     };
 
