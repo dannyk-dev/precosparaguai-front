@@ -12,7 +12,8 @@ import Button from '../components/shared';
 import Quotation from '../components/Currency/Quotation';
 import { Input } from '../components/shared/Inputs';
 import { RequireAuth } from '../hooks/auth';
-import { useAuthStore } from '../store/authStore';
+import useAuthStore from '../store/authStore';
+import { redirect } from 'next/navigation';
 
 const Header = () => {
     const logout = useAuthStore((state) => state.logout);
@@ -29,16 +30,14 @@ const Header = () => {
                         <a className="mr-6 block text-2xl "></a>
                     </div>
                     <div className="navbar-center flex flex-1">
-                        <div className="form-control">
-                            <Input
-                                variant="simple"
-                                variantSize="small"
-                                type="text"
-                                className="w-24 py-5 md:w-96"
-                                placeholder="Search Products"
-                                Icon={SearchIcon}
-                            />
-                        </div>
+                        <Input
+                            variant="simple"
+                            variantSize="small"
+                            type="text"
+                            className="w-24 py-5 md:w-96"
+                            placeholder="Search Products"
+                            Icon={SearchIcon}
+                        />
                     </div>
                     <div className="navbar-end">
                         <Quotation />
@@ -50,14 +49,16 @@ const Header = () => {
                                     Icon={UserCircleIcon}
                                 />
                             </RequireAuth>
-                            {/* <RequireAuth>
+                            <RequireAuth>
                                 <Button
                                     variant="link"
                                     Icon={LogOutIcon}
-                                    to="/"
-                                    onClick={logout}
+                                    onClick={() => {
+                                        logout();
+                                        redirect('/');
+                                    }}
                                 />
-                            </RequireAuth> */}
+                            </RequireAuth>
                             <Button variant="link" Icon={HeartIcon} />
                             <Button variant="link" Icon={BellIcon}>
                                 <span className="badge indicator-item badge-primary badge-xs"></span>

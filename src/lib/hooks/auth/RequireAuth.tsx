@@ -2,7 +2,7 @@
 
 import useAuthStore from '@/lib/store/authStore';
 import { redirect } from 'next/navigation';
-import React from 'react';
+import React, { useEffect } from 'react';
 import useSessionStorage from '@/lib/hooks';
 import { UserRegisterPayload } from '@/lib/types/auth.types';
 
@@ -19,20 +19,21 @@ const RequireAuth = ({
 }: IAuthProviderProps) => {
     const [session] = useSessionStorage<UserRegisterPayload>('USER', null);
 
-    const [isAuthenticated, login] = useAuthStore((state) => [
+    const [isAuthenticated, user, login] = useAuthStore((state) => [
         state.isAuthenticated,
+        state.user,
         state.login,
     ]);
 
-    if (!isAuthenticated()) {
-        if (session) login(session);
+    useEffect(() => {
+        if (!isAuthenticated() && session) login(session);
+    }, [session]);
 
-        if (!inverseAuthValidation) {
-            return redirectPage ? redirect('/register') : null;
-        }
+    if (inverseAuthValidation && !user) {
+        return redirectPage ? redirect('/register') : children;
     }
 
-    return children;
+    return user && !inverseAuthValidation ? children : null;
 };
 
 export default RequireAuth;

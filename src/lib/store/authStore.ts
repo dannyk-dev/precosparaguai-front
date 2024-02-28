@@ -19,7 +19,7 @@ const useAuthStore: UseBoundStore<StoreApi<UserState>> = create<UserState>(
         },
         logout: () => {
             set({ user: null });
-            sessionStorage.clear();
+            sessionStorage.setItem('USER', JSON.stringify(null));
         },
         isAuthenticated: () => !!useAuthStore.getState().user,
     })

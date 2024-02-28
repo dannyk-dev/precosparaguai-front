@@ -1,7 +1,8 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import { Spinner } from '../shared/loaders';
 
 const queryClient = new QueryClient();
 

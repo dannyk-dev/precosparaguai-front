@@ -2,6 +2,8 @@
 
 import RegisterForm from '@/lib/components/Forms/Register/RegisterForm';
 import AuthLayout from '@/lib/layout/AuthLayout';
+import { Spinner } from 'flowbite-react';
+import { Suspense } from 'react';
 
 export const Register = () => {
     return (

@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { IFormInputProps, InputStyleType } from './types';
 import { VariantProps, cva } from 'class-variance-authority';
@@ -30,7 +32,7 @@ export const Input = ({
     ...props
 }: IFormInputProps & VariantProps<typeof InputStyles>) => {
     return (
-        <div className="form-control mt-5">
+        <div className="form-control">
             {Icon ? (
                 <label
                     className={cn(

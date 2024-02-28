@@ -9,9 +9,15 @@ import { variantClasses } from './styles';
 const buttonStyles = cva('btn-base rounded-xl py-2 text-base-content', {
     variants: {
         variant: {
-            primary: getThemeVariant<ButtonStyleType>(variantClasses, 'primary'),
+            primary: getThemeVariant<ButtonStyleType>(
+                variantClasses,
+                'primary'
+            ),
             link: getThemeVariant<ButtonStyleType>(variantClasses, 'link'),
-            secondary: getThemeVariant<ButtonStyleType>(variantClasses, 'secondary'),
+            secondary: getThemeVariant<ButtonStyleType>(
+                variantClasses,
+                'secondary'
+            ),
         },
         defaultVariants: {
             variant: 'primary',
@@ -39,7 +45,7 @@ export const Button = ({
             className={cn(buttonStyles({ variant, variantSize }), className)}
         >
             <div className="indicator flex items-center">
-                {variant === 'link' ? (
+                {variant === 'link' || to !== undefined ? (
                     <Link href={to || '#'}>
                         {Icon && <Icon />}
                         {children}
