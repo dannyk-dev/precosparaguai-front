@@ -6,7 +6,7 @@ import { cn } from '@/lib/styles/utils';
 import Link from 'next/link';
 import { variantClasses } from './styles';
 
-const buttonStyles = cva('btn-base rounded-xl py-2 text-base-content', {
+const buttonStyles = cva('rounded-xl py-2 text-base-content', {
     variants: {
         variant: {
             primary: getThemeVariant<ButtonStyleType>(

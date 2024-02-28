@@ -61,9 +61,10 @@ const Header = () => {
                                     onClick={handleLogout}
                                 />
                             </RequireAuth>
+
                             <Button variant="link" Icon={HeartIcon} />
                             <Button variant="link" Icon={BellIcon}>
-                                <span className="badge indicator-item badge-primary badge-xs"></span>
+                                <span className="badge indicator-item badge-warning badge-xs"></span>
                             </Button>
                         </div>
                     </div>

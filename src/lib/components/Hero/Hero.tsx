@@ -9,7 +9,7 @@ import { Banner } from '../shared/Banner';
 import banner from '@/../public/assets/banner_dior.jpg';
 import banner2 from '@/../public/assets/bannersearch.png';
 import BannerGroup from '../shared/Banner/BannerGroup';
-import { Slider } from '../Carousel/Carousel';
+import { Slider } from '@/lib/components/Slider';
 import { RequireAuth } from '@/lib/hooks/auth';
 
 interface IProps {}
