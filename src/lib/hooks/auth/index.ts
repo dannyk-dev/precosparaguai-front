@@ -1,3 +1,4 @@
 import useRegister from './useRegister';
+import RequireAuth from './RequireAuth';
 
-export default useRegister;
+export { useRegister, RequireAuth };

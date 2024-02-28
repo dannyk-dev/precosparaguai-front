@@ -1,10 +1,22 @@
-import { BellIcon, HeartIcon, SearchIcon, UserCircleIcon } from 'lucide-react';
+'use client';
+
+import {
+    BellIcon,
+    HeartIcon,
+    LogOutIcon,
+    SearchIcon,
+    UserCircleIcon,
+} from 'lucide-react';
 import { SideBar } from '@/lib/components/Sidebar';
 import Button from '../components/shared';
 import Quotation from '../components/Currency/Quotation';
 import { Input } from '../components/shared/Inputs';
+import { RequireAuth } from '../hooks/auth';
+import { useAuthStore } from '../store/authStore';
 
 const Header = () => {
+    const logout = useAuthStore((state) => state.logout);
+
     return (
         <header className="sticky top-0 z-10 w-full bg-base-100/80 shadow-md backdrop-blur-md">
             <div className="container">
@@ -31,11 +43,21 @@ const Header = () => {
                     <div className="navbar-end">
                         <Quotation />
                         <div className="flex items-center justify-center">
-                            <Button
-                                variant="link"
-                                to="/register"
-                                Icon={UserCircleIcon}
-                            />
+                            <RequireAuth inverseAuthValidation={true}>
+                                <Button
+                                    variant="link"
+                                    to="/register"
+                                    Icon={UserCircleIcon}
+                                />
+                            </RequireAuth>
+                            {/* <RequireAuth>
+                                <Button
+                                    variant="link"
+                                    Icon={LogOutIcon}
+                                    to="/"
+                                    onClick={logout}
+                                />
+                            </RequireAuth> */}
                             <Button variant="link" Icon={HeartIcon} />
                             <Button variant="link" Icon={BellIcon}>
                                 <span className="badge indicator-item badge-primary badge-xs"></span>

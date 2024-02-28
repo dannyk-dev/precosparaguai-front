@@ -10,6 +10,7 @@ import banner from '@/../public/assets/banner_dior.jpg';
 import banner2 from '@/../public/assets/bannersearch.png';
 import BannerGroup from '../shared/Banner/BannerGroup';
 import { Slider } from '../Carousel/Carousel';
+import { RequireAuth } from '@/lib/hooks/auth';
 
 interface IProps {}
 
@@ -27,12 +28,14 @@ const Hero = ({}: IProps) => {
                     </div>
                     <BannerGroup images={[banner, banner2]} />
 
-                    <div className="mt-5">
-                        <h2 className="py-4 text-left">Destaques</h2>
-                        <Slider>
-                            <Cards productsData={products} />
-                        </Slider>
-                    </div>
+                    <RequireAuth>
+                        <div className="mt-5">
+                            <h2 className="py-4 text-left">Destaques</h2>
+                            <Slider>
+                                <Cards productsData={products} />
+                            </Slider>
+                        </div>
+                    </RequireAuth>
                 </div>
             )}
         </>

@@ -30,7 +30,7 @@ export const Input = ({
     ...props
 }: IFormInputProps & VariantProps<typeof InputStyles>) => {
     return (
-        <>
+        <div className="form-control mt-5">
             {Icon ? (
                 <label
                     className={cn(
@@ -54,6 +54,6 @@ export const Input = ({
                     )}
                 />
             )}
-        </>
+        </div>
     );
 };

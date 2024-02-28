@@ -38,6 +38,9 @@ dependencies:
   clsx:
     specifier: ^2.1.0
     version: 2.1.0
+  flowbite:
+    specifier: ^2.3.0
+    version: 2.3.0
   flowbite-react:
     specifier: ^0.7.2
     version: 0.7.2(@types/react@18.2.48)(esbuild@0.20.1)(next@14.1.0)(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.4.1)

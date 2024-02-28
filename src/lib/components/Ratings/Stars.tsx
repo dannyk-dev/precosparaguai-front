@@ -12,8 +12,8 @@ export const Stars = ({ averageRate }: IRatingProps) => {
 
     return (
         <>
-            {stars.map((StarElem) => (
-                <StarElem />
+            {stars.map((StarElem, index) => (
+                <StarElem key={index} />
             ))}
         </>
     );

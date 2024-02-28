@@ -1,9 +1,6 @@
-'use client';
-
 import { z } from 'zod';
 import { MutationOptions, useMutation } from '@tanstack/react-query';
 import { QueryCacheKey } from '@/lib/types/query.types';
-import { RegisterData } from '@/lib/types/auth.types';
 
 const registerSchema = z.object({
     username: z.string().min(3).max(20),
@@ -11,14 +8,12 @@ const registerSchema = z.object({
     password: z.string().min(8),
 });
 
-const useRegister = (
-    config?: MutationOptions<any, Error, RegisterData, any>
-) => {
+const useRegister = <T>(config?: MutationOptions<any, Error, T, any>) => {
     const key: QueryCacheKey = ['USERS'];
 
     const mutation = useMutation({
         ...config,
-        mutationFn: async (data: RegisterData) => {
+        mutationFn: async (data: T) => {
             return await fetch('/api/users', {
                 method: 'POST',
                 body: JSON.stringify(data),
@@ -27,18 +22,18 @@ const useRegister = (
         mutationKey: key,
     });
 
-    const validate = (data: RegisterData) => {
+    const validate = (data: T) => {
         try {
             registerSchema.parse(data);
             return true;
         } catch (error) {
             mutation.reset();
             console.log(error);
-            throw error; 
+            throw error;
         }
     };
 
-    const register = (data: RegisterData) => {
+    const register = (data: T) => {
         if (validate(data)) {
             try {
                 mutation.mutate(data);

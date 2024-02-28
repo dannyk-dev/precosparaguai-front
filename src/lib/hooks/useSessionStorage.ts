@@ -1,16 +1,21 @@
 'use client';
-
 import { useState, useEffect, Dispatch, SetStateAction } from 'react';
 
+type SessionTypes = 'USER';
+
 const useSessionStorage = <T>(
-    key: string,
+    key: SessionTypes,
     initialValue: T
 ): [T, Dispatch<SetStateAction<T>>] => {
-    'use client';
-
     const [value, setValue] = useState<T>(() => {
-        const storedValue = sessionStorage.getItem(key);
-        return storedValue !== null ? JSON.parse(storedValue) : initialValue;
+        if (typeof window !== 'undefined') {
+            const storedValue = sessionStorage.getItem(key);
+            return storedValue !== null
+                ? JSON.parse(storedValue)
+                : initialValue;
+        }
+
+        return initialValue;
     });
 
     useEffect(() => {
