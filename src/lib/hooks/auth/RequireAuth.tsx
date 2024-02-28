@@ -27,12 +27,11 @@ const RequireAuth = ({
 
     useEffect(() => {
         if (!isAuthenticated() && session) login(session);
-    }, [session]);
+    }, []);
 
     if (inverseAuthValidation && !user) {
         return redirectPage ? redirect('/register') : children;
     }
-
     return user && !inverseAuthValidation ? children : null;
 };
 

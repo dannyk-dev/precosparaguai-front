@@ -8,15 +8,20 @@ import {
     UserCircleIcon,
 } from 'lucide-react';
 import { SideBar } from '@/lib/components/Sidebar';
-import Button from '../components/shared';
-import Quotation from '../components/Currency/Quotation';
-import { Input } from '../components/shared/Inputs';
-import { RequireAuth } from '../hooks/auth';
-import useAuthStore from '../store/authStore';
+import Button from '@/lib/components/shared';
+import { Quotation } from '@/lib/components/Currency';
+import { Input } from '@/lib/components/shared';
+import { RequireAuth } from '@/lib/hooks/auth';
+import { useAuthStore } from '@/lib/store';
 import { redirect } from 'next/navigation';
 
 const Header = () => {
     const logout = useAuthStore((state) => state.logout);
+
+    const handleLogout = () => {
+        logout();
+        redirect('/');
+    };
 
     return (
         <header className="sticky top-0 z-10 w-full bg-base-100/80 shadow-md backdrop-blur-md">
@@ -53,10 +58,7 @@ const Header = () => {
                                 <Button
                                     variant="link"
                                     Icon={LogOutIcon}
-                                    onClick={() => {
-                                        logout();
-                                        redirect('/');
-                                    }}
+                                    onClick={handleLogout}
                                 />
                             </RequireAuth>
                             <Button variant="link" Icon={HeartIcon} />

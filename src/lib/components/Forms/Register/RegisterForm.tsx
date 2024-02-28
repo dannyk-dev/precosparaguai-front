@@ -1,13 +1,13 @@
 'use client';
 
 import { FormEvent, ChangeEvent, useState } from 'react';
-import { Input } from '@/lib/components/shared/Inputs';
+import { Input } from '@/lib/components/shared';
 import { LockIcon, LogInIcon, MailIcon, UserIcon } from 'lucide-react';
 import Button from '@/lib/components/shared';
 import { Spinner } from '@/lib/components/shared/loaders';
 import { useRegister } from '@/lib/hooks/auth';
 import { RegisterData } from '@/lib/types/auth.types';
-import useAuthStore from '@/lib/store/authStore';
+import { useAuthStore } from '@/lib/store';
 
 import { useRouter } from 'next/navigation';
 
@@ -32,6 +32,7 @@ function RegisterForm() {
         },
     });
 
+    // form handlers
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
 
@@ -41,6 +42,7 @@ function RegisterForm() {
         }));
     };
 
+    // submission handler
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 

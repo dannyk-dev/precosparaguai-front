@@ -1,12 +1,6 @@
-import { z } from 'zod';
 import { MutationOptions, useMutation } from '@tanstack/react-query';
 import { QueryCacheKey } from '@/lib/types/query.types';
-
-const registerSchema = z.object({
-    username: z.string().min(3).max(20),
-    email: z.string().email(),
-    password: z.string().min(8),
-});
+import { UserSchema } from '@/lib/utils/schemas';
 
 const useRegister = <T>(config?: MutationOptions<any, Error, T, any>) => {
     const key: QueryCacheKey = ['USERS'];
@@ -24,7 +18,7 @@ const useRegister = <T>(config?: MutationOptions<any, Error, T, any>) => {
 
     const validate = (data: T) => {
         try {
-            registerSchema.parse(data);
+            UserSchema.parse(data);
             return true;
         } catch (error) {
             mutation.reset();
