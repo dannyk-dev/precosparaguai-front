@@ -1,6 +1,6 @@
 'use client';
 
-import RegisterForm from '@/lib/components/Forms/Register/RegisterForm';
+import { Form } from '@/lib/components';
 import AuthLayout from '@/lib/layout/AuthLayout';
 
 export const Register = () => {
@@ -18,7 +18,7 @@ export const Register = () => {
                             <h4 className="mb-10 text-center font-normal">
                                 Register your account
                             </h4>
-                            <RegisterForm />
+                            <Form />
                         </div>
                     </ul>
                 </div>

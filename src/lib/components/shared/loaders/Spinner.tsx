@@ -1,20 +1,21 @@
 'use client';
 
-type SpinnerProps = {
-    scale?: number;
-};
+import { cn } from '@/lib/styles/utils';
+import { cva, VariantProps } from 'class-variance-authority';
 
-export const Spinner = ({ scale }: SpinnerProps) => {
-    return (
-        <div className="dot-spinner" style={{ scale }}>
-            <div className="dot-spinner__dot"></div>
-            <div className="dot-spinner__dot"></div>
-            <div className="dot-spinner__dot"></div>
-            <div className="dot-spinner__dot"></div>
-            <div className="dot-spinner__dot"></div>
-            <div className="dot-spinner__dot"></div>
-            <div className="dot-spinner__dot"></div>
-            <div className="dot-spinner__dot"></div>
-        </div>
-    );
+const DottedSpinnerStyles = cva('loading loading-spinner my-4', {
+    variants: {
+        variantSize: {
+            xsmall: 'loading-xs',
+            small: 'loading-sm',
+            base: 'loading-md',
+            large: 'loading-lg',
+        },
+    },
+});
+
+export const Spinner = ({
+    variantSize,
+}: VariantProps<typeof DottedSpinnerStyles>) => {
+    return <div className={cn(DottedSpinnerStyles({ variantSize }))}></div>;
 };

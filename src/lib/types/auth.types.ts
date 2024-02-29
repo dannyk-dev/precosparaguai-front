@@ -1,8 +1,8 @@
-export type RegisterData = {
-    username: string;
+export interface RegisterData {
+    username?: string;
     email: string;
     password: string;
-};
+}
 
 export type UserRegisterPayload = {
     _id: string;

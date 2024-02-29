@@ -1,3 +1,7 @@
-export { Hero } from './Hero';
+export * from './Hero';
 export * from './Ratings';
-export { Card, Cards } from './Cards';
+export * from './Cards';
+export * from './Sidebar';
+export * from './Currency';
+export * from './Forms';
+export * from './Slider';

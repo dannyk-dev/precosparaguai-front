@@ -7,10 +7,8 @@ import {
     SearchIcon,
     UserCircleIcon,
 } from 'lucide-react';
-import { SideBar } from '@/lib/components/Sidebar';
-import Button from '@/lib/components/shared';
-import { Quotation } from '@/lib/components/Currency';
-import { Input } from '@/lib/components/shared';
+import { SideBar, Quotation } from '@/lib/components';
+import { Button, Input } from '@/lib/components/shared';
 import { RequireAuth } from '@/lib/hooks/auth';
 import { useAuthStore } from '@/lib/store';
 import { redirect } from 'next/navigation';

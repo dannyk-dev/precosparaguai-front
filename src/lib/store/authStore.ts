@@ -1,5 +1,5 @@
 import { StoreApi, UseBoundStore, create } from 'zustand';
-import { UserRegisterPayload } from '../types/auth.types';
+import { UserRegisterPayload } from '@/lib/types/auth.types';
 
 type UserState = {
     user: null | UserRegisterPayload;

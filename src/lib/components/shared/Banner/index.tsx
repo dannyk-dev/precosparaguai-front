@@ -8,7 +8,7 @@ interface IProps {
     image: StaticImageData;
 }
 
-export const Banner = ({ image }: IProps) => {
+const Banner = ({ image }: IProps) => {
     return (
         <BannerCard
             image={image}
@@ -17,4 +17,4 @@ export const Banner = ({ image }: IProps) => {
     );
 };
 
-export { BannerGroup };
+export { BannerGroup, Banner };

@@ -12,7 +12,7 @@ interface IAuthProviderProps {
     inverseAuthValidation?: boolean;
 }
 
-const RequireAuth = ({
+export const RequireAuth = ({
     children,
     redirectPage,
     inverseAuthValidation,
@@ -35,4 +35,3 @@ const RequireAuth = ({
     return user && !inverseAuthValidation ? children : null;
 };
 
-export default RequireAuth;

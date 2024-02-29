@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Stars } from '@/lib/components';
 import { useCalculateAverageRating } from '@/lib/hooks';
 import { ShoppingCartIcon } from 'lucide-react';
-import Button from '../shared';
+import { Button } from '@/lib/components/shared';
 
 interface ICardProps {
     item: IProduct;
