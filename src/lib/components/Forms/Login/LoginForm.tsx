@@ -1,11 +1,9 @@
-'use client';
-
-import { LockIcon, LogInIcon, MailIcon, UserIcon } from 'lucide-react';
-import { Button, Spinner, Input } from '@/lib/components/shared';
 import { IFormContentProps } from '@/lib/interfaces';
-import { useEffect } from 'react';
+import React from 'react';
+import { Button, Input, Spinner } from '@/lib/components/shared';
+import { LockIcon, LogInIcon, UserIcon } from 'lucide-react';
 
-export const RegisterForm = ({
+export const LoginForm = ({
     formData,
     handleChange,
     isLoading,
@@ -14,21 +12,12 @@ export const RegisterForm = ({
         <>
             <Input
                 variant="primary"
-                name="username"
-                value={formData!.username}
-                onChange={handleChange}
-                placeholder="Enter a username"
-                Icon={UserIcon}
-                type="text"
-            />
-            <Input
-                variant="primary"
                 name="email"
                 value={formData!.email}
                 onChange={handleChange}
-                type="email"
-                placeholder="Enter an Email"
-                Icon={MailIcon}
+                placeholder="Enter your email"
+                Icon={UserIcon}
+                type="text"
             />
             <Input
                 variant="primary"
@@ -47,15 +36,15 @@ export const RegisterForm = ({
                     type="submit"
                     className="mt-6 w-fit px-8 shadow-lg "
                 >
-                    <span className="ml-2 font-extrabold">Sign in</span>
+                    <span className="ml-2 font-extrabold">Login</span>
                 </Button>
                 <Button
                     variant="link"
                     variantSize="xsmall"
-                    to="/login"
+                    to="/register"
                     className="mt-4"
                 >
-                    Already have an account?
+                    Dont have an account?
                 </Button>
                 {isLoading && <Spinner variantSize="base" />}
             </div>

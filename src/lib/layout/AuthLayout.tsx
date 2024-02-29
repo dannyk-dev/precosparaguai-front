@@ -5,6 +5,7 @@ import Header from './Header';
 import Footer from './Footer';
 import { Providers } from '../components/providers';
 import styled from 'styled-components';
+import { RequireAuth } from '../hooks/auth';
 
 interface IAuthLayoutProps {
     children: ReactNode;
@@ -22,16 +23,31 @@ const PatternBackground = styled.div`
 
 const AuthLayout = ({ children }: IAuthLayoutProps) => {
     return (
-        <Providers>
-            <div className="flex min-h-screen flex-col">
-                <Header />
-                <main className="relative h-screen w-full overflow-hidden bg-gradient-to-bl from-indigo-600 to-blue-400">
-                    <PatternBackground />
-                    {children}
-                </main>
-                <Footer />
-            </div>
-        </Providers>
+        <RequireAuth redirectPage={true} inverseAuthValidation={true}>
+            <Providers>
+                <div className="flex min-h-screen flex-col">
+                    <Header />
+                    <main className="relative h-screen w-full overflow-hidden bg-gradient-to-bl from-indigo-600 to-blue-400">
+                        <PatternBackground />
+                        <div className="drawer drawer-end drawer-open relative w-full ">
+                            <input
+                                id="my-drawer-2"
+                                type="checkbox"
+                                className="drawer-toggle"
+                            />
+                            <div className="drawer-side w-96">
+                                <ul className="menu min-h-full w-96 bg-zinc-100/30 p-4 text-base-content shadow-sm-light backdrop-blur-lg">
+                                    <div className="wrapper flex h-full flex-col justify-around">
+                                        {children}
+                                    </div>
+                                </ul>
+                            </div>
+                        </div>
+                    </main>
+                    <Footer />
+                </div>
+            </Providers>
+        </RequireAuth>
     );
 };
 
