@@ -1,11 +1,11 @@
 export interface RegisterData {
-    username?: string;
+    username: string;
     email: string;
     password: string;
 }
 
 export type UserRegisterPayload = {
-    _id: string;
+    token: string;
     username: string;
     email: string;
 } | null;

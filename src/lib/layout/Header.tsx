@@ -11,15 +11,9 @@ import { SideBar, Quotation } from '@/lib/components';
 import { Button, Input } from '@/lib/components/shared';
 import { RequireAuth } from '@/lib/hooks/auth';
 import { useAuthStore } from '@/lib/store';
-import { redirect } from 'next/navigation';
 
 const Header = () => {
     const logout = useAuthStore((state) => state.logout);
-
-    const handleLogout = () => {
-        logout();
-        redirect('/');
-    };
 
     return (
         <header className="sticky top-0 z-10 w-full bg-base-100/80 shadow-md backdrop-blur-md">
@@ -56,7 +50,11 @@ const Header = () => {
                                 <Button
                                     variant="link"
                                     Icon={LogOutIcon}
-                                    onClick={handleLogout}
+                                    onClick={() => {
+                                        console.log('logging out');
+                                        logout();
+                                    }}
+                                    to="/"
                                 />
                             </RequireAuth>
 

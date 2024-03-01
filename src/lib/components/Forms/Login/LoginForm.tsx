@@ -2,6 +2,7 @@ import { IFormContentProps } from '@/lib/interfaces';
 import React from 'react';
 import { Button, Input, Spinner } from '@/lib/components/shared';
 import { LockIcon, LogInIcon, UserIcon } from 'lucide-react';
+import { FormSubmit } from '../FormSubmit';
 
 export const LoginForm = ({
     formData,
@@ -28,26 +29,12 @@ export const LoginForm = ({
                 placeholder="Enter a password"
                 Icon={LockIcon}
             />
-
-            <div className="form-control flex items-end">
-                <Button
-                    Icon={LogInIcon}
-                    variant="primary"
-                    type="submit"
-                    className="mt-6 w-fit px-8 shadow-lg "
-                >
-                    <span className="ml-2 font-extrabold">Login</span>
-                </Button>
-                <Button
-                    variant="link"
-                    variantSize="xsmall"
-                    to="/register"
-                    className="mt-4"
-                >
-                    Dont have an account?
-                </Button>
-                {isLoading && <Spinner variantSize="base" />}
-            </div>
+            <FormSubmit
+                submitBtnText="Login"
+                redirectText="Don't have an account?"
+                redirectLink="/register"
+                isLoading={isLoading}
+            />
         </>
     );
 };

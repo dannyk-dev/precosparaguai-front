@@ -1,9 +1,9 @@
 'use client';
 
-import { LockIcon, LogInIcon, MailIcon, UserIcon } from 'lucide-react';
-import { Button, Spinner, Input } from '@/lib/components/shared';
+import { LockIcon, MailIcon, UserIcon } from 'lucide-react';
+import { Input } from '@/lib/components/shared';
 import { IFormContentProps } from '@/lib/interfaces';
-import { useEffect } from 'react';
+import { FormSubmit } from '../FormSubmit';
 
 export const RegisterForm = ({
     formData,
@@ -39,26 +39,12 @@ export const RegisterForm = ({
                 placeholder="Enter a password"
                 Icon={LockIcon}
             />
-
-            <div className="form-control flex items-end">
-                <Button
-                    Icon={LogInIcon}
-                    variant="primary"
-                    type="submit"
-                    className="mt-6 w-fit px-8 shadow-lg "
-                >
-                    <span className="ml-2 font-extrabold">Sign in</span>
-                </Button>
-                <Button
-                    variant="link"
-                    variantSize="xsmall"
-                    to="/login"
-                    className="mt-4"
-                >
-                    Already have an account?
-                </Button>
-                {isLoading && <Spinner variantSize="base" />}
-            </div>
+            <FormSubmit
+                submitBtnText="Sign in"
+                redirectText="Already have an account?"
+                redirectLink="/login"
+                isLoading={isLoading}
+            />
         </>
     );
 };

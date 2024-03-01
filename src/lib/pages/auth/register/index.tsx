@@ -2,14 +2,20 @@
 
 import { RegisterForm, Form } from '@/lib/components';
 import AuthLayout from '@/lib/layout/AuthLayout';
+import { RequireAuth } from '@/lib/hooks/auth';
 
-export const Register = () => {
+export const RegisterPage = () => {
     return (
-        <AuthLayout>
-            <h4 className="mb-10 text-center font-normal">
-                Register your account
-            </h4>
-            <Form requestTo="/api/users/register" FormContent={RegisterForm} />
-        </AuthLayout>
+        <RequireAuth redirectPage={true} inverseAuthValidation={true}>
+            <AuthLayout>
+                <h4 className="mb-10 text-center font-normal">
+                    Register your account
+                </h4>
+                <Form
+                    requestTo="/api/users/register"
+                    FormContent={RegisterForm}
+                />
+            </AuthLayout>
+        </RequireAuth>
     );
 };

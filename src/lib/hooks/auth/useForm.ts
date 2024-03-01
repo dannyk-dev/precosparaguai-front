@@ -3,7 +3,7 @@
 import { MutationOptions, useMutation } from '@tanstack/react-query';
 import { QueryCacheKey } from '@/lib/types/query.types';
 import { UserSchema } from '@/lib/utils/schemas';
-import { useState, ChangeEvent, FormEvent } from 'react';
+import { useState, ChangeEvent, FormEvent, useTransition } from 'react';
 import { RegisterData } from '@/lib/types/auth.types';
 import { useAuthStore } from '@/lib/store';
 import { useRouter } from 'next/navigation';
@@ -15,6 +15,7 @@ export const useForm = <T extends RegisterData>(
 ): IFormResultProps => {
     const router = useRouter();
     const [login] = useAuthStore((state) => [state.login, state.user]);
+    const [isPending, startTransition] = useTransition();
 
     const [formData, setFormData] = useState<T>({
         username: '',
@@ -34,9 +35,11 @@ export const useForm = <T extends RegisterData>(
         },
 
         onSuccess: (data) => {
-            login(data);
+            startTransition(() => {
+                login(data);
 
-            router.push('/dashboard');
+                router.push('/dashboard');
+            });
         },
 
         onError: (error) => {

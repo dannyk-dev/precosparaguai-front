@@ -2,11 +2,10 @@
 
 import useAuthStore from '@/lib/store/authStore';
 import { useRouter } from 'next/navigation';
-import React, { Suspense, useEffect, useState, useTransition } from 'react';
+import React, { useEffect, useTransition } from 'react';
 import useSessionStorage from '@/lib/hooks';
 import { UserRegisterPayload } from '@/lib/types/auth.types';
 import { Spinner } from '@/lib/components/shared';
-import styled from 'styled-components';
 
 interface IAuthProviderProps {
     children: React.ReactNode;
@@ -27,6 +26,8 @@ export const RequireAuth = ({
         state.login,
     ]);
 
+    const [isPending, startTransition] = useTransition();
+
     const handleRedirect = () => {
         if (redirectPage && isAuthenticated()) {
             if (inverseAuthValidation) router.push('/');
@@ -40,20 +41,40 @@ export const RequireAuth = ({
     };
 
     useEffect(() => {
-        if (!isAuthenticated()) {
-            if (session) {
-                login(session);
-            }
+        startTransition(() => {
+            if (!isAuthenticated()) {
+                if (session) {
+                    login(session);
+                }
 
-            handleRedirect();
-        }
+                handleRedirect();
+            } else {
+                handleRedirect();
+            }
+        });
     }, [isAuthenticated, session]);
 
-    return (
-        <React.Fragment>
-            {user && !inverseAuthValidation ? children : null}
+    if (isPending) {
+        return (
+            <div className="container">
+                <div className="flex items-center justify-center">
+                    <Spinner />
+                </div>
+            </div>
+        );
+    } else if (!isPending && user) {
+        if (
+            (isAuthenticated() && !inverseAuthValidation) ||
+            (!isAuthenticated() && inverseAuthValidation)
+        ) {
+            return children;
+        }
+    }
 
-            {!user && inverseAuthValidation ? children : null}
-        </React.Fragment>
-    );
+    if (inverseAuthValidation && !user) {
+        console.log('I am not authenticated but showing children anyway');
+        return children;
+    } else if (!inverseAuthValidation && !user) return null;
+
+    return null;
 };

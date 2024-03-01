@@ -1,2 +1,2 @@
-import { Login } from '@/lib/pages/auth/login';
-export default Login;
+import { LoginPage } from '@/lib/pages/auth/login';
+export default LoginPage;

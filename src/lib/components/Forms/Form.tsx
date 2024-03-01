@@ -1,5 +1,3 @@
-'use client';
-
 import { useForm } from '@/lib/hooks/auth';
 import { RegisterData } from '@/lib/types/auth.types';
 import React from 'react';

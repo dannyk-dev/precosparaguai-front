@@ -37,12 +37,22 @@ export const Button = ({
     Icon,
     to,
     className,
+    preventDefault,
+    onClick: userOnClick,
     ...props
 }: IButtonComponentProps & VariantProps<typeof buttonStyles>) => {
+    const handleClick = (
+        e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    ) => {
+        preventDefault && e.preventDefault();
+        userOnClick && userOnClick(e);
+    };
+
     return (
         <button
             {...props}
             className={cn(buttonStyles({ variant, variantSize }), className)}
+            onClick={handleClick}
         >
             <div className="indicator flex items-center">
                 {variant === 'link' || to !== undefined ? (
