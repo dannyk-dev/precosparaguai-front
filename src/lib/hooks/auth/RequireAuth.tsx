@@ -59,11 +59,9 @@ export const RequireAuth = ({
             }
 
             handleRedirect();
-            // setLoading(false);
         });
 
         setLoading(false);
-        // if (!isPending) setLoading(false);
     }, [isAuthenticated, session]);
 
     if (isPending) {
@@ -72,11 +70,7 @@ export const RequireAuth = ({
 
     if ((inverseAuthValidation && !user) || (!inverseAuthValidation && user)) {
         return <Transition>{children}</Transition>;
-    } else if (
-        (!inverseAuthValidation && !user) ||
-        (inverseAuthValidation && !user)
-    )
-        return null;
+    }
 
     return null;
 };

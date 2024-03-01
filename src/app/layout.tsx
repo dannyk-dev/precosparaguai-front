@@ -1,12 +1,10 @@
 import type { Metadata, Viewport } from 'next';
 
-import Layout from '@/lib/layout';
 import { fontSans } from '@/lib/styles/fonts';
 import { cn } from '@/lib/styles/utils';
 
 import '@/lib/styles/globals.css';
 import Head from 'next/head';
-import AuthLayout from '@/lib/layout/AuthLayout';
 
 const APP_NAME = 'Preços no Paraguai';
 

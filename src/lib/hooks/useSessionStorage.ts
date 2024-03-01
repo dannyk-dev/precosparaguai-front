@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect, Dispatch, SetStateAction } from 'react';
+import { sha256ToJson, jsonToSHA256 } from '../utils/crypto';
 
 type SessionTypes = 'USER';
 
@@ -11,7 +12,7 @@ const useSessionStorage = <T>(
         if (typeof window !== 'undefined') {
             const storedValue = sessionStorage.getItem(key);
             return storedValue !== null
-                ? JSON.parse(storedValue)
+                ? JSON.parse(sha256ToJson(storedValue))
                 : initialValue;
         }
 
@@ -19,7 +20,9 @@ const useSessionStorage = <T>(
     });
 
     useEffect(() => {
-        sessionStorage.setItem(key, JSON.stringify(value));
+        if (value === null) return;
+        sessionStorage.setItem('USER', jsonToSHA256(JSON.stringify(value)));
+        // sessionStorage.setItem(key, JSON.stringify(value));
     }, [key, value]);
 
     return [value, setValue];

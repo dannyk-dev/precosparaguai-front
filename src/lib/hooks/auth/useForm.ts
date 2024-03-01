@@ -16,7 +16,7 @@ export const useForm = <T extends RegisterData>(
     const router = useRouter();
     const [login] = useAuthStore((state) => [state.login, state.user]);
     const setLoading = useGlobalStore((state) => state.setLoading);
-    const [isPending, startTransition] = useTransition();
+    const [_, startTransition] = useTransition();
 
     const [formData, setFormData] = useState<T>({
         username: undefined,

@@ -3,6 +3,7 @@
 import {
     BellIcon,
     HeartIcon,
+    LayoutDashboardIcon,
     LogOutIcon,
     SearchIcon,
     UserCircleIcon,
@@ -47,6 +48,11 @@ const Header = () => {
                                 />
                             </RequireAuth>
                             <RequireAuth>
+                                <Button
+                                    variant="link"
+                                    to="/dashboard"
+                                    Icon={LayoutDashboardIcon}
+                                />
                                 <Button
                                     variant="link"
                                     Icon={LogOutIcon}
