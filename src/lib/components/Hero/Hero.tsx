@@ -15,7 +15,7 @@ interface IProps {}
 const Hero = ({}: IProps) => {
     return (
         <>
-            <div className="mx-auto px-10 lg:container">
+            <div className="container mx-auto">
                 <div className="relative mt-8 flex h-1/2 w-full flex-col items-center ">
                     <Banner image={banner} />
                 </div>
@@ -24,6 +24,7 @@ const Hero = ({}: IProps) => {
                 <RequireAuth>
                     <ProductsProvider ProductContent={Trending} />
                 </RequireAuth>
+
                 <RequireAuth inverseAuthValidation={true}>
                     <div className="container mt-10">
                         <div className="wrapper flex h-auto flex-col items-center justify-center rounded-lg bg-warning p-5 text-warning-content shadow-xl">

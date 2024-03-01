@@ -5,7 +5,9 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useTransition } from 'react';
 import useSessionStorage from '@/lib/hooks';
 import { UserRegisterPayload } from '@/lib/types/auth.types';
-import { Spinner } from '@/lib/components/shared';
+import { PageLoader, Spinner } from '@/lib/components/shared';
+import { useGlobalStore } from '@/lib/store';
+import { Transition } from '@/lib/components/shared/loaders/Transition';
 
 interface IAuthProviderProps {
     children: React.ReactNode;
@@ -25,17 +27,25 @@ export const RequireAuth = ({
         state.user,
         state.login,
     ]);
+    const [loading, setLoading] = useGlobalStore((state) => [
+        state.loading,
+        state.setLoading,
+    ]);
 
     const [isPending, startTransition] = useTransition();
 
     const handleRedirect = () => {
         if (redirectPage && isAuthenticated()) {
-            if (inverseAuthValidation) router.push('/');
+            if (inverseAuthValidation) {
+                setLoading(true);
+                router.push('/');
+            }
         } else if (
             redirectPage &&
             !isAuthenticated() &&
             !inverseAuthValidation
         ) {
+            setLoading(true);
             router.push('/register');
         }
     };
@@ -46,26 +56,22 @@ export const RequireAuth = ({
                 if (session) {
                     login(session);
                 }
-
-                handleRedirect();
-            } else {
-                handleRedirect();
             }
+
+            handleRedirect();
+            // setLoading(false);
         });
+
+        setLoading(false);
+        // if (!isPending) setLoading(false);
     }, [isAuthenticated, session]);
 
     if (isPending) {
-        return (
-            <div className="container">
-                <div className="flex items-center justify-center">
-                    <Spinner />
-                </div>
-            </div>
-        );
-    }
+        return <PageLoader />;
+    } else if (loading) return null;
 
     if ((inverseAuthValidation && !user) || (!inverseAuthValidation && user)) {
-        return children;
+        return <Transition>{children}</Transition>;
     } else if (
         (!inverseAuthValidation && !user) ||
         (inverseAuthValidation && !user)

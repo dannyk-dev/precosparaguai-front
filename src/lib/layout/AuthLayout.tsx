@@ -5,8 +5,6 @@ import Header from './Header';
 import Footer from './Footer';
 import { Providers } from '../components/providers';
 import styled from 'styled-components';
-import { RequireAuth } from '../hooks/auth';
-
 interface IAuthLayoutProps {
     children: ReactNode;
 }

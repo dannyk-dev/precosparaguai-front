@@ -5,7 +5,7 @@ import { QueryCacheKey } from '@/lib/types/query.types';
 import { UserSchema } from '@/lib/utils/schemas';
 import { useState, ChangeEvent, FormEvent, useTransition } from 'react';
 import { RegisterData } from '@/lib/types/auth.types';
-import { useAuthStore } from '@/lib/store';
+import { useAuthStore, useGlobalStore } from '@/lib/store';
 import { useRouter } from 'next/navigation';
 import { IFormResultProps } from '@/lib/interfaces';
 
@@ -15,6 +15,7 @@ export const useForm = <T extends RegisterData>(
 ): IFormResultProps => {
     const router = useRouter();
     const [login] = useAuthStore((state) => [state.login, state.user]);
+    const setLoading = useGlobalStore((state) => state.setLoading);
     const [isPending, startTransition] = useTransition();
 
     const [formData, setFormData] = useState<T>({
@@ -35,6 +36,7 @@ export const useForm = <T extends RegisterData>(
         },
 
         onSuccess: (data) => {
+            setLoading(false);
             startTransition(() => {
                 login(data);
                 router.push('/dashboard');

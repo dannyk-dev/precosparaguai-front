@@ -1,21 +1,24 @@
+'use client';
 import { type ReactNode } from 'react';
 
 import Footer from './Footer';
 import Header from './Header';
 import { Providers } from '../components/providers';
+import { useGlobalStore } from '../store';
+import { PageLoader } from '../components/shared';
 
 type LayoutProps = {
     children: ReactNode;
 };
 
 const Layout = ({ children }: LayoutProps) => {
-    // get the current component state whether it's error, loading or something else
+    const loading = useGlobalStore((state) => state.loading);
 
     return (
         <Providers>
             <div className="flex min-h-screen flex-col">
                 <Header />
-                <main className="">{children}</main>
+                <main className="">{loading ? <PageLoader /> : children}</main>
                 <Footer />
             </div>
         </Providers>
