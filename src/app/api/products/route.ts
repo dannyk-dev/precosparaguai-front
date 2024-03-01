@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { httpService } from '@/lib/utils/http';
 
-const ROUTE = 'products?limit=6';
+const ROUTE = 'api/products';
 
 export const GET = async () => {
     try {

@@ -18,7 +18,7 @@ export const useForm = <T extends RegisterData>(
     const [isPending, startTransition] = useTransition();
 
     const [formData, setFormData] = useState<T>({
-        username: '',
+        username: undefined,
         password: '',
         email: '',
     } as T);
@@ -37,7 +37,6 @@ export const useForm = <T extends RegisterData>(
         onSuccess: (data) => {
             startTransition(() => {
                 login(data);
-
                 router.push('/dashboard');
             });
         },

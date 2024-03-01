@@ -1,7 +1,9 @@
+
+
 import { httpService } from '@/lib/utils/http';
 import { NextResponse } from 'next/server';
 
-const ROUTE = 'api/users';
+const ROUTE = 'api/login';
 
 export const POST = async (req: Request, res: Response) => {
     try {
@@ -16,3 +18,6 @@ export const POST = async (req: Request, res: Response) => {
         });
     }
 };
+
+
+

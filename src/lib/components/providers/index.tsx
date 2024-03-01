@@ -17,3 +17,5 @@ export const Providers = ({ children }: IProps) => {
         </QueryClientProvider>
     );
 };
+
+export { ProductsProvider } from './ProductsProvider';

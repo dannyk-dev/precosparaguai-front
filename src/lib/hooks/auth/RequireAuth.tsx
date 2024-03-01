@@ -62,19 +62,15 @@ export const RequireAuth = ({
                 </div>
             </div>
         );
-    } else if (!isPending && user) {
-        if (
-            (isAuthenticated() && !inverseAuthValidation) ||
-            (!isAuthenticated() && inverseAuthValidation)
-        ) {
-            return children;
-        }
     }
 
-    if (inverseAuthValidation && !user) {
-        console.log('I am not authenticated but showing children anyway');
+    if ((inverseAuthValidation && !user) || (!inverseAuthValidation && user)) {
         return children;
-    } else if (!inverseAuthValidation && !user) return null;
+    } else if (
+        (!inverseAuthValidation && !user) ||
+        (inverseAuthValidation && !user)
+    )
+        return null;
 
     return null;
 };
