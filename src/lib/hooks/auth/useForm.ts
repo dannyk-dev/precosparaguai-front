@@ -8,15 +8,20 @@ import { RegisterData } from '@/lib/types/auth.types';
 import { useAuthStore, useGlobalStore } from '@/lib/store';
 import { useRouter } from 'next/navigation';
 import { IFormResultProps } from '@/lib/interfaces';
+import useSessionStorage from '../useSessionStorage';
 
 export const useForm = <T extends RegisterData>(
     apiRoute: string,
     config?: MutationOptions<any, Error, T, any>
 ): IFormResultProps => {
     const router = useRouter();
-    const [login] = useAuthStore((state) => [state.login, state.user]);
+    const [login, setError] = useAuthStore((state) => [
+        state.login,
+        state.setError,
+    ]);
     const setLoading = useGlobalStore((state) => state.setLoading);
-    const [isPending, startTransition] = useTransition();
+    const [_, startTransition] = useTransition();
+    const [session, setSession] = useSessionStorage('USER', null);
 
     const [formData, setFormData] = useState<T>({
         username: undefined,
@@ -34,17 +39,21 @@ export const useForm = <T extends RegisterData>(
                 body: JSON.stringify(data),
             }).then((res) => res.json());
         },
+        onSuccess: (data): void => {
+            if (data?.error) return;
 
-        onSuccess: (data) => {
             setLoading(false);
             startTransition(() => {
-                login(data);
+                login(data, false);
+                setSession(data);
                 router.push('/dashboard');
             });
         },
-
         onError: (error) => {
+            console.log('on error hook');
             console.error(error);
+            setLoading(false);
+            setError(error);
         },
         mutationKey: key,
     });
@@ -55,7 +64,6 @@ export const useForm = <T extends RegisterData>(
             return true;
         } catch (error) {
             mutation.reset();
-            console.log(error);
             throw error;
         }
     };
@@ -65,7 +73,11 @@ export const useForm = <T extends RegisterData>(
             try {
                 mutation.mutate(data);
             } catch (error) {
-                console.error(error);
+                mutation.reset();
+                console.log('register errror... setting error');
+                setError(error);
+                router.refresh();
+                throw error;
             }
         }
     };

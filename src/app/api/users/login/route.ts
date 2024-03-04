@@ -1,5 +1,3 @@
-
-
 import { httpService } from '@/lib/utils/http';
 import { NextResponse } from 'next/server';
 
@@ -12,12 +10,8 @@ export const POST = async (req: Request, res: Response) => {
 
         return new NextResponse(JSON.stringify(response));
     } catch (error: unknown) {
-        console.error(error);
         return new NextResponse(JSON.stringify({ error }), {
-            status: 400,
+            status: 401,
         });
     }
 };
-
-
-

@@ -22,10 +22,11 @@ export const RequireAuth = ({
 }: IAuthProviderProps) => {
     const router = useRouter();
     const [session] = useSessionStorage<UserRegisterPayload>('USER', null);
-    const [isAuthenticated, user, login] = useAuthStore((state) => [
+    const [isAuthenticated, user, login, error] = useAuthStore((state) => [
         state.isAuthenticated,
         state.user,
         state.login,
+        state.error,
     ]);
     const [loading, setLoading] = useGlobalStore((state) => [
         state.loading,
@@ -51,6 +52,7 @@ export const RequireAuth = ({
     };
 
     useEffect(() => {
+        if (error) console.log(error);
         startTransition(() => {
             if (!isAuthenticated()) {
                 if (session) {
@@ -59,12 +61,10 @@ export const RequireAuth = ({
             }
 
             handleRedirect();
-            // setLoading(false);
         });
 
         setLoading(false);
-        // if (!isPending) setLoading(false);
-    }, [isAuthenticated, session]);
+    }, [isAuthenticated, session, error]);
 
     if (isPending) {
         return <PageLoader />;
@@ -72,11 +72,7 @@ export const RequireAuth = ({
 
     if ((inverseAuthValidation && !user) || (!inverseAuthValidation && user)) {
         return <Transition>{children}</Transition>;
-    } else if (
-        (!inverseAuthValidation && !user) ||
-        (inverseAuthValidation && !user)
-    )
-        return null;
+    }
 
     return null;
 };
