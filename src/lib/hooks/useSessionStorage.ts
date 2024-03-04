@@ -15,7 +15,7 @@ const useSessionStorage = <T>(
             const storedValue = sessionStorage.getItem(key);
 
             return storedValue !== null
-                ? decryptAES<T>(storedValue, AUTH_ENCRYPTION_KEY)
+                ? decryptAES<T>(storedValue as string, AUTH_ENCRYPTION_KEY)
                 : initialValue;
         }
 

@@ -55,7 +55,6 @@ export const RequireAuth = ({
         if (error) console.log(error);
         startTransition(() => {
             if (!isAuthenticated()) {
-                console.log(session);
                 if (session) {
                     login(session);
                 }

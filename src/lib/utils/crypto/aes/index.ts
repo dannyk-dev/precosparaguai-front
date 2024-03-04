@@ -17,12 +17,16 @@ export const encryptAES = <T>(obj: T, key: string): string => {
 };
 
 export const decryptAES = <T>(encryptedData: string, key: string): T => {
+    // if (JSON.parse(encryptedData) === null) return null;
     try {
         const data = CryptoJS.AES.decrypt(encryptedData, key).toString(
             CryptoJS.enc.Utf8
         );
 
-        return JSON.parse(data) as T;
+        if (data) {
+            return JSON.parse(data) as T;
+        }
+        // return JSON.parse(data) as T;
     } catch (error) {
         throw error;
     }
