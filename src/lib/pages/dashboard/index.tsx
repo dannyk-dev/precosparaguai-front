@@ -5,12 +5,7 @@ import { useAuthStore } from '@/lib/store';
 import React from 'react';
 
 const Dashboard = () => {
-    const [user, isAuthenticated] = useAuthStore((state) => [
-        state.user,
-        state.isAuthenticated,
-    ]);
-
-    console.log(user);
+    const user = useAuthStore((state) => state.user);
 
     return (
         <RequireAuth redirectPage={true}>

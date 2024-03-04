@@ -52,6 +52,7 @@ export const RequireAuth = ({
     };
 
     useEffect(() => {
+        if (error) console.log(error);
         startTransition(() => {
             if (!isAuthenticated()) {
                 console.log(session);

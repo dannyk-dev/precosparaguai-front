@@ -23,13 +23,10 @@ const useSessionStorage = <T>(
     });
 
     useEffect(() => {
-        if (value !== null) {
-            return;
-        }
+        if (value !== null) return;
 
         const encryptedValue = encryptAES<T>(value, AUTH_ENCRYPTION_KEY);
-
-        sessionStorage.setItem('USER', encryptedValue ?? JSON.stringify(null));
+        sessionStorage.setItem('USER', encryptedValue);
     }, [key, value]);
 
     return [value, setValue];

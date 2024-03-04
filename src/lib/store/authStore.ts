@@ -25,10 +25,7 @@ const useAuthStore: UseBoundStore<StoreApi<UserState>> = create<UserState>(
             if (!hasSession) {
                 sessionStorage.setItem(
                     'USER',
-                    encryptAES<UserRegisterPayload>(
-                        user,
-                        AUTH_ENCRYPTION_KEY
-                    ) ?? JSON.stringify(null)
+                    encryptAES<UserRegisterPayload>(user, AUTH_ENCRYPTION_KEY)
                 );
             }
             // if (useAuthStore.getState().)

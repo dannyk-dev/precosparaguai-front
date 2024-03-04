@@ -1,7 +1,8 @@
 import CryptoJS from 'crypto-js';
 
-export const encryptAES = <T>(obj: T, key: string): string | null => {
-    if (obj === null) return null;
+export const encryptAES = <T>(obj: T, key: string): string => {
+    const defaultValue = JSON.stringify(null);
+    if (obj === null) return defaultValue;
 
     try {
         const encryptedData = CryptoJS.AES.encrypt(
@@ -11,7 +12,7 @@ export const encryptAES = <T>(obj: T, key: string): string | null => {
 
         return encryptedData;
     } catch (error) {
-        return JSON.stringify(null);
+        return defaultValue;
     }
 };
 
