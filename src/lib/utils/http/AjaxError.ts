@@ -26,7 +26,7 @@ export class AjaxError<
         super(response, request, options);
         this.status = status;
         // @ts-ignore
-        this.message = message ?? response?.body?.message ?? 'Ajax Error';
+        this.message = message ?? response?.error?.message ?? 'Ajax Error';
         this.name = 'AjaxError';
     }
 }

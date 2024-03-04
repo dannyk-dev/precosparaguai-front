@@ -22,10 +22,11 @@ export const RequireAuth = ({
 }: IAuthProviderProps) => {
     const router = useRouter();
     const [session] = useSessionStorage<UserRegisterPayload>('USER', null);
-    const [isAuthenticated, user, login] = useAuthStore((state) => [
+    const [isAuthenticated, user, login, error] = useAuthStore((state) => [
         state.isAuthenticated,
         state.user,
         state.login,
+        state.error,
     ]);
     const [loading, setLoading] = useGlobalStore((state) => [
         state.loading,
@@ -53,6 +54,7 @@ export const RequireAuth = ({
     useEffect(() => {
         startTransition(() => {
             if (!isAuthenticated()) {
+                console.log(session);
                 if (session) {
                     login(session);
                 }
@@ -62,7 +64,7 @@ export const RequireAuth = ({
         });
 
         setLoading(false);
-    }, [isAuthenticated, session]);
+    }, [isAuthenticated, session, error]);
 
     if (isPending) {
         return <PageLoader />;

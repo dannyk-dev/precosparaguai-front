@@ -1,30 +1,37 @@
 import { StoreApi, UseBoundStore, create } from 'zustand';
 import { UserRegisterPayload } from '@/lib/types/auth.types';
-import { jsonToSHA256, sha256ToJson } from '../utils/crypto';
+import { encryptAES } from '@/lib/utils/crypto';
+import useSessionStorage from '../hooks';
+
+const AUTH_ENCRYPTION_KEY = process.env.AUTH_ENCRYPTION_KEY || 'auth_token';
 
 type UserState = {
     user: null | UserRegisterPayload;
-    getUser: () => null | UserRegisterPayload;
-    login: (user: UserRegisterPayload) => void;
+    login: (user: UserRegisterPayload, hasSession?: boolean) => void;
     logout: () => void;
     isAuthenticated: () => boolean;
+    error: unknown | null;
+    setError: (error: unknown | null) => void;
 };
 
 const useAuthStore: UseBoundStore<StoreApi<UserState>> = create<UserState>(
     (set) => ({
         user: null,
-        getUser: () => {
-            const user = sessionStorage.getItem('USER');
-            if (user) {
-                return sha256ToJson(user);
-                // return JSON.parse(sha256ToJson(user));
-            }
-        },
-        login: (user) => {
+        login: (user, hasSession = true) => {
             set({
                 user,
             });
-            sessionStorage.setItem('USER', jsonToSHA256(user));
+
+            if (!hasSession) {
+                sessionStorage.setItem(
+                    'USER',
+                    encryptAES<UserRegisterPayload>(
+                        user,
+                        AUTH_ENCRYPTION_KEY
+                    ) ?? JSON.stringify(null)
+                );
+            }
+            // if (useAuthStore.getState().)
         },
         logout: () => {
             console.log('logging out');
@@ -32,6 +39,10 @@ const useAuthStore: UseBoundStore<StoreApi<UserState>> = create<UserState>(
             sessionStorage.setItem('USER', JSON.stringify(null));
         },
         isAuthenticated: () => !!useAuthStore.getState().user,
+        error: null,
+        setError: (error: unknown | null) => {
+            set({ error });
+        },
     })
 );
 

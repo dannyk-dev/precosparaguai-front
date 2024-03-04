@@ -1,8 +1,10 @@
 'use client';
+
 import { useState, useEffect, Dispatch, SetStateAction } from 'react';
-import { sha256ToJson, jsonToSHA256 } from '../utils/crypto';
+import { encryptAES, decryptAES } from '@/lib/utils/crypto';
 
 type SessionTypes = 'USER';
+const AUTH_ENCRYPTION_KEY = process.env.AUTH_ENCRYPTION_KEY || 'auth_token';
 
 const useSessionStorage = <T>(
     key: SessionTypes,
@@ -11,8 +13,9 @@ const useSessionStorage = <T>(
     const [value, setValue] = useState<T>(() => {
         if (typeof window !== 'undefined') {
             const storedValue = sessionStorage.getItem(key);
+
             return storedValue !== null
-                ? JSON.parse(sha256ToJson(storedValue))
+                ? decryptAES<T>(storedValue, AUTH_ENCRYPTION_KEY)
                 : initialValue;
         }
 
@@ -20,9 +23,13 @@ const useSessionStorage = <T>(
     });
 
     useEffect(() => {
-        if (value === null) return;
-        sessionStorage.setItem('USER', jsonToSHA256(JSON.stringify(value)));
-        // sessionStorage.setItem(key, JSON.stringify(value));
+        if (value !== null) {
+            return;
+        }
+
+        const encryptedValue = encryptAES<T>(value, AUTH_ENCRYPTION_KEY);
+
+        sessionStorage.setItem('USER', encryptedValue ?? JSON.stringify(null));
     }, [key, value]);
 
     return [value, setValue];

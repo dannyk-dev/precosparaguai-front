@@ -8,8 +8,6 @@ interface Props {
 }
 
 export const Trending = ({ products, error }: Props) => {
-    console.log(error);
-
     return (
         <>
             <h2 className="py-4 text-left">Destaques</h2>
