@@ -55,18 +55,20 @@ const Header = () => {
                                 />
                                 <Button
                                     variant="link"
+                                    to="/"
                                     Icon={LogOutIcon}
                                     onClick={() => {
                                         console.log('logging out');
                                         logout();
                                     }}
-                                    to="/"
                                 />
                             </RequireAuth>
 
                             <Button variant="link" Icon={HeartIcon} />
                             <Button variant="link" Icon={BellIcon}>
-                                <span className="badge indicator-item badge-warning badge-xs"></span>
+                                <span className="badge indicator-item badge-warning badge-xs text-warning-content">
+                                    5
+                                </span>
                             </Button>
                         </div>
                     </div>

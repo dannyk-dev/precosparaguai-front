@@ -17,6 +17,9 @@ dependencies:
   '@next/env':
     specifier: ^14.1.0
     version: 14.1.0
+  '@splidejs/react-splide':
+    specifier: ^0.7.12
+    version: 0.7.12
   '@tanstack/react-query':
     specifier: ^5.18.1
     version: 5.22.2(react@18.2.0)
@@ -101,6 +104,9 @@ dependencies:
   react-id-swiper:
     specifier: ^4.0.0
     version: 4.0.0(react-dom@18.2.0)(react@18.2.0)(swiper@9.4.1)
+  react-splide:
+    specifier: link:@types/splidejs/react-splide
+    version: link:@types/splidejs/react-splide
   styled-components:
     specifier: ^6.1.8
     version: 6.1.8(react-dom@18.2.0)(react@18.2.0)
@@ -2979,6 +2985,16 @@ packages:
   /@rushstack/eslint-patch@1.7.2:
     resolution: {integrity: sha512-RbhOOTCNoCrbfkRyoXODZp75MlpiHMgbE5MEBZAnnnLyQNgrigEj4p0lzsMDyc1zVsJDLrivB58tgg3emX0eEA==}
     dev: true
+
+  /@splidejs/react-splide@0.7.12:
+    resolution: {integrity: sha512-UfXH+j47jsMc4x5HA/aOwuuHPqn6y9+ZTNYPWDRD8iLKvIVMZlzq2unjUEvyDAU+TTVPZOXkG2Ojeoz0P4AkZw==}
+    dependencies:
+      '@splidejs/splide': 4.1.4
+    dev: false
+
+  /@splidejs/splide@4.1.4:
+    resolution: {integrity: sha512-5I30evTJcAJQXt6vJ26g2xEkG+l1nXcpEw4xpKh0/FWQ8ozmAeTbtniVtVmz2sH1Es3vgfC4SS8B2X4o5JMptA==}
+    dev: false
 
   /@surma/rollup-plugin-off-main-thread@2.2.3:
     resolution: {integrity: sha512-lR8q/9W7hZpMWweNiAKU7NQerBnzQQLvi8qnTDU/fxItPhtZVMbPV3lbCwjhIlNBe9Bbr5V+KHshvWmVSG9cxQ==}

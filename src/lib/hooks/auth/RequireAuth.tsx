@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useTransition } from 'react';
 import useSessionStorage from '@/lib/hooks';
 import { UserRegisterPayload } from '@/lib/types/auth.types';
-import { PageLoader, Spinner } from '@/lib/components/shared';
+import { PageLoader } from '@/lib/components/shared';
 import { useGlobalStore } from '@/lib/store';
 import { Transition } from '@/lib/components/shared/loaders/Transition';
 
@@ -36,29 +36,25 @@ export const RequireAuth = ({
     const [isPending, startTransition] = useTransition();
 
     const handleRedirect = () => {
-        if (redirectPage && isAuthenticated()) {
-            if (inverseAuthValidation) {
+        if (redirectPage) {
+            if (isAuthenticated() && inverseAuthValidation) {
                 setLoading(true);
                 router.push('/');
+            } else if (!isAuthenticated() && !inverseAuthValidation) {
+                setLoading(true);
+                router.push('/register');
             }
-        } else if (
-            redirectPage &&
-            !isAuthenticated() &&
-            !inverseAuthValidation
-        ) {
-            setLoading(true);
-            router.push('/register');
         }
     };
 
     useEffect(() => {
-        if (error) console.log(error);
+        if (error) {
+            console.log(error);
+            return;
+        }
+
         startTransition(() => {
-            if (!isAuthenticated()) {
-                if (session) {
-                    login(session);
-                }
-            }
+            !isAuthenticated() && session && login(session);
 
             handleRedirect();
         });

@@ -34,10 +34,21 @@ export const useForm = <T extends RegisterData>(
     const mutation = useMutation({
         ...config,
         mutationFn: async (data: T) => {
-            return await fetch(apiRoute, {
-                method: 'POST',
-                body: JSON.stringify(data),
-            }).then((res) => res.json());
+            try {
+                return await fetch(apiRoute, {
+                    method: 'POST',
+                    body: JSON.stringify(data),
+                }).then((res) => res.json());
+            } catch (error) {
+                console.log('Found error');
+                console.error(error);
+                throw error;
+            }
+        },
+        onError: (error): void => {
+            console.error(error);
+            setLoading(false);
+            setError(error);
         },
         onSuccess: (data): void => {
             if (data?.error) return;
@@ -45,16 +56,12 @@ export const useForm = <T extends RegisterData>(
             setLoading(false);
             startTransition(() => {
                 login(data, false);
+
                 setSession(data);
                 router.push('/dashboard');
             });
         },
-        onError: (error) => {
-            console.log('on error hook');
-            console.error(error);
-            setLoading(false);
-            setError(error);
-        },
+
         mutationKey: key,
     });
 
@@ -73,10 +80,10 @@ export const useForm = <T extends RegisterData>(
             try {
                 mutation.mutate(data);
             } catch (error) {
-                mutation.reset();
-                console.log('register errror... setting error');
                 setError(error);
+
                 router.refresh();
+                mutation.reset();
                 throw error;
             }
         }

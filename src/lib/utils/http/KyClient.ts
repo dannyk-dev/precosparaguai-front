@@ -5,6 +5,7 @@ import {
     ResourceNotFoundException,
 } from './exceptions';
 import { AjaxError } from './AjaxError';
+import { UnauthorizedException } from './exceptions/UnauthorizedException';
 
 export interface IKyClientOptions extends Options {}
 
@@ -26,6 +27,17 @@ export class KyClient implements IHttpServiceClient<IKyClientOptions> {
                             response?.status === 404
                         ) {
                             return new ResourceNotFoundException(
+                                response,
+                                request,
+                                options
+                            );
+                        }
+
+                        if (
+                            request?.method === 'POST' &&
+                            response?.status === 404
+                        ) {
+                            return new UnauthorizedException(
                                 response,
                                 request,
                                 options
