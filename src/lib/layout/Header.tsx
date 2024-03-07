@@ -14,7 +14,6 @@ import { RequireAuth } from '@/lib/hooks/auth';
 import { useAuthStore } from '@/lib/store';
 
 import precosLogo from '@/../public/assets/precos_logo.png';
-import Link from 'next/link';
 import Image from 'next/image';
 
 const Header = () => {
@@ -24,21 +23,17 @@ const Header = () => {
         <header className="relative top-0 z-10 w-full bg-base-100/60 pb-2 backdrop-blur-sm">
             <div className="container">
                 <div className="navbar">
-                    <div className="navbar-start flex h-full items-center justify-start">
+                    <div className="navbar-start flex  h-full items-center justify-start">
                         <SideBar />
                         <Input
                             variant="simple"
-                            variantSize="small"
                             type="text"
                             className="w-20 py-5 md:w-80"
                             placeholder="Search Products"
                             Icon={SearchIcon}
                         />
                     </div>
-                    <div className="navbar-center flex flex-1">
-                        {/* <Link href="/"> */}
-
-                        {/* </Link> */}
+                    <div className="navbar-center  flex">
                         <Button
                             variant="link"
                             to="/"

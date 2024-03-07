@@ -21,6 +21,8 @@ export const useGetProducts = () => {
         queryKey: key,
     });
 
+    console.log(data);
+
     return {
         products: data ?? [],
         isLoading,

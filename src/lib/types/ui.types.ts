@@ -3,7 +3,7 @@ import { StaticImageData } from 'next/image';
 import { IProduct } from '../interfaces';
 
 // SLIDER TYPES
-type sliderVariant = 'products' | 'banner' | 'full';
+export type sliderVariant = 'products' | 'banner' | 'full';
 
 export interface ISliderProps {
     variant: sliderVariant;

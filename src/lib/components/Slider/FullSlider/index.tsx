@@ -15,6 +15,7 @@ import { IFullSliderProps } from '@/lib/types/ui.types';
 import { FullWithProgess } from './FullWithProgress';
 import { cn } from '@/lib/styles/utils';
 import { merge } from '@/lib/utils/merge';
+import SliderDefaults from '../SliderOptions';
 
 export const FullSlider = ({
     options,
@@ -23,21 +24,7 @@ export const FullSlider = ({
     progress,
     ...props
 }: IFullSliderProps & SplideProps) => {
-    const defaultOptions: Options = {
-        rewind: true,
-        drag: true,
-        lazyLoad: true,
-        interval: 4000,
-        autoplay: true,
-        pagination: false,
-        easing: 'ease',
-        fixedWidth: '100%',
-    };
-
-    const sliderOptions = merge<Options, Options>(
-        defaultOptions,
-        options || {}
-    ) as Options;
+    const sliderOptions = merge(SliderDefaults.full, options || {}) as Options;
 
     return progress ? (
         <FullWithProgess
