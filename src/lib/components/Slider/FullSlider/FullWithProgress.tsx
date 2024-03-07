@@ -44,7 +44,7 @@ export const FullWithProgess = ({
                             src={image}
                             alt={`image ${key}`}
                             objectFit="contain"
-                            className={cn('h-full w-full', imageClasses)}
+                            className={cn('h-full w-full', imageClasses || '')}
                         />
 
                         <SliderProgressBar

@@ -1,8 +1,8 @@
 import { Options } from '@splidejs/react-splide';
 import { StaticImageData } from 'next/image';
 import { IProduct } from '../interfaces';
-import { SplideProps } from '@splidejs/react-splide';
 
+// SLIDER TYPES
 type sliderVariant = 'products' | 'banner' | 'full';
 
 export interface ISliderProps {

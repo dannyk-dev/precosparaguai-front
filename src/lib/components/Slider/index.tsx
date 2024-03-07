@@ -32,10 +32,10 @@ export const Slider = ({
                 images && (
                     <FullSlider
                         {...props}
-                        imageClasses={imageClasses}
+                        imageClasses={imageClasses || ''}
                         images={images}
                         options={options}
-                        progress={progress}
+                        progress={progress || false}
                     />
                 )
             );

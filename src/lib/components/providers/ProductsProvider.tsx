@@ -9,7 +9,11 @@ interface IProductsProviderProps {
 export const ProductsProvider = ({
     ProductContent,
 }: IProductsProviderProps) => {
-    const { products, error } = useGetProducts();
+    const { products, error, isLoading } = useGetProducts();
+
+    useEffect(() => {
+        console.log(products.length);
+    }, [isLoading]);
 
     return (
         <div className="mt-5">

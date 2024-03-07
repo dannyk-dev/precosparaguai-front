@@ -14,15 +14,18 @@ interface IProps {}
 const Hero = ({}: IProps) => {
     return (
         <>
-            <div className="container">
-                <div className="mt-10 max-h-screen w-full ">
-                    <Slider
-                        variant="full"
-                        images={[banner, banner2, banner, banner2]}
-                        imageClasses="rounded-xl"
-                        progress={true}
-                    />
-                </div>
+            <div className="min-h-screen w-full">
+                <Slider
+                    variant="full"
+                    images={[banner, banner2, banner, banner2]}
+                    imageClasses="rounded-xl"
+                    tag="section"
+                    options={{
+                        fixedHeight: 'calc(100vh - 5rem + 1rem)',
+                    }}
+                />
+            </div>
+            <div className="md:container">
                 <ProductsProvider ProductContent={Trending} />
             </div>
         </>

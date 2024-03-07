@@ -21,8 +21,8 @@ export const SliderProgressBar = styled.div<{
     bottom: 0;
     left: 0;
     z-index: 10;
-    background: red;
-    height: 2px;
+    background: #bdbdbd;
+    height: 4px;
     transition: width 600ms 0.2s ease;
     width: ${(props) => (props.$width ? String(props.$width + '%') : 0)};
     animation: ${(props) => (props.$isMoving ? fadeIn : 'none')} 200ms ease;

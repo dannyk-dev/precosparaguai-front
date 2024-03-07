@@ -5,7 +5,7 @@ import type { NextPage } from 'next';
 const Home: NextPage = () => {
     return (
         <Layout>
-            <div className="flex min-h-[60vh] flex-col items-center justify-center gap-8 text-center">
+            <div className="min-h-[100vh]">
                 <Hero />
             </div>
         </Layout>
