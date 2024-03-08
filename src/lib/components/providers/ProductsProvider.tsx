@@ -11,10 +11,6 @@ export const ProductsProvider = ({
 }: IProductsProviderProps) => {
     const { products, error, isLoading } = useGetProducts();
 
-    useEffect(() => {
-        console.log(products.length);
-    }, [isLoading]);
-
     return (
         <div className="mt-5">
             <ProductContent products={products} error={error} />

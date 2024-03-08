@@ -3,6 +3,7 @@ import { createFixture } from './createFixture';
 
 type PositionOptions = 'left' | 'right' | 'top' | 'bottom' | 'full';
 type OrderOptions = 'priority' | 'normal' | 'base';
+
 import banner from '@/../public/assets/banner_dior.jpg';
 
 export interface IBannerFixture {

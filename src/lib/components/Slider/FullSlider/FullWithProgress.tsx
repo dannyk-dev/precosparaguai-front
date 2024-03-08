@@ -39,12 +39,17 @@ export const FullWithProgess = ({
         >
             <SplideTrack>
                 {images.map((image, key) => (
-                    <SplideSlide>
+                    <SplideSlide className="relative">
                         <Image
                             src={image}
                             alt={`image ${key}`}
-                            objectFit="contain"
-                            className={cn('h-full w-full', imageClasses || '')}
+                            fill={true}
+                            loading="lazy"
+                            placeholder="blur"
+                            className={cn(
+                                'h-full w-full object-center',
+                                imageClasses || ''
+                            )}
                         />
 
                         <SliderProgressBar

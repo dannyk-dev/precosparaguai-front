@@ -7,12 +7,12 @@ interface IProps {}
 
 export const SideBar = ({}: IProps) => {
     return (
-        <div className="drawer mr-6 w-fit">
+        <div className="drawer z-20 mr-6 w-fit">
             <input id="main-drawer" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
                 <label
                     htmlFor="main-drawer"
-                    className="btn btn-ghost drawer-button btn-sm"
+                    className="btn btn-ghost drawer-button  "
                 >
                     <Menu />
                     Menu

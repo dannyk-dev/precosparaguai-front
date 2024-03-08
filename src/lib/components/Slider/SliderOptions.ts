@@ -21,7 +21,8 @@ const SliderDefaults: SliderOption = {
         autoplay: true,
         pagination: false,
         easing: 'ease',
-        fixedWidth: '100%',
+        width: '100%',
+        height: '100%',
     },
 };
 

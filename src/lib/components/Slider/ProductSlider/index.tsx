@@ -25,7 +25,7 @@ export const ProductSlider = ({
     ) as Options;
 
     return (
-        <Splide options={sliderOptions} {...props}>
+        <Splide options={sliderOptions} {...props} className="relative">
             {products.map((prod, index) => (
                 <SplideSlide key={index}>
                     <Card item={prod} />

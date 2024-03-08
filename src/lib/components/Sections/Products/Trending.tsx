@@ -11,7 +11,11 @@ export const Trending = ({ products, error }: Props) => {
     return (
         <>
             <h2 className="py-4 text-left">Destaques</h2>
-            <Slider variant="products" products={products} />
+            <Slider
+                variant="products"
+                className="relative"
+                products={products}
+            />
         </>
     );
 };

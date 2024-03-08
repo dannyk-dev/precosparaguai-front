@@ -14,7 +14,6 @@ import '@splidejs/react-splide/css/core';
 import { IFullSliderProps } from '@/lib/types/ui.types';
 import { FullWithProgess } from './FullWithProgress';
 import { cn } from '@/lib/styles/utils';
-import { merge } from '@/lib/utils/merge';
 import SliderDefaults from '../SliderOptions';
 
 export const FullSlider = ({
@@ -24,7 +23,13 @@ export const FullSlider = ({
     progress,
     ...props
 }: IFullSliderProps & SplideProps) => {
-    const sliderOptions = merge(SliderDefaults.full, options || {}) as Options;
+    const sliderOptions: Options = {
+        ...SliderDefaults.full,
+        ...options,
+    };
+
+    console.log(sliderOptions);
+    // const sliderOptions = merge(SliderDefaults.full, options || {}) as Options;
 
     return progress ? (
         <FullWithProgess
@@ -34,14 +39,20 @@ export const FullSlider = ({
             images={images}
         />
     ) : (
-        <Splide options={sliderOptions} {...props}>
+        <Splide options={sliderOptions} {...props} className="relative">
             {images.map((image, index) => (
-                <SplideSlide key={index}>
+                <SplideSlide key={index} className="relative">
                     <Image
                         src={image}
                         alt={`image ${index}`}
-                        objectFit="contain"
-                        className={cn(imageClasses, 'h-full w-full')}
+                        fill={true}
+                        sizes="100%"
+                        loading="lazy"
+                        placeholder="blur"
+                        className={cn(
+                            imageClasses || '',
+                            'h-full w-full  object-center'
+                        )}
                     />
                 </SplideSlide>
             ))}
