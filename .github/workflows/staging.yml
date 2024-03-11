@@ -1,27 +1,40 @@
-on:
-  workflow_dispatch:  
+name: Node.js CI/CD
 
-name: Pipeline Staging
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  release-please:
-    runs-on: ubuntu-latest  
-    
+  build:
+
+    runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code  
-        uses: actions/checkout@v2
-      
-      - name: Setup Node.js 
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'  
-      
-      - name: Install dependencies  
-        run: npm install
-      
-      - name: Run release-please  
-        uses: nodejs/setup-node@v2  
-        with:
-          node-version: '12'  
-          release-type: node  
-          package-name: release-please-action  
+    - uses: actions/checkout@v2
+
+    - name: Use Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run tests
+      run: npm test
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+    - name: Deploy to production
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
