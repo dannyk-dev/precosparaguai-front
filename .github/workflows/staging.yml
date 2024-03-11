@@ -1,12 +1,7 @@
-name: Node.js CI/CD
+name: Staging Front-end 
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch: 
 
 jobs:
   build:
@@ -19,7 +14,7 @@ jobs:
     - name: Use Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'
+        node-version: 'latest'
 
     - name: Install dependencies
       run: npm install
@@ -32,9 +27,9 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
 
-    # steps:
-    # - name: Deploy to production
-    #   uses: peaceiris/actions-gh-pages@v3
-    #   with:
-    #     github_token: ${{ secrets.GITHUB_TOKEN }}
-    #     publish_dir: ./dist
+    steps:
+    - name: Deploy to production
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./staging.sh
