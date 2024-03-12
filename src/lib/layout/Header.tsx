@@ -40,7 +40,7 @@ const Header = () => {
 
     return (
         <motion.header
-            className="top-0 z-10 w-full"
+            className=" top-0 z-10 w-full"
             initial={{ backgroundColor: 'transparent', position: 'sticky' }}
             animate={controls}
             style={{

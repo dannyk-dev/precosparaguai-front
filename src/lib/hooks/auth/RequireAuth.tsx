@@ -2,7 +2,7 @@
 
 import useAuthStore from '@/lib/store/authStore';
 import { useRouter } from 'next/navigation';
-import React, { useEffect, useTransition } from 'react';
+import React, { useEffect, useLayoutEffect, useTransition } from 'react';
 import useSessionStorage from '@/lib/hooks';
 import { UserRegisterPayload } from '@/lib/types/auth.types';
 import { PageLoader } from '@/lib/components/shared';
@@ -47,7 +47,7 @@ export const RequireAuth = ({
         }
     };
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (error) {
             console.log(error);
             return;

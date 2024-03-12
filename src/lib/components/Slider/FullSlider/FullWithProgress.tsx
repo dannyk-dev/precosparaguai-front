@@ -45,7 +45,6 @@ export const FullWithProgess = ({
                             alt={`image ${key}`}
                             fill={true}
                             loading="lazy"
-                            placeholder="blur"
                             className={cn(
                                 'h-full w-full object-center',
                                 imageClasses || ''

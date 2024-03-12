@@ -11,6 +11,7 @@ const SliderDefaults: SliderOption = {
         lazyLoad: true,
         pagination: false,
         autoWidth: true,
+        autoplay: false,
     },
     banner: {},
     full: {
@@ -23,6 +24,8 @@ const SliderDefaults: SliderOption = {
         easing: 'ease',
         width: '100%',
         height: '100%',
+        fixedWidth: '100%',
+        fixedHeight: '100%',
     },
 };
 

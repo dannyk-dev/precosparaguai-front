@@ -29,7 +29,6 @@ export const FullSlider = ({
     };
 
     console.log(sliderOptions);
-    // const sliderOptions = merge(SliderDefaults.full, options || {}) as Options;
 
     return progress ? (
         <FullWithProgess
@@ -48,7 +47,6 @@ export const FullSlider = ({
                         fill={true}
                         sizes="100%"
                         loading="lazy"
-                        placeholder="blur"
                         className={cn(
                             imageClasses || '',
                             'h-full w-full  object-center'

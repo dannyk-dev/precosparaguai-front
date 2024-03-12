@@ -1,9 +1,10 @@
-import { bannerFixture } from '@/lib/utils/fixtures/BannerFixture';
+import { SemanaDoConsumidorFixture } from '@/lib/utils/fixtures/BannerFixture';
 import { NextResponse } from 'next/server';
 
 export const GET = async (req: Request, res: Response) => {
     try {
-        const banner = bannerFixture.toStructure();
+        const banner = SemanaDoConsumidorFixture;
+        console.log(banner);
 
         return new NextResponse(JSON.stringify(banner), {
             status: 200,
