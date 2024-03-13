@@ -11,9 +11,9 @@ const Quotation = () => {
     const [selectedCurrency, setSelectedCurrency] = useState(CurrencyData[0]);
 
     return (
-        <div className="w-fit max-w-sm px-4">
+        <div className=" w-fit max-w-sm px-4 ">
             <Popover className="relative">
-                <Popover.Button className="btn btn-sm bg-base-300 text-base-content outline-none hover:text-base-content">
+                <Popover.Button className="btn btn-sm bg-zinc-100/80 text-base-content shadow-sm outline-none backdrop-blur-lg backdrop-saturate-100 transition-all duration-200 ease-in-out hover:bg-base-300 hover:text-base-content hover:shadow-md">
                     <MdCurrencyExchange className="text-base" />
                     Currency
                 </Popover.Button>

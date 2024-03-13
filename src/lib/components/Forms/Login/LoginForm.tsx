@@ -1,7 +1,7 @@
 import { IFormContentProps } from '@/lib/interfaces';
 import React from 'react';
-import { Button, Input, Spinner } from '@/lib/components/shared';
-import { LockIcon, LogInIcon, UserIcon } from 'lucide-react';
+import { Input } from '@/lib/components/shared';
+import { LockIcon, UserIcon } from 'lucide-react';
 import { FormSubmit } from '../FormSubmit';
 
 export const LoginForm = ({

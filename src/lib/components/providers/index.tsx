@@ -2,8 +2,8 @@
 
 import { ReactNode, Suspense } from 'react';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-import { Spinner } from '../shared/loaders';
-import { Flowbite } from 'flowbite-react';
+import { useGlobalStore } from '@/lib/store';
+import { RequireAuth } from '@/lib/hooks/auth';
 
 const queryClient = new QueryClient();
 
@@ -14,9 +14,8 @@ interface IProps {
 export const Providers = ({ children }: IProps) => {
     return (
         <QueryClientProvider client={queryClient}>
-            <Flowbite>{children}</Flowbite>
+            <RequireAuth />
+            {children}
         </QueryClientProvider>
     );
 };
-
-export { ProductsProvider } from './ProductsProvider';

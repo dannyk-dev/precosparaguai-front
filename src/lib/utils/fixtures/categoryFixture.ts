@@ -11,15 +11,6 @@ const categoryFixture = createFixture<ICategories>({
     },
 });
 
-// export const CategoryFixture = createFixture<ICategories>({
-//     _id: uuidv4(),
-//     title: 'Celulares',
-//     subcategories: {
-//         apple: ['IPhone 15', 'IPhone 14', 'IPhone 13'],
-//         samsung: ['S24', 'S23', 'A4', 'A5', 'A16'],
-//     },
-// });
-
 export const CategoryFactory = categoryFixture.createCollection([
     {
         _id: uuidv4(),

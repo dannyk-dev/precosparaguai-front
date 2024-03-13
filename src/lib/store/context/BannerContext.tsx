@@ -1,9 +1,8 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { IBanner } from '@/lib/types/ui.types';
-import { useGetBanners } from '@/lib/hooks/useGetBanners';
+import React, { createContext, useContext } from 'react';
+import { useGetBanners } from '@/lib/hooks';
 import { PageLoader } from '@/lib/components/shared';
-import { BannerSections, PositionOptions } from '../../types/ui.types';
-import { IGroupedBanners } from '@/lib/types/ui.types';
+import { IBanner, IGroupedBanners, BannerSections } from '@/lib/types/ui.types';
+import { useMediaQuery } from 'react-responsive';
 
 interface IBannerContext {
     banners: IBanner[];
@@ -26,15 +25,22 @@ export const useBannerContext = () => {
 };
 
 export const BannerProvider = ({ children }: { children: React.ReactNode }) => {
+    const isMobile = useMediaQuery({
+        query: '(max-width: 480px)',
+    });
     const { banners, isLoading } = useGetBanners();
-    console.log(banners);
 
     const BannerGroupBy = (section: BannerSections): IGroupedBanners => {
         return banners.reduce((acc: IGroupedBanners, banner: IBanner) => {
             if (banner.pageSection === section) {
+                const image = isMobile ? banner.images.sm : banner.images.lg;
+
                 return {
                     ...acc,
-                    [banner.pos]: [...(acc[banner.pos] || []), banner],
+                    [banner.pos]: [
+                        ...(acc[banner.pos] || []),
+                        { ...banner, image },
+                    ],
                 };
             }
 

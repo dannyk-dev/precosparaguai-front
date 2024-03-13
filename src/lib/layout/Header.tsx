@@ -20,43 +20,55 @@ import { useEffect } from 'react';
 import { useScroll } from '@/lib/hooks';
 import { useMediaQuery } from 'react-responsive';
 
-const Header = () => {
+interface IHeaderProps {
+    noFixed?: boolean;
+}
+
+const Header = ({ noFixed = false }: IHeaderProps) => {
     const controls = useAnimation();
     const { isScrolled } = useScroll();
+    const logout = useAuthStore((state) => state.logout);
     const isMobile = useMediaQuery({
         query: '(max-width: 480px)',
     });
 
-    const loading = useGlobalStore((state) => state.loading);
-    const logout = useAuthStore((state) => state.logout);
-
     useEffect(() => {
+        controls.mount();
+
         controls.start({
             backgroundColor: isScrolled ? '#fcfcfcce' : 'transparent',
             backdropFilter: isScrolled ? 'blur(8px) saturate(1px)' : 'none',
-            position: isScrolled ? 'sticky' : 'fixed',
+            position: isScrolled ? 'sticky' : noFixed ? 'sticky' : 'fixed',
+            height: isScrolled ? '4rem' : '5rem',
+            transition: {
+                duration: 0.2,
+                ease: 'easeInOut',
+            },
         });
     }, [isScrolled, controls]);
 
     return (
         <motion.header
-            className=" top-0 z-10 w-full"
-            initial={{ backgroundColor: 'transparent', position: 'sticky' }}
-            animate={controls}
-            style={{
-                transition: 'all .3s ease-in-out',
+            className=" top-0 z-10 flex w-full items-center"
+            initial={{
+                backgroundColor: noFixed ? '#fcfcfc62' : 'transparent',
+                position: 'sticky',
+                backdropFilter: 'none',
+                height: '5rem',
             }}
+            animate={noFixed ? {} : controls}
         >
             <div className="container">
                 <div className="navbar ">
-                    <div className="navbar-start flex  h-full items-center justify-start">
+                    <div className="navbar-start flex h-full items-center justify-start">
                         <SideBar />
+
                         {!isMobile && (
                             <Input
                                 variant="simple"
                                 variantSize="xsmall"
                                 type="text"
-                                className="w-20 py-5 md:w-80 "
+                                className="w-20 py-4  text-xs shadow-lg transition-all duration-300 ease-in-out md:w-60 md:focus-within:w-80 md:hover:w-80 md:focus:w-80"
                                 placeholder="Search Products"
                                 Icon={SearchIcon}
                             />
@@ -67,7 +79,7 @@ const Header = () => {
                             variant="link"
                             to="/"
                             variantSize="large"
-                            className="h-20 w-60 -translate-y-2 object-contain py-0 mix-blend-multiply"
+                            className="h-16 w-44 -translate-y-2 object-contain py-0 mix-blend-multiply md:h-20 md:w-52"
                         >
                             <Image
                                 src={precosLogo}
@@ -76,8 +88,8 @@ const Header = () => {
                             />
                         </Button>
                     </div>
-                    <div className="navbar-end hidden lg:flex">
-                        <Quotation />
+                    <div className="navbar-end lg:flex">
+                        {!isMobile && <Quotation />}
                         <div className="flex items-center justify-center">
                             <RequireAuth inverseAuthValidation={true}>
                                 <Button
@@ -91,6 +103,7 @@ const Header = () => {
                                     variant="link"
                                     to="/dashboard"
                                     Icon={LayoutDashboardIcon}
+                                    className="btn-sm md:btn-md"
                                 />
                                 <Button
                                     variant="link"
@@ -105,7 +118,11 @@ const Header = () => {
                                 Icon={HeartIcon}
                                 className={`${isScrolled ? 'text-base-content' : 'text-white'}`}
                             />
-                            <Button variant="link" Icon={BellIcon}>
+                            <Button
+                                variant="link"
+                                Icon={BellIcon}
+                                className="hidden md:block"
+                            >
                                 <span className="badge indicator-item badge-warning badge-xs text-warning-content">
                                     5
                                 </span>

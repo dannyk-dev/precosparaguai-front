@@ -27,7 +27,7 @@ export interface IProductSliderProps extends Partial<ISliderProps> {
 }
 
 export type PositionOptions = 'left' | 'right' | 'top' | 'bottom' | 'full';
-export type OrderOptions = 'priority' | 'normal' | 'base';
+export type BannerVariants = 'lg' | 'sm';
 
 export type BannerSections = 'semana_consumidor' | 'hero' | 'categorias';
 
@@ -35,12 +35,14 @@ export interface IBanner {
     _id: string;
     companyId: string;
     pos: PositionOptions;
-    order: OrderOptions;
-    image_url: string;
+    images: Record<BannerVariants, string>;
     image_alt: string;
-    status: boolean;
+    image_href?: string;
     pageSection: BannerSections;
 }
 
-export type IGroupedBanners = Record<PositionOptions, IBanner[]> &
-    Record<string, any>;
+export interface IBannerGroup extends IBanner {
+    image: string;
+}
+
+export type IGroupedBanners = Record<PositionOptions, IBannerGroup[]>;

@@ -28,8 +28,6 @@ export const FullSlider = ({
         ...options,
     };
 
-    console.log(sliderOptions);
-
     return progress ? (
         <FullWithProgess
             {...props}

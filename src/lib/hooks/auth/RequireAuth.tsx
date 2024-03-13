@@ -10,7 +10,7 @@ import { useGlobalStore } from '@/lib/store';
 import { Transition } from '@/lib/components/shared/loaders/Transition';
 
 interface IAuthProviderProps {
-    children: React.ReactNode;
+    children?: React.ReactNode;
     redirectPage?: boolean;
     inverseAuthValidation?: boolean;
 }
@@ -57,9 +57,8 @@ export const RequireAuth = ({
             !isAuthenticated() && session && login(session);
 
             handleRedirect();
+            setLoading(false);
         });
-
-        setLoading(false);
     }, [isAuthenticated, session, error]);
 
     if (isPending) {
@@ -67,7 +66,7 @@ export const RequireAuth = ({
     } else if (loading) return null;
 
     if ((inverseAuthValidation && !user) || (!inverseAuthValidation && user)) {
-        return <Transition>{children}</Transition>;
+        return <Transition>{children ?? null}</Transition>;
     }
 
     return null;

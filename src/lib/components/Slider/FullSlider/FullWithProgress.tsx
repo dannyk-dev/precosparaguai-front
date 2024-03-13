@@ -39,7 +39,7 @@ export const FullWithProgess = ({
         >
             <SplideTrack>
                 {images.map((image, key) => (
-                    <SplideSlide className="relative">
+                    <SplideSlide className="relative" key={key}>
                         <Image
                             src={image}
                             alt={`image ${key}`}

@@ -4,7 +4,6 @@ import { NextResponse } from 'next/server';
 export const GET = async (req: Request, res: Response) => {
     try {
         const banner = SemanaDoConsumidorFixture;
-        console.log(banner);
 
         return new NextResponse(JSON.stringify(banner), {
             status: 200,

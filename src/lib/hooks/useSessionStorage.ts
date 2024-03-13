@@ -14,9 +14,18 @@ const useSessionStorage = <T>(
         if (typeof window !== 'undefined') {
             const storedValue = sessionStorage.getItem(key);
 
-            return storedValue !== null
-                ? decryptAES<T>(storedValue as string, AUTH_ENCRYPTION_KEY)
-                : initialValue;
+            try {
+                const parsedValue = JSON.parse(storedValue ?? '');
+
+                if (parsedValue === null) return initialValue;
+            } catch (err) {
+                // json can't parse because the user session is encrypted. So this error is intentional
+
+                return decryptAES<T>(
+                    storedValue as string,
+                    AUTH_ENCRYPTION_KEY
+                );
+            }
         }
 
         return initialValue;
