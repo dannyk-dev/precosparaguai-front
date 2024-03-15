@@ -1,4 +1,4 @@
-import { ICategories } from '@/lib/interfaces';
+import { ICategory } from '@/lib/interfaces';
 import { QueryCacheKey } from '@/lib/types';
 import { useQuery } from '@tanstack/react-query';
 
@@ -6,7 +6,7 @@ export const useGetProductCategories = () => {
     const key: QueryCacheKey = ['CATEGORIES'];
 
     const { data, isLoading, isError, error, ...rest } = useQuery<
-        ICategories[],
+        ICategory[],
         Error
     >({
         queryFn: async () => {

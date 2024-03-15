@@ -1,11 +1,11 @@
-import { ICategories } from '@/lib/interfaces';
+import { ICategory } from '@/lib/interfaces';
 import { SidebarCloseIcon } from 'lucide-react';
 import React from 'react';
 import { SubCategoryItem } from './SubCategoryItem';
 
 interface IProps {
-    currentCategory: ICategories | undefined;
-    setCurrentCategory: (currentCategory: ICategories | undefined) => void;
+    currentCategory: ICategory | undefined;
+    setCurrentCategory: (currentCategory: ICategory | undefined) => void;
 }
 
 export const Subdrawer = ({ currentCategory, setCurrentCategory }: IProps) => {
