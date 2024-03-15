@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300.265" height="300.266" viewBox="0 0 300.265 300.266">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Retângulo_4725" data-name="Retângulo 4725" width="116.938" height="119.181" fill="none" stroke="#707070" stroke-width="2"/>
+    </clipPath>
+  </defs>
+  <g id="Grupo_11024" data-name="Grupo 11024" transform="translate(-2307.422 -1666.019)">
+    <g id="Beleza-e-saude" transform="translate(-15997.183 -446.857)">
+      <g id="Grupo_10996" data-name="Grupo 10996">
+        <g id="Grupo_10995" data-name="Grupo 10995">
+          <path id="Caminho_18855" data-name="Caminho 18855" d="M1873.9.01h275.243a12.51,12.51,0,0,1,12.511,12.511V287.765a12.51,12.51,0,0,1-12.511,12.511H1873.9a12.51,12.51,0,0,1-12.511-12.511V12.521A12.51,12.51,0,0,1,1873.9.01" transform="translate(16443.213 2112.867)" fill="#fafafa"/>
+          <g id="Grupo_11012" data-name="Grupo 11012" transform="translate(18404 2193)">
+            <g id="Grupo_11010" data-name="Grupo 11010" clip-path="url(#clip-path)">
+              <path id="Caminho_18898" data-name="Caminho 18898" d="M111.491,14.015H97.831a26.12,26.12,0,0,1-5.09-.5L29.307.895a20.5,20.5,0,0,0-13.33,1.852L11.938,4.811A20.5,20.5,0,0,0,.777,22.446L.508,31.293a18.729,18.729,0,0,0,7.961,15.9l4.387,3.08a18.729,18.729,0,0,0,14.206,3.079L90.334,41.5a26.054,26.054,0,0,1,3.768-.425l17.585-.7a4.947,4.947,0,0,0,4.751-4.943V18.962A4.947,4.947,0,0,0,111.491,14.015Z" fill="none" stroke="#040405" stroke-miterlimit="10" stroke-width="2"/>
+              <path id="Caminho_18899" data-name="Caminho 18899" d="M16.329,52.189l6.109,6.257,4.492,43.232a1.148,1.148,0,0,0,1.109,1.033c3.905.109,17.92.452,18.957-.206.288-.182,2.7-26.128,4.012-40.456a19.137,19.137,0,0,1,8.649-14.314l1.062-.689" fill="none" stroke="#040405" stroke-miterlimit="10" stroke-width="2"/>
+              <path id="Caminho_18900" data-name="Caminho 18900" d="M27.035,39.629h0a7.284,7.284,0,0,1-7.284-7.284V21.59a7.284,7.284,0,1,1,14.568,0V32.345A7.284,7.284,0,0,1,27.035,39.629Z" fill="none" stroke="#040405" stroke-miterlimit="10" stroke-width="2"/>
+              <path id="Caminho_18901" data-name="Caminho 18901" d="M41.438,118.681H33.909a2.882,2.882,0,0,1-2.883-2.882V102.9H44.32v12.9A2.882,2.882,0,0,1,41.438,118.681Z" fill="none" stroke="#040405" stroke-miterlimit="10" stroke-width="2"/>
+              <path id="Caminho_18902" data-name="Caminho 18902" d="M54.776,77.074l-5.165.072,1.842-17.322h3.271a3.746,3.746,0,0,1,3.745,3.746v9.759A3.746,3.746,0,0,1,54.776,77.074Z" fill="none" stroke="#040405" stroke-miterlimit="10" stroke-width="2"/>
+              <line id="Linha_1575" data-name="Linha 1575" x2="8.596" transform="translate(1.459 17.795)" fill="none" stroke="#040405" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+              <line id="Linha_1576" data-name="Linha 1576" x2="9.42" transform="translate(0.636 27.103)" fill="none" stroke="#040405" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+              <line id="Linha_1577" data-name="Linha 1577" x2="8.994" transform="translate(1.062 36.411)" fill="none" stroke="#040405" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+    <text id="Beleza_e_Saúde" data-name="Beleza e Saúde" transform="translate(2457.556 1918.143)" fill="#303030" font-size="25" font-family="OpenSans-Bold, Open Sans" font-weight="700"><tspan x="-92.334" y="0">Beleza e Saúde</tspan></text>
+  </g>
+</svg>

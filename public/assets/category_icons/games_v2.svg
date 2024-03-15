@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300.266" height="300.266" viewBox="0 0 300.266 300.266">
+  <g id="Grupo_11018" data-name="Grupo 11018" transform="translate(-257.238 -1666.019)">
+    <g id="Games" transform="translate(-15997.183 -446.857)">
+      <path id="Caminho_18878" data-name="Caminho 18878" d="M849.719.01h275.244a12.511,12.511,0,0,1,12.511,12.511V287.765a12.511,12.511,0,0,1-12.511,12.511H849.719a12.511,12.511,0,0,1-12.511-12.511V12.521A12.511,12.511,0,0,1,849.719.01" transform="translate(15417.213 2112.867)" fill="#fafafa"/>
+      <path id="Caminho_18879" data-name="Caminho 18879" d="M915.277,62.735h-6.73v-6.73a1.5,1.5,0,0,0-1.5-1.5H900.47a1.5,1.5,0,0,0-1.5,1.5v6.73h-6.73a1.5,1.5,0,0,0-1.5,1.5v6.58a1.5,1.5,0,0,0,1.5,1.5h6.73v6.73a1.5,1.5,0,0,0,1.5,1.5h6.58a1.5,1.5,0,0,0,1.5-1.5v-6.73h6.73a1.5,1.5,0,0,0,1.5-1.5v-6.58A1.5,1.5,0,0,0,915.277,62.735Z" transform="translate(15470.848 2167.463)" fill="none" stroke="#303030" stroke-width="2"/>
+      <path id="Caminho_18880" data-name="Caminho 18880" d="M973.221,45.7a32.164,32.164,0,0,0-3.483-.2h-55.6a32.21,32.21,0,0,0-3.487.2C897.04,47.166,884.259,60,882.747,73.72A31.831,31.831,0,0,0,889.4,97.161a31.414,31.414,0,0,0,41.365,7.264,19.588,19.588,0,0,1,8.794-3.131,30.531,30.531,0,0,1,4.648-.018,19.759,19.759,0,0,1,8.938,3.171,31.475,31.475,0,0,0,43.342-10.131c.046-.074.09-.148.136-.222a32.205,32.205,0,0,0,4.512-20.382C999.617,59.988,986.836,47.158,973.221,45.7Z" transform="translate(15462.617 2158.433)" fill="none" stroke="#303030" stroke-width="2"/>
+      <ellipse id="Elipse_707" data-name="Elipse 707" cx="6.005" cy="6.005" rx="6.005" ry="6.005" transform="translate(16424.188 2215.841)" fill="none" stroke="#303030" stroke-width="2"/>
+      <ellipse id="Elipse_708" data-name="Elipse 708" cx="6.005" cy="6.005" rx="6.005" ry="6.005" transform="translate(16424.188 2239.667)" fill="none" stroke="#303030" stroke-width="2"/>
+      <ellipse id="Elipse_709" data-name="Elipse 709" cx="6.005" cy="6.005" rx="6.005" ry="6.005" transform="translate(16410.355 2227.979)" fill="none" stroke="#303030" stroke-width="2"/>
+      <ellipse id="Elipse_710" data-name="Elipse 710" cx="6.005" cy="6.005" rx="6.005" ry="6.005" transform="translate(16437.621 2227.979)" fill="none" stroke="#303030" stroke-width="2"/>
+    </g>
+    <text id="Games-2" data-name="Games" transform="translate(407.372 1918.143)" fill="#303030" font-size="25" font-family="OpenSans-Bold, Open Sans" font-weight="700"><tspan x="-42.474" y="0">Games</tspan></text>
+  </g>
+</svg>

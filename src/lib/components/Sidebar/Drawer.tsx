@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 
-import { ICategories } from '@/lib/interfaces';
+import { ICategory } from '@/lib/interfaces';
 import { useGetProductCategories } from '@/lib/hooks/products';
 import { Subdrawer } from './Subdrawer';
 import { Quotation } from '../Currency';
@@ -16,7 +16,7 @@ export const Drawer = () => {
     });
     const { categories, isLoading } = useGetProductCategories();
     const [currentCategory, setCurrentCategory] = useState<
-        ICategories | undefined
+        ICategory | undefined
     >(undefined);
 
     const handleSelectSubCategory = (

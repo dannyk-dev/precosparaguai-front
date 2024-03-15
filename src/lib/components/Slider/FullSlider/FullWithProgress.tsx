@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import {
     Splide,
     SplideTrack,
@@ -18,12 +18,15 @@ export const FullWithProgess = ({
     const [barIsMoving, setBarIsMoving] = useState<boolean>(true);
     const [barWidth, setBarWidth] = useState<number>(0);
 
-    const handleProgressBar = (length: number, index: number) => {
-        const end = length;
-        const rate = Math.min((index + 1) / end, 1);
-        setBarWidth(100 * rate);
-        setBarIsMoving(true);
-    };
+    const handleProgressBar = useCallback(
+        (length: number, index: number) => {
+            const end = length;
+            const rate = Math.min((index + 1) / end, 1);
+            setBarWidth(100 * rate);
+            setBarIsMoving(true);
+        },
+        [setBarIsMoving, setBarWidth]
+    );
 
     return (
         <Splide

@@ -1,4 +1,4 @@
-import { LucideIcon } from 'lucide-react';
+import { LucideIcon, LucideProps } from 'lucide-react';
 
 export type ButtonStyleType = 'primary' | 'secondary' | 'link';
 export type ButtonSize = 'xsmall' | 'small' | 'large';
@@ -10,5 +10,6 @@ export interface IButtonComponentProps
     variantSize?: ButtonSize;
     Icon?: LucideIcon;
     to?: string;
+    IconFill?: LucideProps['fill'];
     preventDefault?: boolean;
 }

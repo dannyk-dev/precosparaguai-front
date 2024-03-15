@@ -8,6 +8,7 @@ import { SplideProps } from '@splidejs/react-splide';
 export const Slider = ({
     variant,
     products,
+    items,
     images,
     options,
     progress,
@@ -16,17 +17,19 @@ export const Slider = ({
 }: ISliderProps & SplideProps) => {
     switch (variant) {
         case 'products':
-            return (
-                products && (
+            if (products || items) {
+                return (
                     <ProductSlider
                         {...props}
+                        className="relative"
                         products={products}
-                        options={options}
+                        items={items}
                     />
-                )
-            );
+                );
+            }
+
         case 'banner':
-            break;
+            return null;
         case 'full':
             return (
                 images && (
@@ -40,6 +43,6 @@ export const Slider = ({
                 )
             );
         default:
-            break;
+            return null;
     }
 };

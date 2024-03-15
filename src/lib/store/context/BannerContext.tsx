@@ -6,8 +6,7 @@ import { useMediaQuery } from 'react-responsive';
 
 interface IBannerContext {
     banners: IBanner[];
-    isLoading: boolean;
-    BannerGroupBy: (section: BannerSections) => IGroupedBanners;
+    BannerGroupBy: (section: BannerSections) => Partial<IGroupedBanners>;
 }
 
 const BannerContext = createContext<IBannerContext | undefined>(undefined);
@@ -25,12 +24,12 @@ export const useBannerContext = () => {
 };
 
 export const BannerProvider = ({ children }: { children: React.ReactNode }) => {
-    const isMobile = useMediaQuery({
-        query: '(max-width: 480px)',
-    });
+    const isMobile = useMediaQuery({ query: '(max-width:520px)' });
     const { banners, isLoading } = useGetBanners();
 
-    const BannerGroupBy = (section: BannerSections): IGroupedBanners => {
+    const BannerGroupBy = (
+        section: BannerSections
+    ): Partial<IGroupedBanners> => {
         return banners.reduce((acc: IGroupedBanners, banner: IBanner) => {
             if (banner.pageSection === section) {
                 const image = isMobile ? banner.images.sm : banner.images.lg;
@@ -49,7 +48,7 @@ export const BannerProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     return (
-        <BannerContext.Provider value={{ banners, isLoading, BannerGroupBy }}>
+        <BannerContext.Provider value={{ banners, BannerGroupBy }}>
             {isLoading ? <PageLoader /> : children}
         </BannerContext.Provider>
     );

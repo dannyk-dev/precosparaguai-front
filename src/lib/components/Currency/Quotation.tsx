@@ -13,7 +13,7 @@ const Quotation = () => {
     return (
         <div className=" w-fit max-w-sm px-4 ">
             <Popover className="relative">
-                <Popover.Button className="btn btn-sm bg-zinc-100/80 text-base-content shadow-sm outline-none backdrop-blur-lg backdrop-saturate-100 transition-all duration-200 ease-in-out hover:bg-base-300 hover:text-base-content hover:shadow-md">
+                <Popover.Button className="btn btn-sm border-spacing-2 border border-base-300 bg-base-100 text-base-content outline-none backdrop-blur-lg backdrop-saturate-100 transition-all duration-200 ease-in-out hover:bg-slate-50 hover:text-base-content hover:shadow-md">
                     <MdCurrencyExchange className="text-base" />
                     Currency
                 </Popover.Button>

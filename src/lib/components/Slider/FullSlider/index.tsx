@@ -27,7 +27,6 @@ export const FullSlider = ({
         ...SliderDefaults.full,
         ...options,
     };
-
     return progress ? (
         <FullWithProgess
             {...props}
@@ -36,7 +35,11 @@ export const FullSlider = ({
             images={images}
         />
     ) : (
-        <Splide options={sliderOptions} {...props} className="relative">
+        <Splide
+            options={sliderOptions}
+            {...props}
+            className="relative transition-all duration-300 ease-in-out"
+        >
             {images.map((image, index) => (
                 <SplideSlide key={index} className="relative">
                     <Image

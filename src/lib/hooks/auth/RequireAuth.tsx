@@ -47,7 +47,7 @@ export const RequireAuth = ({
         }
     };
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         if (error) {
             console.log(error);
             return;

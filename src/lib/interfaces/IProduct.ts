@@ -1,9 +1,11 @@
+import { StaticImageData } from 'next/image';
 import { IRating } from './IRating';
+import { LucideIcon } from 'lucide-react';
 
-export interface ICategories {
+export interface ICategory {
     _id: string;
     title: string;
-    icon?: string;
+    icon: string | StaticImageData;
     subcategories: Record<string, string[]>;
 }
 

@@ -11,7 +11,7 @@ import {
 import { SideBar, Quotation } from '@/lib/components';
 import { Button, Input } from '@/lib/components/shared';
 import { RequireAuth } from '@/lib/hooks/auth';
-import { useAuthStore, useGlobalStore } from '@/lib/store';
+import { useAuthStore } from '@/lib/store';
 
 import precosLogo from '@/../public/assets/precos_logo.png';
 import Image from 'next/image';
@@ -25,21 +25,26 @@ interface IHeaderProps {
 }
 
 const Header = ({ noFixed = false }: IHeaderProps) => {
-    const controls = useAnimation();
-    const { isScrolled } = useScroll();
     const logout = useAuthStore((state) => state.logout);
+
+    const { isScrolled } = useScroll();
+    const controls = useAnimation();
     const isMobile = useMediaQuery({
         query: '(max-width: 480px)',
     });
 
-    useEffect(() => {
-        controls.mount();
+    const isAlterColor = isScrolled || noFixed;
 
+    useEffect(() => {
+        // fix the noFixed functionality
         controls.start({
-            backgroundColor: isScrolled ? '#fcfcfcce' : 'transparent',
-            backdropFilter: isScrolled ? 'blur(8px) saturate(1px)' : 'none',
-            position: isScrolled ? 'sticky' : noFixed ? 'sticky' : 'fixed',
-            height: isScrolled ? '4rem' : '5rem',
+            backgroundColor: isAlterColor ? '#f3f4f6f7' : 'transparent',
+            boxShadow: isAlterColor
+                ? '0px 2px 5px 0px rgba(0, 0, 0, 0.1)'
+                : 'none',
+            backdropFilter: isAlterColor ? 'blur(8px) saturate(1px)' : 'none',
+            position: isAlterColor ? 'sticky' : 'fixed',
+            height: isAlterColor ? '4rem' : '5rem',
             transition: {
                 duration: 0.2,
                 ease: 'easeInOut',
@@ -49,19 +54,26 @@ const Header = ({ noFixed = false }: IHeaderProps) => {
 
     return (
         <motion.header
-            className=" top-0 z-10 flex w-full items-center"
+            className="top-0  z-10 flex w-full items-center  backdrop-blur-lg backdrop-saturate-50"
             initial={{
-                backgroundColor: noFixed ? '#fcfcfc62' : 'transparent',
+                backgroundColor: noFixed ? '#f3f4f6f7' : 'transparent',
                 position: 'sticky',
                 backdropFilter: 'none',
-                height: '5rem',
+                height: '4rem',
+                boxShadow: 'none',
             }}
             animate={noFixed ? {} : controls}
         >
             <div className="container">
                 <div className="navbar ">
                     <div className="navbar-start flex h-full items-center justify-start">
-                        <SideBar />
+                        <SideBar
+                            menuBtnStyles={{
+                                color: isAlterColor
+                                    ? '#222'
+                                    : 'rgba(255, 255, 255, 0.8)',
+                            }}
+                        />
 
                         {!isMobile && (
                             <Input
@@ -96,6 +108,7 @@ const Header = ({ noFixed = false }: IHeaderProps) => {
                                     variant="link"
                                     to="/register"
                                     Icon={UserCircleIcon}
+                                    className={`${isAlterColor ? 'text-base-content' : 'text-white'}`}
                                 />
                             </RequireAuth>
                             <RequireAuth>
@@ -103,25 +116,26 @@ const Header = ({ noFixed = false }: IHeaderProps) => {
                                     variant="link"
                                     to="/dashboard"
                                     Icon={LayoutDashboardIcon}
-                                    className="btn-sm md:btn-md"
+                                    className={`btn-sm md:btn-md ${isAlterColor ? 'text-base-content' : 'text-white'}`}
                                 />
                                 <Button
                                     variant="link"
                                     to="/"
                                     Icon={LogOutIcon}
                                     onClick={logout}
+                                    className={`${isAlterColor ? 'text-base-content' : 'text-white'}`}
                                 />
                             </RequireAuth>
 
                             <Button
                                 variant="link"
                                 Icon={HeartIcon}
-                                className={`${isScrolled ? 'text-base-content' : 'text-white'}`}
+                                className={`${isAlterColor || noFixed ? 'text-base-content' : 'text-white'}`}
                             />
                             <Button
                                 variant="link"
                                 Icon={BellIcon}
-                                className="hidden md:block"
+                                className={`hidden md:block ${isAlterColor ? 'text-base-content' : 'text-white'}`}
                             >
                                 <span className="badge indicator-item badge-warning badge-xs text-warning-content">
                                     5

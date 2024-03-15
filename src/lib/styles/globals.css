@@ -143,3 +143,10 @@
         opacity: 1;
     }
 }
+
+.splide:not(.is-overflow) .splide__slide:last-child {
+    margin: 0 !important;
+}
+.splide:not(.is-overflow) .splide__list {
+    justify-content: center;
+}

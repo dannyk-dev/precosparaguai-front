@@ -12,6 +12,7 @@ const SliderDefaults: SliderOption = {
         pagination: false,
         autoWidth: true,
         autoplay: false,
+        fixedHeight: '100%',
     },
     banner: {},
     full: {
