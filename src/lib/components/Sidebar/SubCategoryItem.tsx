@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { motion } from 'framer-motion';
 
 interface IProps {
@@ -11,9 +11,10 @@ export const SubCategoryItem = ({ items }: IProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [key, value] = items;
 
-    const toggleDropdown = () => {
-        setIsOpen(!isOpen);
-    };
+    const toggleDropdown = useCallback(
+        () => setIsOpen((prevIsOpen) => !prevIsOpen),
+        [setIsOpen]
+    );
 
     return (
         <>
