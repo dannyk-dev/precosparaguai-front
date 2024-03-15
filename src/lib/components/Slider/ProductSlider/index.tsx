@@ -10,7 +10,7 @@ import {
 import '@splidejs/react-splide/css';
 
 import { IProductSliderProps } from '@/lib/types/ui.types';
-import { Card, CategoryCard } from '@/lib/components';
+import { ProductCard, CategoryCard } from '@/lib/components';
 import SliderDefaults from '../SliderOptions';
 
 export const ProductSlider = ({
@@ -31,7 +31,7 @@ export const ProductSlider = ({
             {products &&
                 products.map((prod, index) => (
                     <SplideSlide key={index}>
-                        <Card item={prod} />
+                        <ProductCard item={prod} />
                     </SplideSlide>
                 ))}
 
