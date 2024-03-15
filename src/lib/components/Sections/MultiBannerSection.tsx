@@ -33,14 +33,14 @@ export const MultiBannerSection = () => {
                                 src={image}
                                 alt={image_alt}
                                 loading="lazy"
-                                className="w-full rounded-xl object-cover drop-shadow-md"
+                                className="w-full rounded-xl object-cover"
                                 width={isMobile ? 320 : 1920}
                                 height={isMobile ? 600 : 600}
                             />
                         </Link>
                     ))}
                 </div>
-                <div className="banner-grid lg-mt-0 relative -mt-2">
+                <div className="banner-grid lg-mt-0 relative -mt-2 lg:mt-2">
                     {isMobile ? (
                         <Slider
                             variant="full"

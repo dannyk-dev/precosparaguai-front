@@ -54,7 +54,7 @@ export const Card = ({ item }: ICardProps) => {
                                 $799
                             </span>
                             <span className="base-content -mt-1 block text-2xl font-bold text-success">
-                                $599
+                                $599 <span className="text-sm">No pix</span>
                             </span>
                         </div>
                         <div className="mt-5">
