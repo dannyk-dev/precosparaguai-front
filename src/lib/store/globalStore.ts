@@ -1,3 +1,4 @@
+import { useMediaQuery } from 'react-responsive';
 import { StoreApi, UseBoundStore, create } from 'zustand';
 
 type GlobalAppState = {

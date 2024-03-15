@@ -17,9 +17,15 @@ const Layout = ({ children }: LayoutProps) => {
     return (
         <Providers>
             <div className="flex min-h-screen flex-col">
-                <Header />
-                <main className="">{loading ? <PageLoader /> : children}</main>
-                <Footer />
+                {loading ? (
+                    <PageLoader />
+                ) : (
+                    <>
+                        <Header />
+                        <main>{children}</main>
+                        <Footer />
+                    </>
+                )}
             </div>
         </Providers>
     );

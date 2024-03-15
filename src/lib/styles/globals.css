@@ -24,6 +24,22 @@
     }
 }
 
+[data-testid='carousel'] > div:nth-child(4) {
+    width: 100% !important;
+    pointer-events: none;
+    justify-content: flex-end;
+}
+
+[data-testid='carousel'] div:nth-child(3) > button {
+    pointer-events: all;
+    @apply btn btn-circle;
+}
+
+[data-testid='carousel'] div:nth-child(4) > button {
+    pointer-events: all;
+    @apply btn btn-circle;
+}
+
 .dot-spinner {
     --uib-size: 4.8rem;
     --uib-speed: 0.9s;
@@ -126,4 +142,11 @@
         transform: scale(1);
         opacity: 1;
     }
+}
+
+.splide:not(.is-overflow) .splide__slide:last-child {
+    margin: 0 !important;
+}
+.splide:not(.is-overflow) .splide__list {
+    justify-content: center;
 }

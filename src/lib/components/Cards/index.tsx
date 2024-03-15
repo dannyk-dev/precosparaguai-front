@@ -1,2 +1,2 @@
-export { Cards } from './Cards';
+export { CategoryCard } from './CategoryCard';
 export { Card } from './Card';

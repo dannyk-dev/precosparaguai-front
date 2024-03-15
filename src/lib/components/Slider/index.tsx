@@ -1,22 +1,48 @@
 'use client';
 
-import React, { ReactNode } from 'react';
-import { Carousel } from 'flowbite-react';
-import { MoveLeft, MoveRight } from 'lucide-react';
+import { ISliderProps } from '@/lib/types/ui.types';
+import { FullSlider } from './FullSlider';
+import { ProductSlider } from './ProductSlider';
+import { SplideProps } from '@splidejs/react-splide';
 
-interface IProps {
-    children: ReactNode;
-}
+export const Slider = ({
+    variant,
+    products,
+    items,
+    images,
+    options,
+    progress,
+    imageClasses,
+    ...props
+}: ISliderProps & SplideProps) => {
+    switch (variant) {
+        case 'products':
+            if (products || items) {
+                return (
+                    <ProductSlider
+                        {...props}
+                        className="relative"
+                        products={products}
+                        items={items}
+                    />
+                );
+            }
 
-export const Slider = ({ children }: IProps) => {
-    return (
-        <Carousel
-            indicators={true}
-            slide={false}
-            leftControl={<MoveLeft />}
-            rightControl={<MoveRight />}
-        >
-            {children}
-        </Carousel>
-    );
+        case 'banner':
+            return null;
+        case 'full':
+            return (
+                images && (
+                    <FullSlider
+                        {...props}
+                        imageClasses={imageClasses || ''}
+                        images={images}
+                        options={options}
+                        progress={progress || false}
+                    />
+                )
+            );
+        default:
+            return null;
+    }
 };

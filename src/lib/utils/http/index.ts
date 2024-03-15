@@ -1,7 +1,10 @@
 import { HttpService } from './HttpService';
 import { KyClient } from './KyClient';
-import { InternalServerException } from './exceptions/InternalServerException';
-import { ResourceNotFoundException } from './exceptions/ResourceNotFoundException';
+import {
+    InternalServerException,
+    ResourceNotFoundException,
+    UnauthorizedException,
+} from './exceptions';
 import { AjaxError } from './AjaxError';
 
 const headers = {
@@ -14,6 +17,10 @@ export const httpService = new HttpService(
     new KyClient({ prefixUrl: host, headers })
 );
 
-export { InternalServerException, ResourceNotFoundException };
+export {
+    InternalServerException,
+    ResourceNotFoundException,
+    UnauthorizedException,
+};
 
 export { AjaxError };

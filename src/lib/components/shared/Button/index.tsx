@@ -37,6 +37,7 @@ export const Button = ({
     Icon,
     to,
     className,
+    IconFill,
     preventDefault,
     onClick: userOnClick,
     ...props

@@ -21,17 +21,21 @@ export const Subdrawer = ({ currentCategory, setCurrentCategory }: IProps) => {
                 onClick={() => setCurrentCategory(undefined)}
             ></label>
 
-            <ul className="menu min-h-full w-80  bg-base-200 p-4 text-base-content">
+            <ul className="menu min-h-full w-full bg-base-200  p-4 text-base-content md:w-1/2 lg:w-80">
                 <li className="flex flex-row items-center justify-between">
                     <h4 className="block cursor-default bg-transparent hover:bg-transparent focus:bg-transparent">
                         {currentCategory.title}
                     </h4>
-                    <button
-                        className="btn btn-ghost btn-sm text-base-content"
-                        onClick={() => setCurrentCategory(undefined)}
+                    <label
+                        className="btn btn-ghost btn-sm text-base-content "
+                        htmlFor="sub-drawer"
+                        onClick={() => {
+                            document.body.style.overflow = 'auto';
+                            setCurrentCategory(undefined);
+                        }}
                     >
                         <SidebarCloseIcon />
-                    </button>
+                    </label>
                 </li>
                 <div className="divider"></div>
 

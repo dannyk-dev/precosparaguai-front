@@ -1,5 +1,3 @@
-import { InternalServerException } from './InternalServerException';
-import { ResourceNotFoundException } from './ResourceNotFoundException';
-
-export { InternalServerException };
-export { ResourceNotFoundException };
+export { UnauthorizedException } from './UnauthorizedException';
+export { InternalServerException } from './InternalServerException';
+export { ResourceNotFoundException } from './ResourceNotFoundException';

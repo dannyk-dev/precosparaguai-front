@@ -1,48 +1,32 @@
 'use client';
 
 import React from 'react';
-import { Banner, BannerGroup, Button } from '@/lib/components/shared';
 
-import banner from '@/../public/assets/banner_dior.jpg';
-import banner2 from '@/../public/assets/bannersearch.png';
+import {
+    SemanaDoConsumidor,
+    CategorySection,
+    HeroSection,
+    MultiBannerSection,
+} from '@/lib/components/Sections';
+import { BannerProvider } from '@/lib/store/context/BannerContext';
+import { ProductSection } from '@/lib/components/Sections/Products';
 
-import { RequireAuth } from '@/lib/hooks/auth';
-import { ProductsProvider } from '@/lib/components/providers';
-import { Trending } from '@/lib/components/Sections';
-
-interface IProps {}
-
-const Hero = ({}: IProps) => {
+const Hero = () => {
     return (
-        <>
-            <div className="container mx-auto">
-                <div className="relative mt-8 flex h-1/2 w-full flex-col items-center ">
-                    <Banner image={banner} />
-                </div>
-                <BannerGroup images={[banner, banner2]} />
+        <BannerProvider>
+            <HeroSection />
+            <div className="ease container flex  flex-col pb-8 transition-all duration-300 md:px-0">
+                <SemanaDoConsumidor />
+                <CategorySection />
+                <MultiBannerSection />
 
-                <RequireAuth>
-                    <ProductsProvider ProductContent={Trending} />
-                </RequireAuth>
-
-                <RequireAuth inverseAuthValidation={true}>
-                    <div className="container mt-10">
-                        <div className="wrapper flex h-auto flex-col items-center justify-center rounded-lg bg-warning p-5 text-warning-content shadow-xl">
-                            <h3 className="d-block font-semibold">
-                                You need to login to see the cards
-                            </h3>
-                            <Button
-                                variant="link"
-                                to="/register"
-                                className="d-block text-warning-content"
-                            >
-                                or click here
-                            </Button>
-                        </div>
-                    </div>
-                </RequireAuth>
+                {/* PRODUCTS */}
+                <ProductSection title="Destaques" />
+                <ProductSection title="Produtos Patrocinados" />
+                <ProductSection title="Acabaram de chegar para você" />
+                <ProductSection title="Ofertas Especiais" />
             </div>
-        </>
+        </BannerProvider>
     );
 };
 

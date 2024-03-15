@@ -2,10 +2,14 @@
 
 import { RequireAuth } from '@/lib/hooks/auth';
 import { useAuthStore } from '@/lib/store';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const Dashboard = () => {
     const user = useAuthStore((state) => state.user);
+
+    useEffect(() => {
+        console.log(user);
+    }, [user]);
 
     return (
         <RequireAuth redirectPage={true}>

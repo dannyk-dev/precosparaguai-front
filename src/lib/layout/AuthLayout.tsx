@@ -21,12 +21,11 @@ const PatternBackground = styled.div`
 
 const AuthLayout = ({ children }: IAuthLayoutProps) => {
     return (
-        // <RequireAuth redirectPage={true} inverseAuthValidation={true}>
         <Providers>
-            <div className="flex min-h-screen flex-col">
-                <Header />
-                <main className="relative h-screen w-full overflow-hidden bg-gradient-to-bl from-indigo-600 to-blue-400">
-                    <PatternBackground />
+            <div className="relative flex h-screen min-h-screen w-full flex-col overflow-hidden bg-gradient-to-bl from-indigo-600 to-blue-400">
+                <PatternBackground />
+                <Header noFixed={true} />
+                <main className="">
                     <div className="drawer drawer-end drawer-open relative w-full ">
                         <input
                             id="my-drawer-2"
@@ -34,7 +33,7 @@ const AuthLayout = ({ children }: IAuthLayoutProps) => {
                             className="drawer-toggle"
                         />
                         <div className="drawer-side w-96">
-                            <ul className="menu min-h-full w-96 bg-zinc-100/30 p-4 text-base-content shadow-sm-light backdrop-blur-lg">
+                            <ul className="menu min-h-full w-96 bg-zinc-100/30 p-4 text-base-content shadow-sm-light backdrop-blur-lg ">
                                 <div className="wrapper flex h-full flex-col justify-around">
                                     {children}
                                 </div>
@@ -45,7 +44,6 @@ const AuthLayout = ({ children }: IAuthLayoutProps) => {
                 <Footer />
             </div>
         </Providers>
-        // </RequireAuth>
     );
 };
 

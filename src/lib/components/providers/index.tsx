@@ -1,8 +1,9 @@
 'use client';
 
-import { ReactNode, Suspense } from 'react';
+import { ReactNode } from 'react';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-import { Spinner } from '../shared/loaders';
+import { RequireAuth } from '@/lib/hooks/auth';
+import { ProductContentProvider } from './ProductContentProvider';
 
 const queryClient = new QueryClient();
 
@@ -13,9 +14,8 @@ interface IProps {
 export const Providers = ({ children }: IProps) => {
     return (
         <QueryClientProvider client={queryClient}>
-            {children}
+            <RequireAuth />
+            <ProductContentProvider>{children}</ProductContentProvider>
         </QueryClientProvider>
     );
 };
-
-export { ProductsProvider } from './ProductsProvider';

@@ -13,38 +13,102 @@ import { Button, Input } from '@/lib/components/shared';
 import { RequireAuth } from '@/lib/hooks/auth';
 import { useAuthStore } from '@/lib/store';
 
-const Header = () => {
+import precosLogo from '@/../public/assets/precos_logo.png';
+import Image from 'next/image';
+import { motion, useAnimation } from 'framer-motion';
+import { useEffect } from 'react';
+import { useScroll } from '@/lib/hooks';
+import { useMediaQuery } from 'react-responsive';
+
+interface IHeaderProps {
+    noFixed?: boolean;
+}
+
+const Header = ({ noFixed = false }: IHeaderProps) => {
     const logout = useAuthStore((state) => state.logout);
 
+    const { isScrolled } = useScroll();
+    const controls = useAnimation();
+    const isMobile = useMediaQuery({
+        query: '(max-width: 480px)',
+    });
+
+    const isAlterColor = isScrolled || noFixed;
+
+    useEffect(() => {
+        // fix the noFixed functionality
+        controls.start({
+            backgroundColor: isAlterColor ? '#f3f4f6f7' : 'transparent',
+            boxShadow: isAlterColor
+                ? '0px 2px 5px 0px rgba(0, 0, 0, 0.1)'
+                : 'none',
+            backdropFilter: isAlterColor ? 'blur(8px) saturate(1px)' : 'none',
+            position: isAlterColor ? 'sticky' : 'fixed',
+            height: isAlterColor ? '4rem' : '5rem',
+            transition: {
+                duration: 0.2,
+                ease: 'easeInOut',
+            },
+        });
+    }, [isScrolled, controls]);
+
     return (
-        <header className="sticky top-0 z-10 w-full bg-base-100/80 shadow-md backdrop-blur-md">
+        <motion.header
+            className="top-0  z-10 flex w-full items-center  backdrop-blur-lg backdrop-saturate-50"
+            initial={{
+                backgroundColor: noFixed ? '#f3f4f6f7' : 'transparent',
+                position: 'sticky',
+                backdropFilter: 'none',
+                height: '4rem',
+                boxShadow: 'none',
+            }}
+            animate={noFixed ? {} : controls}
+        >
             <div className="container">
-                <div className="navbar bg-base-100">
-                    <div className="navbar-start flex h-full items-center">
-                        <SideBar />
-                        <Button variant="link" to="/" variantSize="small">
-                            PrecosNoParaguai
-                        </Button>
-                        <a className="mr-6 block text-2xl "></a>
-                    </div>
-                    <div className="navbar-center flex flex-1">
-                        <Input
-                            variant="simple"
-                            variantSize="small"
-                            type="text"
-                            className="w-24 py-5 md:w-96"
-                            placeholder="Search Products"
-                            Icon={SearchIcon}
+                <div className="navbar ">
+                    <div className="navbar-start flex h-full items-center justify-start">
+                        <SideBar
+                            menuBtnStyles={{
+                                color: isAlterColor
+                                    ? '#222'
+                                    : 'rgba(255, 255, 255, 0.8)',
+                            }}
                         />
+
+                        {!isMobile && (
+                            <Input
+                                variant="simple"
+                                variantSize="xsmall"
+                                type="text"
+                                className="w-20 py-4  text-xs shadow-lg transition-all duration-300 ease-in-out md:w-60 md:focus-within:w-80 md:hover:w-80 md:focus:w-80"
+                                placeholder="Search Products"
+                                Icon={SearchIcon}
+                            />
+                        )}
                     </div>
-                    <div className="navbar-end">
-                        <Quotation />
+                    <div className="navbar-center flex ">
+                        <Button
+                            variant="link"
+                            to="/"
+                            variantSize="large"
+                            className="h-16 w-44 -translate-y-2 object-contain py-0 mix-blend-multiply md:h-20 md:w-52"
+                        >
+                            <Image
+                                src={precosLogo}
+                                alt="Precos No paraguai"
+                                className="h-full w-full object-contain"
+                            />
+                        </Button>
+                    </div>
+                    <div className="navbar-end lg:flex">
+                        {!isMobile && <Quotation />}
                         <div className="flex items-center justify-center">
                             <RequireAuth inverseAuthValidation={true}>
                                 <Button
                                     variant="link"
                                     to="/register"
                                     Icon={UserCircleIcon}
+                                    className={`${isAlterColor ? 'text-base-content' : 'text-white'}`}
                                 />
                             </RequireAuth>
                             <RequireAuth>
@@ -52,27 +116,36 @@ const Header = () => {
                                     variant="link"
                                     to="/dashboard"
                                     Icon={LayoutDashboardIcon}
+                                    className={`btn-sm md:btn-md ${isAlterColor ? 'text-base-content' : 'text-white'}`}
                                 />
                                 <Button
                                     variant="link"
-                                    Icon={LogOutIcon}
-                                    onClick={() => {
-                                        console.log('logging out');
-                                        logout();
-                                    }}
                                     to="/"
+                                    Icon={LogOutIcon}
+                                    onClick={logout}
+                                    className={`${isAlterColor ? 'text-base-content' : 'text-white'}`}
                                 />
                             </RequireAuth>
 
-                            <Button variant="link" Icon={HeartIcon} />
-                            <Button variant="link" Icon={BellIcon}>
-                                <span className="badge indicator-item badge-warning badge-xs"></span>
+                            <Button
+                                variant="link"
+                                Icon={HeartIcon}
+                                className={`${isAlterColor || noFixed ? 'text-base-content' : 'text-white'}`}
+                            />
+                            <Button
+                                variant="link"
+                                Icon={BellIcon}
+                                className={`hidden md:block ${isAlterColor ? 'text-base-content' : 'text-white'}`}
+                            >
+                                <span className="badge indicator-item badge-warning badge-xs text-warning-content">
+                                    5
+                                </span>
                             </Button>
                         </div>
                     </div>
                 </div>
             </div>
-        </header>
+        </motion.header>
     );
 };
 
