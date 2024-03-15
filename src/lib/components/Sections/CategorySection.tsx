@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { Slider } from '../Slider';
 import { useCategoryContext } from '@/lib/store/context/ProductContext';

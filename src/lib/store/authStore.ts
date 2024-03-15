@@ -1,3 +1,5 @@
+'use client';
+
 import { StoreApi, UseBoundStore, create } from 'zustand';
 import { UserRegisterPayload } from '@/lib/types/auth.types';
 import { encryptAES } from '@/lib/utils/crypto';

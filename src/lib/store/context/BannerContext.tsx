@@ -1,3 +1,5 @@
+'use client';
+
 import React, { createContext, useContext } from 'react';
 import { useGetBanners } from '@/lib/hooks';
 import { PageLoader } from '@/lib/components/shared';

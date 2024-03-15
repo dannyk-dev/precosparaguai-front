@@ -1,4 +1,7 @@
-import Home from '@/lib/pages/home';
-// import ProductsHome from './products/page';
+import dynamic from 'next/dynamic';
+
+const Home = dynamic(() => import('@/lib/pages/home'), {
+    ssr: false,
+});
 
 export default Home;
