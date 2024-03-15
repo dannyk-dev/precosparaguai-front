@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { useBannerContext } from '@/lib/store/context/BannerContext';
 import Image from 'next/image';
@@ -23,11 +21,11 @@ export const SemanaDoConsumidor = () => {
                             .map((banner) => banner.image)}
                         progress={true}
                         options={{
-                            fixedHeight: isMobile ? '400px' : '600px',
+                            fixedHeight: isMobile ? '480px' : '600px',
                             gap: '0rem',
                             autoplay: false,
                         }}
-                        imageClasses="lg:rounded-xl object-cover"
+                        imageClasses="lg:rounded-xl object-cover "
                     />
                 </div>
                 <div className="relative col-span-4 row-span-2 mt-4 w-full justify-self-center lg:col-span-1 lg:row-span-1 lg:mt-0 lg:justify-self-end">

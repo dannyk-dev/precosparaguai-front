@@ -23,6 +23,10 @@ import multiBottomLeftMobile from '@/../public/assets/multi_bottomleft_mobile.pn
 import FastPayDesktop from '@/../public/assets/Fast_Pay_full.png';
 import FastPayMobile from '@/../public/assets/Fast_Pay_mobile.png';
 
+import samsungBannerMobile from '@/../public/assets/samsungBannerMobile.jpg';
+import lenovoBannerMobile from '@/../public/assets/lenovoBannerMobile.jpg';
+import tufBannerMobile from '@/../public/assets/tufBannerMobile.png';
+
 export {
     samgsungBanner,
     consumerWeek,
@@ -43,4 +47,7 @@ export {
     cashbackMobile,
     cupomMobile,
     cashbackBannerMobile,
+    samsungBannerMobile,
+    lenovoBannerMobile,
+    tufBannerMobile,
 };

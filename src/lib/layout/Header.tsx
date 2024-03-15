@@ -36,7 +36,6 @@ const Header = ({ noFixed = false }: IHeaderProps) => {
     const isAlterColor = isScrolled || noFixed;
 
     useEffect(() => {
-        // fix the noFixed functionality
         controls.start({
             backgroundColor: isAlterColor ? '#f3f4f6f7' : 'transparent',
             boxShadow: isAlterColor

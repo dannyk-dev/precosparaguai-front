@@ -15,21 +15,21 @@ export const Card = ({ item }: ICardProps) => {
     const averageRate = useCalculateAverageRating({ ...item.rating });
 
     return (
-        <Link href="#">
-            <div className="card relative flex h-[520px] w-64 border-spacing-2 flex-col items-center justify-around -space-x-2 border bg-white pt-8 shadow-sm ">
-                <div className="absolute right-0 top-0 z-10 flex flex-row-reverse items-center">
-                    <Button
-                        variant="link"
-                        Icon={HeartIcon}
-                        className=" text-red-600"
-                    />
-                    <Link
-                        className="badge  mr-auto block text-xs hover:badge-accent"
-                        href="#"
-                    >
-                        #{item.category}
-                    </Link>
-                </div>
+        <div className="card relative flex h-[520px] w-64 border-spacing-2 flex-col items-center justify-around -space-x-2 border bg-white pt-8 shadow-sm ">
+            <div className="absolute right-0 top-0 z-10 flex flex-row-reverse items-center">
+                <Button
+                    variant="link"
+                    Icon={HeartIcon}
+                    className=" text-red-600"
+                />
+                <Link
+                    className="badge  mr-auto block text-xs hover:badge-accent"
+                    href="#"
+                >
+                    #{item.category}
+                </Link>
+            </div>
+            <Link className="flex flex-col" href="#">
                 <figure className="relative mx-auto mt-10 block h-40 w-full">
                     <Image
                         className="m-auto max-h-full min-w-full rounded-t-lg object-contain p-6"
@@ -83,7 +83,7 @@ export const Card = ({ item }: ICardProps) => {
                         </span>
                     </div>
                 </div>
-            </div>
-        </Link>
+            </Link>
+        </div>
     );
 };

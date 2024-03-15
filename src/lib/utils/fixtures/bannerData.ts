@@ -18,6 +18,9 @@ import {
     cashbackMobile,
     cupomMobile,
     cashbackBannerMobile,
+    lenovoBannerMobile,
+    tufBannerMobile,
+    samsungBannerMobile,
 } from '../images/banners';
 
 export const fullBanners: IBanner[] = [
@@ -100,7 +103,7 @@ export const leftBanners: IBanner[] = [
         pos: 'left',
         images: {
             lg: lenovoBanner.src,
-            sm: lenovoBanner.src,
+            sm: lenovoBannerMobile.src,
         },
         image_alt: 'left slider image',
         pageSection: 'semana_consumidor',
@@ -112,7 +115,7 @@ export const leftBanners: IBanner[] = [
         pos: 'left',
         images: {
             lg: tufBanner.src,
-            sm: tufBanner.src,
+            sm: tufBannerMobile.src,
         },
         image_alt: 'left slider image',
         image_href: '',
@@ -124,7 +127,7 @@ export const leftBanners: IBanner[] = [
         pos: 'left',
         images: {
             lg: lenovoBanner.src,
-            sm: lenovoBanner.src,
+            sm: lenovoBannerMobile.src,
         },
         image_alt: 'left slider image',
         pageSection: 'semana_consumidor',
@@ -135,7 +138,7 @@ export const leftBanners: IBanner[] = [
         pos: 'left',
         images: {
             lg: consumerWeek.src,
-            sm: consumerWeek.src,
+            sm: samsungBannerMobile.src,
         },
         image_alt: 'left slider image',
         pageSection: 'semana_consumidor',
