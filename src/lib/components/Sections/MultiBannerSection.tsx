@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { useBannerContext } from '@/lib/store/context/BannerContext';
 import { Button } from '../shared';

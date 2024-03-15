@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { useProductContext } from '@/lib/store/context/ProductContext';
 import { Slider } from '@/lib/components';
