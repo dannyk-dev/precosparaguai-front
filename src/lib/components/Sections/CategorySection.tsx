@@ -6,7 +6,7 @@ export const CategorySection = () => {
     const { categories } = useCategoryContext();
 
     return (
-        <section className="flex flex-col items-center px-4 py-5">
+        <section className="mt-5 flex flex-col items-center px-4 py-5">
             <div className="container">
                 <h3 className=" -mb-5 py-4 text-center">
                     Compre por categoria

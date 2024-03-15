@@ -10,7 +10,7 @@ export const HeroSection = () => {
     const bannerGroup = BannerGroupBy('hero');
 
     return (
-        <section className="relative h-screen w-full">
+        <section className="relative h-auto w-full">
             <Slider
                 variant="full"
                 images={bannerGroup?.full?.map((banner) => banner.image) || []}

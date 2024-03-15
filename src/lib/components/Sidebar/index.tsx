@@ -9,6 +9,8 @@ interface IProps {
 }
 
 export const SideBar = ({ menuBtnStyles }: IProps) => {
+    const isMobile = useScroll();
+
     return (
         <div className="drawer z-20 mr-6 w-fit">
             <input id="main-drawer" type="checkbox" className="drawer-toggle" />
@@ -19,7 +21,7 @@ export const SideBar = ({ menuBtnStyles }: IProps) => {
                     style={menuBtnStyles}
                 >
                     <Menu />
-                    Menu
+                    {!isMobile && 'Menu'}
                 </label>
             </div>
             <Drawer />

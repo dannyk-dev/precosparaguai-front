@@ -5,12 +5,11 @@ import React from 'react';
 import {
     SemanaDoConsumidor,
     CategorySection,
-    Trending,
     HeroSection,
     MultiBannerSection,
 } from '@/lib/components/Sections';
 import { BannerProvider } from '@/lib/store/context/BannerContext';
-import { ProductSection } from '../Sections/Products';
+import { ProductSection } from '@/lib/components/Sections/Products';
 
 const Hero = () => {
     return (

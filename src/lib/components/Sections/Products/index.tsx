@@ -18,7 +18,7 @@ export const ProductSection = ({
     return (
         <section className="flex flex-col items-center px-4 py-5">
             <div className="container">
-                <h3 className="py-4 text-left">{title}</h3>
+                <h5 className="py-4 text-left">{title}</h5>
                 <Slider
                     variant="products"
                     className="relative "
