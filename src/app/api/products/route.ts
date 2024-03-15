@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server';
 import { httpService } from '@/lib/utils/http';
 
-const ROUTE = 'api/products';
+// const ROUTE = 'api/products';
 
 export const GET = async () => {
     try {
-        const response = await httpService.get<unknown>(ROUTE);
+        const response = await httpService.get<unknown>('products');
         return new NextResponse(JSON.stringify(response));
     } catch (error) {
         console.error(error);

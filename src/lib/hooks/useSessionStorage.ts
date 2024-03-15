@@ -19,7 +19,6 @@ const useSessionStorage = <T>(
 
                 if (parsedValue === null) return initialValue;
             } catch (err) {
-                // json can't parse because the user session is encrypted. So this error is intentional
 
                 return decryptAES<T>(
                     storedValue as string,

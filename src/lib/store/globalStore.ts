@@ -8,7 +8,7 @@ type GlobalAppState = {
 
 const useGlobalStore: UseBoundStore<StoreApi<GlobalAppState>> =
     create<GlobalAppState>((set) => ({
-        loading: true,
+        loading: false,
         setLoading: (loading: boolean) => set({ loading }),
     }));
 

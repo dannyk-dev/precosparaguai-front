@@ -103,7 +103,7 @@ const Header = ({ noFixed = false }: IHeaderProps) => {
                     <div className="navbar-end lg:flex">
                         {!isMobile && <Quotation />}
                         <div className="flex items-center justify-center">
-                            <RequireAuth inverseAuthValidation={true}>
+                            {/* <RequireAuth inverseAuthValidation={true}>
                                 <Button
                                     variant="link"
                                     to="/register"
@@ -126,7 +126,7 @@ const Header = ({ noFixed = false }: IHeaderProps) => {
                                     className={`${isAlterColor ? 'text-base-content' : 'text-white'}`}
                                 />
                             </RequireAuth>
-
+ */}
                             <Button
                                 variant="link"
                                 Icon={HeartIcon}

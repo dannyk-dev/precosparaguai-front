@@ -12,12 +12,13 @@ const Dashboard = () => {
     }, [user]);
 
     return (
-        <RequireAuth redirectPage={true}>
-            <div className="container">
-                <h1 className="text-center">Dashboard</h1>
-                <h4>Welcome {user?.username}</h4>
-            </div>
-        </RequireAuth>
+        <h1>dashboard</h1>
+        // <RequireAuth redirectPage={true}>
+        //     <div className="container">
+        //         <h1 className="text-center">Dashboard</h1>
+        //         <h4>Welcome {user?.username}</h4>
+        //     </div>
+        // </RequireAuth>
     );
 };
 
