@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { useBannerContext } from '@/lib/store/context/BannerContext';
-import { Button } from '../shared';
 import Image from 'next/image';
 import { Slider } from '../Slider';
 import { useMediaQuery } from 'react-responsive';
@@ -12,8 +11,7 @@ export const MultiBannerSection = () => {
     const isMobile = useMediaQuery({ query: '(max-width: 520px)' });
     const { BannerGroupBy } = useBannerContext();
 
-    const bannerGroup = BannerGroupBy('multibanner');
-    const { full, left, right } = bannerGroup;
+    const { full, left, right } = BannerGroupBy('multibanner');
 
     const MultiBannerSlider = [...(left ?? []), ...(right ?? [])].map(
         (banner) => banner.image
