@@ -27,6 +27,9 @@ import samsungBannerMobile from '@/../public/assets/samsungBannerMobile.jpg';
 import lenovoBannerMobile from '@/../public/assets/lenovoBannerMobile.jpg';
 import tufBannerMobile from '@/../public/assets/tufBannerMobile.png';
 
+import samsungBannerLarge from '@/../public/assets/samsungBannerLarge.png';
+import samsungBannerLargeMobile from '@/../public/assets/150324_SAMSUNG_HomemobileMobile.jpg';
+
 export {
     samgsungBanner,
     consumerWeek,
@@ -50,4 +53,6 @@ export {
     samsungBannerMobile,
     lenovoBannerMobile,
     tufBannerMobile,
+    samsungBannerLarge,
+    samsungBannerLargeMobile,
 };

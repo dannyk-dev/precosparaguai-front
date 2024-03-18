@@ -21,6 +21,8 @@ import {
     lenovoBannerMobile,
     tufBannerMobile,
     samsungBannerMobile,
+    samsungBannerLarge,
+    samsungBannerLargeMobile,
 } from '../images/banners';
 
 export const fullBanners: IBanner[] = [
@@ -89,6 +91,18 @@ export const fullBanners: IBanner[] = [
         images: {
             lg: cupomFullBanner.src,
             sm: cupomMobile.src,
+        },
+        image_alt: 'Full Slider Image',
+        image_href: '',
+        pageSection: 'multibanner',
+    },
+    {
+        _id: uuidv4(),
+        companyId: uuidv4(),
+        pos: 'full',
+        images: {
+            lg: samsungBannerLarge.src,
+            sm: samsungBannerLargeMobile.src,
         },
         image_alt: 'Full Slider Image',
         image_href: '',

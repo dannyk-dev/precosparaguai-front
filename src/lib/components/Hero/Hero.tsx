@@ -15,7 +15,7 @@ const Hero = () => {
     return (
         <BannerProvider>
             <HeroSection />
-            <div className="ease container flex  flex-col pb-8 transition-all duration-300 md:px-0">
+            <div className="ease container flex flex-col pb-8 transition-all duration-300 md:px-4">
                 <SemanaDoConsumidor />
                 <CategorySection />
                 <MultiBannerSection />
