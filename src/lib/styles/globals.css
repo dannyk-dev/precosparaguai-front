@@ -24,6 +24,11 @@
     }
 }
 
+.hide {
+    @apply pointer-events-none -top-full left-20 right-20 w-0 -translate-y-80   opacity-0 transition-all duration-500;
+    position: absolute;
+}
+
 [data-testid='carousel'] > div:nth-child(4) {
     width: 100% !important;
     pointer-events: none;

@@ -20,6 +20,7 @@ import { motion, useAnimation } from 'framer-motion';
 import { useCallback, useEffect } from 'react';
 import { useScroll } from '@/lib/hooks';
 import { useMediaQuery } from 'react-responsive';
+import '@/lib/styles/globals.css';
 
 interface IHeaderProps {
     noFixed?: boolean;
@@ -99,31 +100,27 @@ const Header = ({ noFixed = false }: IHeaderProps) => {
                             />
                         )}
                     </div>
-                    <div className="navbar-center  flex ">
-                        {!shownSearchbar && (
-                            <Button
-                                variant="link"
-                                to="/"
-                                variantSize="large"
-                                className="h-16 w-44 -translate-y-2 object-contain py-0 mix-blend-multiply md:h-20 md:w-52"
-                            >
-                                <Image
-                                    src={precosLogo}
-                                    alt="Precos No paraguai"
-                                    className="h-full w-full object-contain"
-                                />
-                            </Button>
-                        )}
-
-                        {isMobile && shownSearchbar && (
-                            <Input
-                                variant="simple"
-                                type="text"
-                                className=" mx-auto w-3/4 py-4 text-xs shadow-lg transition-all duration-300 ease-in-out md:w-60 md:focus-within:w-80 md:hover:w-80 md:focus:w-80"
-                                placeholder="Search Products"
-                                Icon={SearchIcon}
+                    <div className="navbar-center flex">
+                        <Button
+                            variant="link"
+                            to="/"
+                            variantSize="large"
+                            className={`h-16 w-44 -translate-y-2 object-contain py-0 mix-blend-multiply md:h-20 md:w-52 ${shownSearchbar && ' hidden'}`}
+                        >
+                            <Image
+                                src={precosLogo}
+                                alt="Precos No paraguai"
+                                className="h-full w-full object-contain"
                             />
-                        )}
+                        </Button>
+
+                        <Input
+                            variant="simple"
+                            type="text"
+                            className={`-left-1/2 top-0 mx-auto w-3/4 translate-x-2/3 py-4 text-xs shadow-lg transition-all duration-500  md:w-60 md:focus-within:w-80 md:hover:w-80 md:focus:w-80 ${!shownSearchbar ? 'hide ' : ''}`}
+                            placeholder="Search Products"
+                            Icon={SearchIcon}
+                        />
                     </div>
                     <div className="navbar-end lg:flex">
                         {!isMobile && <Quotation />}
