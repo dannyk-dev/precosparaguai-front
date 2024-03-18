@@ -29,6 +29,12 @@
     position: absolute;
 }
 
+input {
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none;
+}
+
 [data-testid='carousel'] > div:nth-child(4) {
     width: 100% !important;
     pointer-events: none;
