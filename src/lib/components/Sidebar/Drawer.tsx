@@ -1,31 +1,33 @@
 'use client';
 
-import React, { useState } from 'react';
-
+import React, { useState, useCallback } from 'react';
 import { ICategory } from '@/lib/interfaces';
-import { useGetProductCategories } from '@/lib/hooks/products';
 import { Subdrawer } from './Subdrawer';
 import { Quotation } from '../Currency';
 import { SidebarCloseIcon } from 'lucide-react';
-import { Button } from '../shared';
 import { useMediaQuery } from 'react-responsive';
+import { useCategoryContext } from '@/lib/store/context/ProductContext';
 
 export const Drawer = () => {
     const isMobile = useMediaQuery({
         query: '(max-width: 480px)',
     });
-    const { categories, isLoading } = useGetProductCategories();
+    const { categories } = useCategoryContext();
     const [currentCategory, setCurrentCategory] = useState<
         ICategory | undefined
     >(undefined);
 
-    const handleSelectSubCategory = (
-        e: React.MouseEvent<HTMLLabelElement, MouseEvent>
-    ) => {
-        setCurrentCategory(
-            categories.find((item) => item._id === e.currentTarget.dataset.id)
-        );
-    };
+    const handleSelectSubCategory = useCallback(
+        (e: React.MouseEvent<HTMLLabelElement, MouseEvent>) => {
+            const selectedCategoryId = e.currentTarget.dataset.id;
+            const selectedCategory = categories.find(
+                (item) => item._id === selectedCategoryId
+            );
+
+            setCurrentCategory(selectedCategory);
+        },
+        [categories, setCurrentCategory]
+    );
 
     return (
         <>
@@ -64,7 +66,7 @@ export const Drawer = () => {
                             />{' '}
                             <label
                                 htmlFor="sub-drawer"
-                                onClick={(e) => handleSelectSubCategory(e)}
+                                onClick={handleSelectSubCategory}
                                 data-id={item._id}
                                 key={item._id}
                             >

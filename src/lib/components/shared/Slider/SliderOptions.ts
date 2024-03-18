@@ -1,5 +1,5 @@
 import { Options } from '@splidejs/react-splide';
-import { sliderVariant } from '../../types/ui.types';
+import { sliderVariant } from '../../../types/ui.types';
 
 type SliderOption = Record<sliderVariant, Options>;
 

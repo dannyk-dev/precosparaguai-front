@@ -1,7 +1,7 @@
 import React from 'react';
 import { useBannerContext } from '@/lib/store/context/BannerContext';
 import Image from 'next/image';
-import { Slider } from '../Slider';
+import { Slider } from '@/lib/components/shared/Slider';
 import { useMediaQuery } from 'react-responsive';
 
 export const SemanaDoConsumidor = () => {
