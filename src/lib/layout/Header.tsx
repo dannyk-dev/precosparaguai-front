@@ -113,7 +113,6 @@ const Header = ({ noFixed = false }: IHeaderProps) => {
                                 className="h-full w-full object-contain"
                             />
                         </Button>
-
                         <Input
                             variant="simple"
                             variantSize="xsmall"
