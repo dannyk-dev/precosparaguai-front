@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Slider } from '../Slider/index';
+import { Slider } from '@/lib/components/shared';
 import { useScroll } from '@/lib/hooks';
 import { useBannerContext } from '@/lib/store/context/BannerContext';
 

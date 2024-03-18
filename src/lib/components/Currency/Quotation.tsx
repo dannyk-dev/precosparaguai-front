@@ -34,9 +34,6 @@ const Quotation = () => {
                                         value={selectedCurrency}
                                         onChange={setSelectedCurrency}
                                     >
-                                        <RadioGroup.Label className="sr-only">
-                                            Test
-                                        </RadioGroup.Label>
                                         <div className="flex flex-col space-y-4">
                                             <p className="max-w-52 ">
                                                 Select the currency you want to

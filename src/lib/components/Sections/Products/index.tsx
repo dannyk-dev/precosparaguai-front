@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useProductContext } from '@/lib/store/context/ProductContext';
-import { Slider } from '@/lib/components';
+import { Slider } from '@/lib/components/shared';
 
 type ProductFilters = 'trending' | 'sponsored' | 'latest' | 'offers';
 

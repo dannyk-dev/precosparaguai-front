@@ -1,5 +1,5 @@
 import React from 'react';
-import { ICategory, IProduct } from '@/lib/interfaces';
+import { IProduct } from '@/lib/interfaces';
 import Image from 'next/image';
 import { Stars } from '@/lib/components';
 import { useCalculateAverageRating } from '@/lib/hooks';
@@ -7,11 +7,11 @@ import { HeartIcon } from 'lucide-react';
 import { Button } from '@/lib/components/shared';
 import Link from 'next/link';
 
-interface ICardProps {
+interface IProductCardProps {
     item: IProduct;
 }
 
-export const Card = ({ item }: ICardProps) => {
+export const ProductCard = ({ item }: IProductCardProps) => {
     const averageRate = useCalculateAverageRating({ ...item.rating });
 
     return (
