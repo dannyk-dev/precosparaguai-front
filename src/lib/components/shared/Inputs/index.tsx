@@ -37,8 +37,7 @@ export const Input = ({
                 <label
                     className={cn(
                         className,
-                        InputStyles({ variant, variantSize }),
-                        'relative'
+                        InputStyles({ variant, variantSize })
                     )}
                 >
                     <input
