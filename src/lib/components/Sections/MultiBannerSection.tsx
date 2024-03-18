@@ -3,7 +3,7 @@
 import React from 'react';
 import { useBannerContext } from '@/lib/store/context/BannerContext';
 import Image from 'next/image';
-import { Slider } from '../Slider';
+import { Slider } from '@/lib/components/shared';
 import { useMediaQuery } from 'react-responsive';
 import Link from 'next/link';
 

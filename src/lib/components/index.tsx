@@ -4,4 +4,3 @@ export * from './Cards';
 export * from './Sidebar';
 export * from './Currency';
 export * from './Forms';
-export * from './Slider';
