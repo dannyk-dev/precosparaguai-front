@@ -1,5 +1,6 @@
 'use client';
 
+import React, { useState } from 'react';
 import {
     BellIcon,
     HeartIcon,
@@ -16,7 +17,7 @@ import { useAuthStore } from '@/lib/store';
 import precosLogo from '@/../public/assets/precos_logo.png';
 import Image from 'next/image';
 import { motion, useAnimation } from 'framer-motion';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useScroll } from '@/lib/hooks';
 import { useMediaQuery } from 'react-responsive';
 
@@ -25,6 +26,7 @@ interface IHeaderProps {
 }
 
 const Header = ({ noFixed = false }: IHeaderProps) => {
+    const [shownSearchbar, setShownSearchbar] = useState<boolean>(false);
     const logout = useAuthStore((state) => state.logout);
 
     const { isScrolled } = useScroll();
@@ -51,6 +53,10 @@ const Header = ({ noFixed = false }: IHeaderProps) => {
         });
     }, [isScrolled, controls]);
 
+    const toggleSearchbar = useCallback(() => {
+        setShownSearchbar((prev) => !prev);
+    }, [setShownSearchbar]);
+
     return (
         <motion.header
             className="top-0  z-10 flex w-full items-center  backdrop-blur-lg backdrop-saturate-50"
@@ -63,7 +69,7 @@ const Header = ({ noFixed = false }: IHeaderProps) => {
             }}
             animate={noFixed ? {} : controls}
         >
-            <div className="container">
+            <div className="container relative">
                 <div className="navbar ">
                     <div className="navbar-start flex h-full items-center justify-start">
                         <SideBar
@@ -74,7 +80,7 @@ const Header = ({ noFixed = false }: IHeaderProps) => {
                             }}
                         />
 
-                        {!isMobile && (
+                        {!isMobile ? (
                             <Input
                                 variant="simple"
                                 variantSize="xsmall"
@@ -83,21 +89,41 @@ const Header = ({ noFixed = false }: IHeaderProps) => {
                                 placeholder="Search Products"
                                 Icon={SearchIcon}
                             />
+                        ) : (
+                            <Button
+                                variant="primary"
+                                variantSize="small"
+                                Icon={SearchIcon}
+                                onClick={toggleSearchbar}
+                                className={`btn-ghost btn-sm ml-5 block h-full  md:btn-md ${isAlterColor ? 'text-base-content' : 'text-white'}`}
+                            />
                         )}
                     </div>
-                    <div className="navbar-center flex ">
-                        <Button
-                            variant="link"
-                            to="/"
-                            variantSize="large"
-                            className="h-16 w-44 -translate-y-2 object-contain py-0 mix-blend-multiply md:h-20 md:w-52"
-                        >
-                            <Image
-                                src={precosLogo}
-                                alt="Precos No paraguai"
-                                className="h-full w-full object-contain"
+                    <div className="navbar-center  flex ">
+                        {!shownSearchbar && (
+                            <Button
+                                variant="link"
+                                to="/"
+                                variantSize="large"
+                                className="h-16 w-44 -translate-y-2 object-contain py-0 mix-blend-multiply md:h-20 md:w-52"
+                            >
+                                <Image
+                                    src={precosLogo}
+                                    alt="Precos No paraguai"
+                                    className="h-full w-full object-contain"
+                                />
+                            </Button>
+                        )}
+
+                        {isMobile && shownSearchbar && (
+                            <Input
+                                variant="simple"
+                                type="text"
+                                className=" mx-auto w-3/4 py-4 text-xs shadow-lg transition-all duration-300 ease-in-out md:w-60 md:focus-within:w-80 md:hover:w-80 md:focus:w-80"
+                                placeholder="Search Products"
+                                Icon={SearchIcon}
                             />
-                        </Button>
+                        )}
                     </div>
                     <div className="navbar-end lg:flex">
                         {!isMobile && <Quotation />}
