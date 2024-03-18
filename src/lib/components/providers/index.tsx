@@ -14,7 +14,7 @@ interface IProps {
 export const Providers = ({ children }: IProps) => {
     return (
         <QueryClientProvider client={queryClient}>
-            {/* <RequireAuth /> */}
+            <RequireAuth />
             <ProductContentProvider>{children}</ProductContentProvider>
         </QueryClientProvider>
     );
