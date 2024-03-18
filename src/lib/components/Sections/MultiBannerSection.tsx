@@ -65,7 +65,7 @@ export const MultiBannerSection = () => {
                         </div>
                     )}
                 </div>
-                <div className="relative  flex h-fit w-full flex-col items-center ">
+                <div className="relative mt-4  flex h-fit w-full flex-col items-center ">
                     <Link
                         className="mb-0 block  h-auto w-full px-0 md:mb-0"
                         href="#"

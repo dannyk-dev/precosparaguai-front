@@ -35,7 +35,11 @@ export type BannerSections =
     | 'semana_consumidor'
     | 'hero'
     | 'categorias'
-    | 'multibanner';
+    | 'multibanner'
+    | 'ofertas'
+    | 'lancamentos'
+    | 'interior'
+    | 'services';
 
 export interface IBanner {
     _id: string;
