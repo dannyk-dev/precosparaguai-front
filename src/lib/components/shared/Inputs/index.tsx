@@ -50,7 +50,7 @@ export const Input = ({
                 <input
                     {...props}
                     className={cn(
-                        'grow',
+                        'grow ',
                         className,
                         InputStyles({ variant, variantSize })
                     )}

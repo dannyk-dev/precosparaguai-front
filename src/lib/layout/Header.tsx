@@ -116,8 +116,9 @@ const Header = ({ noFixed = false }: IHeaderProps) => {
 
                         <Input
                             variant="simple"
+                            variantSize="xsmall"
                             type="text"
-                            className={`-left-1/2 top-0 mx-auto w-3/4 translate-x-2/3  py-4 text-xs shadow-lg transition-all duration-300  md:w-60 md:focus-within:w-80  md:hover:w-80 md:focus:w-80 ${!shownSearchbar ? 'hide ' : ''}`}
+                            className={`-left-1/2 top-0 mx-auto w-full translate-x-2/3  py-4 text-xs shadow-lg transition-all duration-300 md:w-60 md:focus-within:w-80  md:hover:w-80 md:focus:w-80 ${!shownSearchbar ? 'hide absolute ' : ''}`}
                             placeholder="Search Products"
                         />
                     </div>
