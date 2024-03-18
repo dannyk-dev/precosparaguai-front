@@ -60,7 +60,7 @@ const Header = ({ noFixed = false }: IHeaderProps) => {
 
     return (
         <motion.header
-            className="top-0  z-10 flex w-full items-center  backdrop-blur-lg backdrop-saturate-50"
+            className="top-0  z-10 flex w-full items-center  "
             initial={{
                 backgroundColor: noFixed ? '#f3f4f6f7' : 'transparent',
                 position: 'sticky',
