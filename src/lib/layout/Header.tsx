@@ -119,7 +119,6 @@ const Header = ({ noFixed = false }: IHeaderProps) => {
                             type="text"
                             className={`-left-1/2 top-0 mx-auto w-3/4 translate-x-2/3  py-4 text-xs shadow-lg transition-all duration-300  md:w-60 md:focus-within:w-80  md:hover:w-80 md:focus:w-80 ${!shownSearchbar ? 'hide ' : ''}`}
                             placeholder="Search Products"
-                            Icon={SearchIcon}
                         />
                     </div>
                     <div className="navbar-end lg:flex">
