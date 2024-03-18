@@ -25,7 +25,7 @@
 }
 
 .hide {
-    @apply duration-400 pointer-events-none -top-full left-20 right-20 w-3/4  -translate-y-80 opacity-0 transition-all;
+    @apply pointer-events-none -top-full left-20 right-20 w-3/4 -translate-y-80  opacity-0 transition-all duration-300;
     position: absolute;
 }
 
