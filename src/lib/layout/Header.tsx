@@ -152,7 +152,7 @@ const Header = ({ noFixed = false }: IHeaderProps) => {
                             <Button
                                 variant="link"
                                 Icon={HeartIcon}
-                                className={`${isAlterColor || noFixed ? 'text-base-content' : 'text-white'}`}
+                                className={`${isAlterColor || noFixed ? 'text-base-content' : 'text-white'} ${shownSearchbar && ' hidden'}`}
                             />
                             <Button
                                 variant="link"
