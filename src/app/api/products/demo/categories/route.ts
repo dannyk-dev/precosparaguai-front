@@ -5,7 +5,9 @@ export const GET = async () => {
     try {
         const categories = CategoryFactory;
 
-        return new NextResponse(JSON.stringify(categories));
+        return new NextResponse(JSON.stringify(categories), {
+            status: 200,
+        });
     } catch (error) {
         console.error(error);
         throw error;

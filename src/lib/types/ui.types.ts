@@ -1,6 +1,7 @@
 import { Options } from '@splidejs/react-splide';
 import { StaticImageData } from 'next/image';
 import { ICategory, IProduct } from '../interfaces';
+import { IBrand } from '../utils/fixtures/BrandsFixture';
 
 // SLIDER TYPES
 export type sliderVariant = 'products' | 'banner' | 'full';
@@ -8,7 +9,7 @@ export type sliderVariant = 'products' | 'banner' | 'full';
 export interface ISliderProps {
     variant: sliderVariant;
     products?: IProduct[];
-    items?: ICategory[];
+    items?: ICategory[] | IBrand[];
     images?: StaticImageData[] | string[];
     options?: Options;
     progress?: boolean;
@@ -25,7 +26,7 @@ export interface IFullSliderProps extends Partial<ISliderProps> {
 export interface IProductSliderProps extends Partial<ISliderProps> {
     options?: Options;
     products?: IProduct[];
-    items?: ICategory[];
+    items?: ICategory[] | IBrand[];
 }
 
 export type PositionOptions = 'left' | 'right' | 'top' | 'bottom' | 'full';

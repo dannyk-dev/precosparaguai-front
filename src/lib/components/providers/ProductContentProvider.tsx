@@ -6,7 +6,11 @@ import {
     CategoryContext,
     ProductFilter,
     CategoryFilter,
+    BrandFilter,
+    BrandContext,
 } from '@/lib/store/context/ProductContext';
+import { useGetBrands } from '@/lib/hooks/useGetBrands';
+import { IBrand } from '@/lib/utils/fixtures/BrandsFixture';
 
 const ProductProvider = ({ children }: { children: React.ReactNode }) => {
     const { products } = useGetProducts();
@@ -46,6 +50,20 @@ const CategoryProvider = ({ children }: { children: React.ReactNode }) => {
     );
 };
 
+const BrandProvider = ({ children }: { children: React.ReactNode }) => {
+    const { brands } = useGetBrands();
+
+    const brandFilterBy = (filter: BrandFilter): IBrand[] => {
+        return brands.filter((brand) => brand[filter] === filter);
+    };
+
+    return (
+        <BrandContext.Provider value={{ brands, brandFilterBy }}>
+            {children}
+        </BrandContext.Provider>
+    );
+};
+
 export const ProductContentProvider = ({
     children,
 }: {
@@ -53,7 +71,9 @@ export const ProductContentProvider = ({
 }) => {
     return (
         <ProductProvider>
-            <CategoryProvider>{children}</CategoryProvider>
+            <BrandProvider>
+                <CategoryProvider>{children}</CategoryProvider>
+            </BrandProvider>
         </ProductProvider>
     );
 };
