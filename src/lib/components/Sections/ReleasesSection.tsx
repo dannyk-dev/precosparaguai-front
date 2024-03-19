@@ -25,6 +25,7 @@ export const ReleasesSection = ({}: IProps) => {
                         gap: '0.75rem',
                         autoplay: true,
                         fixedHeight: '300px',
+                        pagination: true,
                     }}
                 />
             </div>
