@@ -38,7 +38,10 @@ export const ProductSlider = ({
             {items &&
                 items.map((item, index) => (
                     <SplideSlide key={index}>
-                        <CategoryCard icon={item.icon} title={item.title} />
+                        <CategoryCard
+                            icon={item.icon ?? ''}
+                            title={item.title}
+                        />
                     </SplideSlide>
                 ))}
         </Splide>

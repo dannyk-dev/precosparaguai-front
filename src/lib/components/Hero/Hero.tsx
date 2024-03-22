@@ -14,6 +14,7 @@ import { OfertaSection } from '../Sections/OfertaSection';
 import { ReleasesSection } from '../Sections/ReleasesSection';
 import { InteriorSection } from '../Sections/InteriorSection';
 import { ServicesSection } from '../Sections/ServicesSection';
+import { BrandSection } from '../Sections/BrandSection';
 
 const Hero = () => {
     return (
@@ -42,6 +43,7 @@ const Hero = () => {
                 <ProductSection title="Produtos patrocinados" />
 
                 <ServicesSection />
+                <BrandSection />
             </div>
         </BannerProvider>
     );

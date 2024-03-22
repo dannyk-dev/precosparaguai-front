@@ -5,7 +5,7 @@ import { LucideIcon } from 'lucide-react';
 export interface ICategory {
     _id: string;
     title: string;
-    icon: string | StaticImageData;
+    icon: string;
     subcategories: Record<string, string[]>;
 }
 

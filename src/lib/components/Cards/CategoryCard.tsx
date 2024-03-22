@@ -3,7 +3,7 @@ import Image, { StaticImageData } from 'next/image';
 import { Button } from '@/lib/components/shared';
 
 interface IProps {
-    icon: string | StaticImageData;
+    icon: string;
     title: string;
 }
 
@@ -16,7 +16,7 @@ export const CategoryCard = ({ icon, title }: IProps) => {
                     alt="icon"
                     width={256}
                     height={256}
-                    objectFit="cover"
+                    objectFit="contain"
                 />
             </Button>
         </div>
